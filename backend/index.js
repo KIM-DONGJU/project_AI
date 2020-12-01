@@ -21,12 +21,11 @@ app.get('/api/account/google', passport.authenticate('google', { failureRedirect
 );
 
 // 처음 접속 경로 (localhost:3000/)로 접속했을 때 login이 되어있는지 확인
-app.get('/', isLoggedIn,(req, res) => res.send(`Welcome ${req.user.displayName}!`))
+app.get('/', isLoggedIn,(req, res) => res.send(`Welcome ${req.user.displayName} ${req.user.emails[0]['value']} !`))
 app.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/auth');
 })
-
 app.listen(3000,()=>{
   console.log('Serve is up and running at the port 3000')
 })
