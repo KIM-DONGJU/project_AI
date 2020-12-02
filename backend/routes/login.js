@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var mysql_db = require('../mysql-db');
+const { use } = require('passport');
 
 router.get('/', function (req, res, next) {
     res.render('login');
@@ -33,6 +34,34 @@ router.post('/', function (req, res, next) {
             }
         } else {
             res.send('error : ' + err);
+        }
+    });
+    var Client = require('mongodb').MongoClient;
+
+    Client.connect('mongodb://localhost:27017/user', { useUnifiedTopology: true }, function(error, database){
+        if(error) {
+            console.log(error);
+        } else {
+            var db = database.db('user');
+            var query = {email:userId};
+            
+            // 2. find( ) 함수에 query 입력
+            var cursor = db.collection('userinfo').find(query);
+            cursor.each(function(err,doc){
+                if(err){
+                    console.log(err);
+                }else{
+                    if(doc != null){
+                        console.log(doc);
+                        return false;
+                    } else {
+                        // 1. 입력할 document 생성
+                        var info = {email:userId, nickname:userPw};
+                        db.collection('userinfo').insertOne(info);
+                        console.log('Mongo Email :' + userId, 'Mongo Nickname :' + userPw);
+                    };
+                }
+            });
         }
     });
 });
