@@ -1,0 +1,9 @@
+11월 30일
+npm i vue-p5 --save   (P5를 사용하기위해서 다운 받음)
+npm i ml5 --save (ml5 모델을 이용하기 위해 다운 받음)
+npm i @tensorflow/tfjs --save (tensorflowjs를 사용하기 위해 다운)
+npm i parcel-plugin-static-files-copy (학습 시킨 모델을 불러오기 위해 다운)
+
+12월 1일 (모델과 애니메이션을 위한 설정)
+npm i three --save
+npm i @pixiv/three-vrm --save

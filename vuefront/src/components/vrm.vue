@@ -1,0 +1,166 @@
+<template>
+  <div id="container"></div>
+</template>
+<script>
+import * as THREE from 'three'
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
+import { VRM, VRMSchema} from "@pixiv/three-vrm"
+import EventBus from "../EventBus";
+
+export default {
+  name: 'ThreeTest',
+  data() {
+    const clock = new THREE.Clock();
+    return {
+      renderer: undefined,
+      scene: undefined,
+      camera: undefined,
+      controls: undefined,
+      light: undefined,
+      loader: undefined,
+      currentVrm: undefined,
+      stage: 0,
+      clock
+    }
+  },
+  methods: {
+    init: function() {
+      //camera
+      const canvas = document.getElementById("container");
+      this.scene = new THREE.Scene()
+      this.camera = new THREE.PerspectiveCamera(
+        75,
+        // window.innerWidth / window.innerHeight,
+        500/500, //width/Height
+        0.1,
+        1000
+      )
+
+      // renderer
+      this.renderer = new THREE.WebGLRenderer()
+      // this.renderer.setSize(window.innerWidth, window.innerHeight);
+      this.renderer.setSize(500, 500);
+      this.renderer.setPixelRatio(window.devicePixelRatio);
+      // document.body.appendChild(this.renderer.domElement);
+      canvas.appendChild(this.renderer.domElement);
+
+      // 초기 카메라 설정
+      this.camera.position.z = 1.25
+      this.camera.position.y = 1.25
+
+      // camera controls
+      this.controls = new OrbitControls( this.camera, this.renderer.domElement);
+      this.controls.screenSpacePanning = true;
+      this.controls.target.set(0.0,1.0,0.0);
+      this.controls.update();
+
+      // scene
+      this.light = new THREE.DirectionalLight(0xffffff);
+      this.light.position.set(1.0,1.0,1.0).normalize();
+      this.scene.add(this.light);
+
+      // light
+      this.loader = new GLTFLoader();
+      this.loader.crossOrigin = "anonymous"
+      this.loader.load(
+          // "./vrmmodel/AliciaSolid.vrm",
+          "./vrmmodel/teacher1.vrm",
+          // "./vrmmodel/example.vrm",
+          (gltf) => {
+
+              VRM.from(gltf).then( (vrm) => {
+                  console.log(vrm);
+                  this.scene.add(vrm.scene);
+                  this.currentVrm = vrm;
+                  vrm.humanoid.getBoneNode( VRMSchema.HumanoidBoneName.Hips ).rotation.y = Math.PI;
+              })
+          }
+      )
+
+      // 좌표 그리기
+      const gridHelper = new THREE.GridHelper(10,10);
+      this.scene.add(gridHelper);
+      // const axeHelper = new THREE.AxesHelper(5);
+      // this.scene.add(axeHelper);
+    
+    },
+    actionHello() {
+      requestAnimationFrame(this.actionHello);
+      // tweak bones
+      const deltaTime = this.clock.getDelta();
+      if(this.currentVrm !== undefined && this.stage==0) {
+        const s = 0.25 * Math.PI * Math.sin(Math.PI * this.clock.elapsedTime);
+        // console.log(this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.z);
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Neck).rotation.x = s/4;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.z = s/4;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftLowerArm).rotation.z = s+30;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftHand).rotation.x = 1;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.z = 11.2;
+        //update vrm
+        this.currentVrm.update( deltaTime );
+      }else if(this.currentVrm !== undefined && this.stage==1){
+        // leftAction
+
+        const s = 0.25 * Math.PI * Math.sin(Math.PI * this.clock.elapsedTime);
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Neck).rotation.x = s/4;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.z = 20+s/3;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightHand).rotation.x = 1;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.z = 20.17;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftLowerArm).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftHand).rotation.x = s;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.UpperChest).rotation.z = s/4;
+        //update vrm
+        this.currentVrm.update( deltaTime );
+      }else if(this.currentVrm !== undefined && this.stage==2){
+        // rightAction
+
+        const s = 0.25 * Math.PI * Math.sin(Math.PI * this.clock.elapsedTime);
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Neck).rotation.y = s/4;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.z = 30.2+s/3;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftHand).rotation.x = 1;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.z = 30.3+s/8;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightHand).rotation.x = s/2;
+        //update vrm
+        this.currentVrm.update( deltaTime );
+      }else if(this.currentVrm !== undefined){
+        // draw circle
+
+        const s = 0.25 * Math.PI * Math.sin(Math.PI * this.clock.elapsedTime);
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Neck).rotation.y = s/4;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.z = 30.5;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftLowerArm).rotation.z = 4.8;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftHand).rotation.x = 3.9;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftShoulder).rotation.z = s/12;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.z = -30.5;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerArm).rotation.z = -4.8;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightHand).rotation.x = 3.9;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightShoulder).rotation.z = -s/12;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.z = s/4;
+        //update vrm
+        this.currentVrm.update( deltaTime );        
+      }
+      this.renderer.render(this.scene, this.camera)
+    },
+    nextPose() {
+      if(this.stage===0){
+        EventBus.$emit("nextPose", "left");
+      }else if(this.stage===1){
+        EventBus.$emit("nextPose", "right");
+      }else if(this.stage ===2){
+        console.log("next");
+      }
+    }
+  },
+  mounted() {
+    this.init()
+    this.actionHello()
+  },
+  created() {
+    EventBus.$on("next",() => {
+      this.nextPose();
+      this.stage++;
+    })
+  }
+}
+</script>
