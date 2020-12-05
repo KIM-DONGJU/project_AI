@@ -1,0 +1,2 @@
+npm install --save vue-google-login(재혁)
+-> 구글 로그인 버튼 뷰 제작을 위한 설치
