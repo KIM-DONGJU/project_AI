@@ -50,6 +50,16 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+// app.get('/apis/Userinfo'), (req, res) => {
+//   let ID = req.params.ID;
+//   let mariaDB = require('./mysql-db');
+//   mariaDB.excute( conn => {
+//     conn.query("select ID from user", (err, ret) => {
+//       res.json(ret);
+//     });
+//   });
+// };
+
 module.exports = app;
 
 app.listen(3000,()=>{

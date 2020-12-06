@@ -8,13 +8,15 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-    var userId = req.body['userId'];
-    var userPw = req.body['userPw'];
-    var userPwNew = req.body['userPwNew'];
-    mysql_db.query('select * from user where id=? and pw=?', [userId, userPw], function (err, rows, fields) {
+    var member_email = req.body['member_email'];
+    var member_pw = req.body['member_pw'];
+    var member_pw_new = req.body['userPwRe'];
+    var member_nickname = req.body['member_pw'];
+    var member_google = req.body['member_google'];
+    mysql_db.query('select * from Member where member_email=? and member_pw=?', [member_email, member_pw], function (err, rows, fields) {
         if (!err) {
             if (rows[0] != undefined) {
-                mysql_db.query('update user set pw=? where id=?', [userPwNew, userId], function (err, rows, fields) {
+                mysql_db.query('update Member set member_pw=? where member_email=?', [member_pw_new, member_email], function (err, rows, fields) {
                     if (!err) {
                         res.send('password change success');
                     } else {

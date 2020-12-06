@@ -6,7 +6,7 @@ const mariaDB = require('../mysql-db');
 
 router.get('/', function (req, res, next) {
     console.log('connect?');
-    mariaDB.query('select * from user', function (err, rows, fields) {
+    mariaDB.query('select * from Member', function (err, rows, fields) {
         if (!err) {
             console.log(rows);
             console.log(fields);

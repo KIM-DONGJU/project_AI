@@ -1,27 +1,39 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import member_join from '@/components/member_join'
+import login from '@/components/login'
+import play from '@/components/play'
+import find_id_pw from '@/components/find_id_pw'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
+    path: '/member_join',
+    name: 'member_join',
+    component: member_join
+  }, 
+  {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'login',
+    component: login
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/play',
+    name: 'play',
+    component: play
+  },
+  {
+    path: '/find_id_pw',
+    name: 'find_id_pw',
+    component: find_id_pw
   }
 ]
 
-const router = new VueRouter({
-  routes
+export const router = new VueRouter({
+  mode: 'history',
+  routes: routes
 })
 
 export default router
