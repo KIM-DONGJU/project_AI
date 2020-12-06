@@ -44,11 +44,14 @@ router.post('/signUp', function (req, res) {
     const pw = member.member_pw;
     const pw_re = member.member_pw_re;
     const nickname = member.member_nickname;
-    const google = member.member_google;
+    let google = member.member_google;
 
     mysql_db.query('SELECT member_email FROM member WHERE member_email = "' + email + '"', function (err, row, fields) {
       if (row[0] == undefined){ //  동일한 아이디가 없을경우,
         if (pw == pw_re || google === 1) {
+            if (google != 1) {
+              google = 0
+            }
             const salt = bcrypt.genSaltSync();
             let encryptedPassword = '';
             if (pw != '') {

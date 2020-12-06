@@ -1,55 +1,35 @@
 <template>
-    <div class="login">
-        <!-- 상단 로고 부분 -->
-        <img src="../assets/logo.png" id="logo">
+  <div class="login">
+    <div id="login_bg">
+      <div class="square">
+        <div class="content">
+          <img src="../assets/logo.png" id="login_logo">
 
-        <!-- 서비스 로그인 안내 텍스트 부분 -->
-		<div id="login_text">
-			<span>서비스 로그인</span>
-		</div>
+          <p id="login_introduce_text">로그인 후 이용하실 수 있습니다.</p>
+          <input type="text" id="login_id" placeholder="아이디" v-model="member.member_email"/>
+          <input type="password" id="login_pw" placeholder="비밀번호" v-model="member.member_pw"/>
+          <input type="number" name='google' class='google' v-model="member.member_google">
 
-        <!-- 아이디, 비밀번호 입력 부분 -->
-        <form method="post" id="userInfo">
-            <input type="text" name='userId' class='id' v-model="member.member_email" placeholder="아이디">
-            <input type="password" name='userPw' class='pw' v-model="member.member_pw" placeholder="비밀번호">
-			<input type="number" name='google' class='google' v-model="member.member_google">
-        </form>
+          <button v-on:click="memberLogin" id="service-login">로그인</button>
+          <input type="checkbox" id="remember_login_info_check">
+          <p id="remeber_login_info_text">로그인 정보 기억하기</p>
+          <input type="checkbox" id="save_my_id_check">
+          <p id="save_my_id">아이디 저장</p>
+          <button v-on:click="findMyIdPw" id="find_id_my_pw">아이디 / 비밀번호 찾기</button>
 
-        <!-- 구글 계정 로그인 부분 -->
-        <div>
+          <!-- 구글 계정 로그인 부분 -->
+          <div>
             <GoogleLogin class="google-login-button" :params="params" :onSuccess="onSuccess" :onFailure="onFailure">
-                <div id="google-login-text">
-                    <span>구글 계정으로 로그인하기</span>
-                </div>
+              <div id="google-login-text">
+                <span>구글 계정으로 로그인하기</span>
+              </div>
             </GoogleLogin>
             <img class="google" alt="googleLogin" src="https://web-staging.brandi.co.kr/static/3.50.7/images/google-logo.png">
         </div>
-
-        <!-- 로그인 정보 기억하기 체크박스 부분 -->
-        <input type="checkbox" id="login-remember-checkbox">
-
-        <!-- 로그인 정보 기억하기 글자 부분 -->
-        <div id="login-remember-text">
-			<span>로그인 정보 기억하기</span>
-		</div>
-
-		<!-- 로그인 버튼 -->
-        <button v-on:click="memberLogin" id="member-login">→</button>
-
-        <!-- 회원가입 버튼 -->
-        <button v-on:click="memberJoin" id="member-join">아이디가 없으세요?</button>
-
-        <!-- 아이디, 비밀번호 찾기 버튼 -->
-        <button v-on:click="findIdPw" id="find-id-pw">아이디 / 비밀번호 찾기</button>
-
-        <!-- 버전 텍스트 부분 -->
-		<div id="version">
-			<span>v0.1</span>
-		</div>
-
-        <!-- 옆 배경 -->
-        <img src="../assets/background.png" class="background">
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script src="https://apis.google.com/js/platform.js"></script>
@@ -164,154 +144,203 @@ export default {
 </script>
 
 <style scoped>
-
-#logo{
-    position: absolute;
-	width: 100px;
-	height: 109.659px;
-	left: 40px;
-	top: 50px;
-	overflow: visible;
-}
-
-#login_text{
-    left: 40px;
-	top: 210px;
-	position: absolute;
-	overflow: visible;
-	width: 168px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: NanumBarunGothic;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 30px;
-	color: rgba(0,0,0,1);
-}
-
-#login-remember-checkbox{
-    position: absolute;
-	overflow: visible;
-	width: 20px;
-	height: 20px;
-	left: 40px;
-	top: 577px;
-}
-
-#login-remember-text{
-    left: 80px;
-	top: 580px;
-	position: absolute;
-	overflow: visible;
-	width: 154px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: NanumBarunGothic;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 18px;
-	color: rgba(83,83,83,1);
-}
-
-.id{
-    position: absolute;
-	overflow: visible;
-	width: 550px;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    font-family: NanumBarunGothic;
-    color:rgba(83,83,83,1);
-    text-indent: 1em;
-    border:0;
-    background-color: #F1F2EB;
-	height: 65px;
-	left: 40px;
-	top: 295px;
-}
-
-.pw{
-    position: absolute;
-	overflow: visible;
-	width: 550px;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    font-family: NanumBarunGothic;
-    color:rgba(83,83,83,1);
-    text-indent: 1em;
-    border:0;
-    background-color: #F1F2EB;
-	height: 65px;
-	left: 40px;
-	top: 390px;
-}
-
-.google {
-	display: none;
-}
-
-#member-join{
-    left: 40px;
-	top: 970px;
-	position: absolute;
-	overflow: visible;
-	width: 162px;
-    height: 30px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: NanumBarunGothic;
-    background: #FFFFFF;
-    border:0;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 18px;
-	color: rgba(83,83,83,1);
-}
-
-#member-login{
-    position: absolute;
-	overflow: visible;
-	width: 150px;
-	border-radius: 10px;
-	border:0;
-	font-size: 20px;
-	font-weight:bold;
-	height: 150px;
-	left: 245px;
-	top: 710px;
-	background: #F1F2EB;
-}
-
-
-#find-id-pw{
-    left: 40px;
-	top: 1015px;
-	position: absolute;
-	overflow: visible;
-	width: 168px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: NanumBarunGothic;
-	font-style: normal;
-	font-weight: bold;
-    background: #FFFFFF;
-    border:0;
-	font-size: 18px;
-	color: rgba(83,83,83,1);
-}
-
-.google-login-button{
-    background-color: #ffffff;
-    border-style:none;
+#login_logo{
     filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		position: absolute;
+		width: 150px;
+		height: 165px;
+		left: 221px;
+		top: 58px;
+		overflow: visible;
+}
+
+#login_bg{
+  position: absolute;
+	width: 1920px;
+	height: 925px;
+	left: 0px;
+	top: 155px;
+	overflow: visible;
+	background-image: url("../assets/login_bg.jpg");
+	background-color:rgba(0,0,0,0.5);
+}
+
+#login_bg::before{
+	content: "";
+	opacity: 0.5;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-color: #000;
+}
+
+.square {
+  position: relative;
+  width: 593px;
+  height:796px;
+  left:664px;
+  border-radius: 10px;
+  top:65px;
+  background-color: #fff;
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+}
+
+.square:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#login_introduce_text{
+  left: 129.5px;
+		top: 233.9px;
+		position: absolute;
+		overflow: visible;
+		width: 334px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: NanumBarunGothic;
+		font-style: normal;
+		font-weight: lighter;
+		font-size: 26px;
+		color: rgba(83,83,83,1);
+}
+
+#login_id{
+  position: absolute;
+	overflow: visible;
+	width: 450px;
+	height: 65px;
+	left: 71px;
+	top: 315.2px;
+  border-radius: 10px;
+  font-family: NanumBarunGothic;
+  font-size:18px;
+  font-weight: bold;
+  text-indent:1em;
+  background-color: #F1F2EB;
+  border:0;
+}
+
+#login_pw{
+  	position: absolute;
+	overflow: visible;
+	width: 450px;
+	height: 65px;
+	left: 71px;
+	top: 404.9px;
+	border-radius: 10px;
+	font-family: NanumBarunGothic;
+	font-size:18px;
+	font-weight: bold;
+	text-indent:1em;
+	background-color: #F1F2EB;
+	border:0;
+}
+
+#service-login{
+  	left: 71px;
+	top: 494.6px;
 	position: absolute;
 	overflow: visible;
-	width: 550px;
-    border-radius: 10px;
+	width: 450px;
 	height: 65px;
-	left: 40px;
-	top: 485px;
+	border:0;
+	color:#fff;
+	white-space: nowrap;
+	text-align: center;
+	font-family: NanumBarunGothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+ 	 background-color: #F67395;
+}
+
+#remeber_login_info_text{
+	left: 96.5px;
+	top: 562.3px;
+	position: absolute;
+	overflow: visible;
+	width: 128px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: NanumBarunGothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(83,83,83,1);
+}
+
+#remember_login_info_check{
+  	position: absolute;
+	overflow: visible;
+	width: 13px;
+	height: 14px;
+	left: 71px;
+	top: 576.4px;
+}
+
+#save_my_id_check{
+	position: absolute;
+	overflow: visible;
+	width: 13px;
+	height: 14px;
+	left: 427px;
+	top: 576.4px;
+}
+
+#save_my_id{
+  	left: 451.5px;
+	top: 562.3px;
+	position: absolute;
+	overflow: visible;
+	width: 128px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: NanumBarunGothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(83,83,83,1);
+}
+
+#find_id_my_pw{
+  	left: 236.5px;
+	top: 630.2px;
+	position: absolute;
+	overflow: visible;
+	width: 140px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: NanumBarunGothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 13px;
+    text-align: center;
+    color:#949494;
+    border:0;
+    background-color:#fff;
+	letter-spacing: 0.1px;
+}
+.google-login-button{
+	background-color: #ffffff;
+	border-style:none;
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 450px;
+  	border-radius: 10px;
+	height: 65px;
+	left: 71px;
+	top: 674px;
 }
 
 #google-login-text{
@@ -327,32 +356,8 @@ export default {
     position: absolute;
 	width: 32px;
 	height: 32px;
-	left: 55px;
-	top: 502px;
-	overflow: visible;
-}
-
-#version{
-    left: 570px;
-	top: 1015px;
-	position: absolute;
-	overflow: visible;
-	width: 37px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: NanumBarunGothic;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 18px;
-	color: rgba(83,83,83,1);
-}
-
-.background{
-    position: absolute;
-	width: 1280px;
-	height: 1080px;
-	left: 640px;
-	top: 0px;
+	left: 84px;
+	top: 691px;
 	overflow: visible;
 }
 
