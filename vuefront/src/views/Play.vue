@@ -59,17 +59,7 @@ export default {
   position: absolute;
 	overflow: visible;
 	width: 1920px;
-	height: 725px;
-	left: 0px;
-	top: 255px;
-  background-color:#F1F2EB;
-}
-
-#play_area{
-  position: absolute;
-	overflow: visible;
-	width: 1920px;
-	height: 725px;
+	height: 770px;
 	left: 0px;
 	top: 255px;
   background-color:#F1F2EB;
@@ -80,8 +70,8 @@ export default {
 	overflow: visible;
 	width: 550px;
 	height: 630px;
-	left: 116px;
-	top: 48px;
+	left: 260px;
+	top: 94px;
   background-color:#ffffff;
   filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 }
@@ -91,8 +81,8 @@ export default {
 	overflow: visible;
 	width: 550px;
 	height: 630px;
-	left: 1255px;
-	top: 48px;
+	left: 1111px;
+	top: 94px;
   background-color:#ffffff;
   filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 }
@@ -130,17 +120,18 @@ export default {
 
 #my_score{
     left:843px;
-		top: 330.5px;
-		position: absolute;
-		overflow: visible;
-		width: 155px;
-		white-space: nowrap;
-		font-family: NanumBarunGothic;
-		font-style: normal;
-		font-weight: lighter;
-		font-size: 25px;
-		color: rgba(0,0,0,1);
-		letter-spacing: 1px;
+	text-align: center;
+	top: 10.5px;
+	position: absolute;
+	overflow: visible;
+	width: 155px;
+	white-space: nowrap;
+	font-family: NanumBarunGothic;
+	font-style: normal;
+	font-weight: lighter;
+	font-size: 25px;
+	color: rgba(0,0,0,1);
+	letter-spacing: 1px;
 }
 
 </style>
