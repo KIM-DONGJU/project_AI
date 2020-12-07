@@ -8,20 +8,15 @@
       <router-link to="/member_join" id="menu_member_join">회원가입</router-link>
     </div>
     <router-view/>
-	<div id="footer">
-      <Footer/>
-    </div>
+
   </div>
 </template>
 
 <script>
-import Footer from './views/Footer'
 
 export default {
   created(){
     document.title = "PinkPenguinTeacher에 오신 것을 환영합니다."
-  }, components:{
-	  Footer
   }
 }
 
@@ -170,4 +165,8 @@ export default {
 /* #nav a.router-link-exact-active {
   color: #42b983;
 } */
+
+#footer{
+	background-color: #000000;
+}
 </style>

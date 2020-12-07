@@ -5,7 +5,6 @@
     </div>
     
     <div id="play_area">
-
       <!-- 왼쪽 유저 영상 -->
       <div id="user_movie">
         <p id="user_name">원준수 어린이</p>
@@ -20,14 +19,31 @@
       </div>
     </div>
 
-    
+	<div id="help">
+
+		<!-- '도움이 필요하세요? 버튼 -->
+		<button v-on:click="HowTo" id="HowTo"></button>
+	</div>
+
+	<div id="footer">
+    	<Footer/>
+    </div>
   </div>
 </template>
 
 <script>
+import Footer from '../views/Footer.vue'
 
 export default {
   name: 'Play',
+  components:{
+		Footer
+	},
+	methods: {
+		HowTo:function(){
+			alert('해당 기능은 오픈 준비중입니다.')
+		}
+	},
 }
 </script>
 
@@ -39,20 +55,20 @@ export default {
 	height: 100px;
 	left: 0px;
 	top: 155px;
-  background-color:#F9688E;
+  	background-color:#F9688E;
 }
 
 #play_title_msg{
-		position: relative;
+	position: relative;
     top:7px;
-		width: 490px;
-		white-space: nowrap;
+	width: 490px;
+	white-space: nowrap;
     left:710px;
-		font-family: NanumBarunGothic;
-		font-style: normal;
-		font-weight: lighter;
-		font-size: 28px;
-		color: rgba(255,255,255,1);
+	font-family: NanumBarunGothic;
+	font-style: normal;
+	font-weight: lighter;
+	font-size: 28px;
+	color: rgba(255,255,255,1);
 }
 
 #play_area{
@@ -132,6 +148,34 @@ export default {
 	font-size: 25px;
 	color: rgba(0,0,0,1);
 	letter-spacing: 1px;
+}
+
+#help{
+	top: 1025px;
+	position: absolute;
+	overflow: visible;
+	width: 1920px;
+	height:75px;
+	white-space: nowrap;
+	font-family: NanumBarunGothic;
+	font-style: normal;
+	font-weight: lighter;
+	font-size: 25px;
+	background-color: #ffffff;
+	letter-spacing: 1px;
+}
+
+#HowTo{
+	left: 35px;
+	top: 25px;
+	position: absolute;
+	overflow: visible;
+	width: 226.5px;
+	height:28px;
+	white-space: nowrap;
+	background-color:#ffffff;
+	border:0;
+	background: url(../assets/help.png) no-repeat;
 }
 
 </style>

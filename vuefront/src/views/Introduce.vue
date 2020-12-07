@@ -9,7 +9,6 @@
 </template>
 
 <script>
-
 export default {
 	methods:{
 		letsPlay:function(){
@@ -93,5 +92,9 @@ export default {
 	height: 45px;
 	left: 885px;
 	top: 650px;
+}
+
+#footer{
+	top:3000px;
 }
 </style>

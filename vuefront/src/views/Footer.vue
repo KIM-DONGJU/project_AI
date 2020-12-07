@@ -1,14 +1,12 @@
 <template>
-    <div class="section">
-        <div id="infomation">
-			
-		</div>
+    <div class="footer">
+        <div id="test" src="../assets/logo.png" width="1920px" height="108px">
+        </div>
     </div>
 </template>
 
 <style scoped>
-.infomation.box{
-	height:108px;
-	width:1920px;
+#test{
+    top:4000px;
 }
 </style>
