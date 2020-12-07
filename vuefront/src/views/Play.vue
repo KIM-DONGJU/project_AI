@@ -5,7 +5,7 @@
     </div>
     
     <div id="play_area">
-      
+
       <!-- 왼쪽 유저 영상 -->
       <div id="user_movie">
         <p id="user_name">원준수 어린이</p>
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-
+    
   </div>
 </template>
 

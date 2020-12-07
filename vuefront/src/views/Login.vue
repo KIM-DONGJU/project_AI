@@ -9,10 +9,14 @@
           <input type="password" id="login_pw" placeholder="비밀번호"/>
           <button v-on:click="serviceLogin" id="service-login">로그인</button>
           <input type="checkbox" id="remember_login_info_check">
-          <p id="remeber_login_info_text">로그인 정보 기억하기</p>
+          <p id="auto_login">로그인 상태 유지</p>
           <input type="checkbox" id="save_my_id_check">
           <p id="save_my_id">아이디 저장</p>
-          <button v-on:click="findMyIdPw" id="find_id_my_pw">아이디 / 비밀번호 찾기</button>
+
+          <!-- 기존 아이디 / 비밀번호 찾기에서 변경된 부분 -->
+          <button v-on:click="findMyId" id="findMyId">아이디 찾기</button><div id="first_divide">|</div>
+          <button v-on:click="findMyPw" id="findMyPw">비밀번호 찾기</button><div id="second_divide">|</div>
+          <button v-on:click="memberJoin" id="memberJoin">회원가입</button>
 
           <!-- 구글 계정 로그인 부분 -->
           <div>
@@ -64,6 +68,7 @@ export default {
         console.log("실패");
         Google.googleLoginFailture();
     },
+
   }
 }
 </script>
@@ -102,6 +107,15 @@ export default {
     onFailure(googleUser) {
         console.log("실패");
         Google.googleLoginFailture();
+    },
+    findMyId:function(){
+      alert('아이디 찾기 기능 준비중입니다.')
+    },
+    findMyPw:function(){
+      alert('비밀번호 찾기 기능 준비중입니다.')
+    },
+    memberJoin:function(){
+      this.$router.push('/member_join')
     }
   },
 }
@@ -227,7 +241,7 @@ export default {
   background-color: #F67395;
 }
 
-#remeber_login_info_text{
+#auto_login{
     left: 96.5px;
 		top: 562.3px;
 		position: absolute;
@@ -275,14 +289,13 @@ export default {
 	color: rgba(83,83,83,1);
 }
 
-#find_id_my_pw{
-  left: 236.5px;
-		top: 630.2px;
+#findMyId{
+  left: 157.5px;
+		top: 626.2px;
 		position: absolute;
 		overflow: visible;
-		width: 140px;
+		width: 70px;
 		white-space: nowrap;
-		text-align: left;
 		font-family: NanumBarunGothic;
 		font-style: normal;
 		font-weight: bold;
@@ -291,8 +304,80 @@ export default {
     color:#949494;
     border:0;
     background-color:#fff;
+}
+
+#first_divide{
+  left: 240.5px;
+		top: 626.2px;
+		position: absolute;
+		overflow: visible;
+		width: 6px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: NanumBarunGothic;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 15px;
+    text-align: center;
+    color:#949494;
+    border:0;
+    background-color:#fff;
 		letter-spacing: 0.1px;
 }
+
+#findMyPw{
+  left: 258.5px;
+		top: 626.2px;
+		position: absolute;
+		overflow: visible;
+		width: 80px;
+		white-space: nowrap;
+		font-family: NanumBarunGothic;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 13px;
+    text-align: center;
+    color:#949494;
+    border:0;
+    background-color:#fff;
+}
+
+#second_divide{
+  left: 352.5px;
+		top: 626.2px;
+		position: absolute;
+		overflow: visible;
+		width: 6px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: NanumBarunGothic;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 15px;
+    text-align: center;
+    color:#949494;
+    border:0;
+    background-color:#fff;
+		letter-spacing: 0.1px;
+}
+
+#memberJoin{
+  left: 368.5px;
+		top: 626.2px;
+		position: absolute;
+		overflow: visible;
+		width: 47px;
+		white-space: nowrap;
+		font-family: NanumBarunGothic;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 13px;
+    text-align: center;
+    color:#949494;
+    border:0;
+    background-color:#fff;
+}
+
 .google-login-button{
   background-color: #ffffff;
   border-style:none;
