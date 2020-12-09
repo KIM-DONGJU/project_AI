@@ -39,7 +39,7 @@ export default {
       this.camera = new THREE.PerspectiveCamera(
         75,
         // window.innerWidth / window.innerHeight,
-        500/500, //width/Height
+        700/700, //width/Height
         0.1,
         1000
       )
@@ -47,10 +47,11 @@ export default {
       // renderer
       this.renderer = new THREE.WebGLRenderer()
       // this.renderer.setSize(window.innerWidth, window.innerHeight);
-      this.renderer.setSize(500, 500);
+      this.renderer.setSize(700, 700);
       this.renderer.setPixelRatio(window.devicePixelRatio);
       // document.body.appendChild(this.renderer.domElement);
       canvas.appendChild(this.renderer.domElement);
+      this.renderer.setClearColor( 0xffffff );
 
       // 초기 카메라 설정
       this.camera.position.z = 1.25
@@ -72,7 +73,7 @@ export default {
       this.loader.crossOrigin = "anonymous"
       this.loader.load(
           // "./vrmmodel/AliciaSolid.vrm",
-          "./vrmmodel/teacher1.vrm",
+          "./vrmmodel/4.vrm",
           // "./vrmmodel/example.vrm",
           (gltf) => {
 

@@ -23,6 +23,8 @@ export default {
       skeleton: undefined,
       brain: undefined,
       modelInfo: undefined,
+      audio: undefined,
+      bgm: undefined,
       model: "/model/Hellomodel.json",
       metadata: "/model/Hellomodel_meta.json",
       weights: "/model/Hellomodel.weights.bin",
@@ -44,11 +46,15 @@ export default {
   },
   methods: {
     setup(sketch){
-      sketch.createCanvas(500,500);
-      sketch.background(50);
-
-      this.video = sketch.createCapture(sketch.VIDEO);
+      
+      
+      sketch.createCanvas(700,700);
+      sketch.background(0);
+      
+      this.video = sketch.createCapture(sketch.VIDEO)
+      this.video.size(700,700);
       this.video.hide();
+      
       this.poseNet = ml5.poseNet(this.video, this.modelLoaded);
       this.poseNet.on('pose', this.gotPoses);
       this.brain = ml5.neuralNetwork(this.options);
@@ -58,6 +64,16 @@ export default {
         weights: this.weights
       }
       this.brain.load(this.modelInfo, this.brainLoaded);
+
+      // audio 
+      this.audio = new Audio();
+      this.audio.src = "/audio/v1.wav"
+      this.audio.play()
+
+      // bgm
+      this.bgm = new Audio();
+      this.bgm.src = "/audio/b1.mp3"
+      this.bgm.play()
     },
     brainLoaded(){
       console.log("pose classification ready!");
@@ -85,6 +101,8 @@ export default {
       if(this.poseLabel == this.answer){
         this.count++;
         if(this.count>40){
+          this.audio.src = "/audio/1.mp3"
+          this.audio.play();
           this.nextAction();
           this.count = 0;
         }
@@ -97,7 +115,7 @@ export default {
       sketch.push()
       sketch.translate(this.video.width,0);
       sketch.scale(-1, 1);
-      sketch.image(this.video,0,0);
+      sketch.image(this.video,0,0,700,700);
       // console.log(this.model);
 
       if(this.pose){
