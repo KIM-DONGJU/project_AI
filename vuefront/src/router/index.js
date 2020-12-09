@@ -23,6 +23,11 @@ const routes = [{
     name: 'MemberJoin',
     component: () =>
         import ('../views/MemberJoin.vue')
+}, {
+    path: '/select_teacher',
+    name: 'SelectTeacher',
+    component: () =>
+        import ('../views/SelectTeacher.vue')
 }]
 
 const router = new VueRouter({

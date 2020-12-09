@@ -8,7 +8,6 @@
       <router-link to="/member_join" id="menu_member_join">회원가입</router-link>
     </div>
     <router-view/>
-
   </div>
 </template>
 
@@ -25,32 +24,32 @@ export default {
 #nav_logo{
   filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
-	width: 66px;
-	height: 72px;
+	width: 282px;
+	height: 45px;
 	left: 30px;
-	top: 63px;
+	top: 30px;
 	overflow: visible;
 }
 
 #first_divide{
-	left: 1445.5px;
-	top: 65.5px;
-	position: absolute;
-	overflow: visible;
-	width: 12px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: NanumBarunGothic;
-	font-style: normal;
-	font-weight: lighter;
-	font-size: 24px;
-	color: rgba(0,0,0,1);
-	letter-spacing: 0.1px;
+	left: 1459.5px;
+		top: 37.5px;
+		position: absolute;
+		overflow: visible;
+		width: 12px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: NanumBarunGothic;
+		font-style: normal;
+		font-weight: lighter;
+		font-size: 24px;
+		color: rgba(0,0,0,1);
+		letter-spacing: 0.1px;
 }
 
 #second_divide{
-	left: 1594.5px;
-	top: 65.5px;
+	left: 1608.5px;
+	top: 37.5px;
 	position: absolute;
 	overflow: visible;
 	width: 12px;
@@ -65,8 +64,8 @@ export default {
 }
 
 #third_divide{
-	left: 1722.5px;
-	top: 65.5px;
+	left: 1736.5px;
+	top: 37.5px;
 	position: absolute;
 	overflow: visible;
 	width: 12px;
@@ -81,24 +80,24 @@ export default {
 }
 
 #menu_play{
-  left: 1333.5px;
-	top: 65.5px;
+  left: 1347.5px;
+	top: 37.5px;
 	position: absolute;
 	overflow: visible;
 	width: 87px;
 	white-space: nowrap;
 	text-align: left;
-	font-family: NanumBarunGothic;
-	font-style: normal;
-	font-weight: lighter;
-	font-size: 24px;
-	color: rgba(0,0,0,1);
-	letter-spacing: 0.1px;
+		font-family: NanumBarunGothic;
+		font-style: normal;
+		font-weight: lighter;
+		font-size: 24px;
+		color: rgba(0,0,0,1);
+		letter-spacing: 0.1px;
 }
 
 #menu_community{
-  left: 1482.5px;
-	top: 65.5px;
+  left: 1496.5px;
+	top: 37.5px;
 	position: absolute;
 	overflow: visible;
 	width: 87px;
@@ -113,8 +112,8 @@ export default {
 }
 
 #menu_login{
-  left: 1631.5px;
-	top: 65.5px;
+  left: 1645.5px;
+	top: 37.5px;
 	position: absolute;
 	overflow: visible;
 	width: 87px;
@@ -129,8 +128,8 @@ export default {
 }
 
 #menu_member_join{
-  left: 1759.5px;
-	top: 65.5px;
+  left: 1773.5px;
+	top: 37.5px;
 	position: absolute;
 	overflow: visible;
 	width: 87px;

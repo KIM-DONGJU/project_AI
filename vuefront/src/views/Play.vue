@@ -24,21 +24,13 @@
 		<!-- '도움이 필요하세요? 버튼 -->
 		<button v-on:click="HowTo" id="HowTo"></button>
 	</div>
-
-	<div id="footer">
-    	<Footer/>
-    </div>
   </div>
 </template>
 
 <script>
-import Footer from '../views/Footer.vue'
 
 export default {
   name: 'Play',
-  components:{
-		Footer
-	},
 	methods: {
 		HowTo:function(){
 			alert('해당 기능은 오픈 준비중입니다.')
