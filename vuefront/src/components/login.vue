@@ -15,7 +15,7 @@
           <p id="remeber_login_info_text">로그인 정보 기억하기</p>
           <input type="checkbox" id="save_my_id_check">
           <p id="save_my_id">아이디 저장</p>
-          <button v-on:click="findMyIdPw" id="find_id_my_pw">아이디 / 비밀번호 찾기</button>
+          <!-- <button v-on:click="findMyIdPw" id="find_id_my_pw">아이디 / 비밀번호 찾기</button> -->
 
           <!-- 구글 계정 로그인 부분 -->
           <div>
@@ -71,14 +71,16 @@ export default {
 			this.member.member_email = googlelogin.getEmail();
 			this.member.member_google = 1;
 			this.member.member_nickname = googlelogin.getName();
+			let router = this.$router;
 			this.$http.post('/api/login/checklogin', {
 				member : this.member
 				})
 				.then(
 					(res) => {  //로그인 성공
 						if (res.data.success == true) {
-							alert(res.data.message);
-							console.log('test1')
+							sessionStorage.setItem('token', res.data.token);
+							this.$store.commit('getToken')
+							this.$router.push('/');
 						} else {
 							this.$http.post('/api/join/signUp', {
 								member: this.member
@@ -120,13 +122,15 @@ export default {
 			.then(
 				(res) => {
 					if (res.data.success == true) {
-						alert(res.data.message);
+						sessionStorage.setItem('token', res.data.token);
+						this.$store.commit('getToken')
+						this.$router.push('/');
 					} else {
 						alert(res.data.message);
 					}
 				},
 				(err) => { // error 를 보여줌
-					alert('Login failed! please check your id or password');
+					alert('error');
 				}
 			)
 			.catch(err => {

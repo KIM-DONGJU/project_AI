@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
+var cors = require('cors');
+
+secret = 'p!@#i!@#n!@#k!@#p!@#a!@#n!@#g!@#u!@#i!@#n';
 
 var mysql_db = require('../mysql-db');
 const { use } = require('passport');
@@ -64,7 +68,7 @@ router.post('/checklogin',function (req, res) {
     const pw = member.member_pw;
     const google = member.member_google;
 
-    mysql_db.query('SELECT member_email, member_pw FROM member WHERE member_email = "' + email + '"', function (err, row, fields) {
+    mysql_db.query('SELECT member_id, member_email, member_pw, member_nickname FROM member WHERE member_email = "' + email + '"', function (err, row, fields) {
       if (row[0] === undefined || err) {
         res.json({ // 매칭되는 아이디 없을 경우
           success: false,
@@ -74,7 +78,13 @@ router.post('/checklogin',function (req, res) {
       else if ((row[0] !== undefined) && (pw !== '')) {
         bcrypt.compare(pw, row[0].member_pw, function (err, res2) {
           if (res2) {
-            res.json({ // 로그인 성공 
+            let user = {
+              member_id : row[0].member_id,
+              member_nickname : row[0].member_nickname
+            };
+            const token = jwt.sign({ user }, secret);
+            res.json({ // 로그인 성공
+              token,
               success: true,
               message: 'Login successful!'
             })
@@ -89,7 +99,7 @@ router.post('/checklogin',function (req, res) {
       } else if ((row[0] !== undefined) && (google == 1)) {
           res.json({ // 로그인 성공 
             success: true,
-            message: 'Login successful!'
+            message: 'google login success'
           })
         } else if (pw == '') {
           res.json({

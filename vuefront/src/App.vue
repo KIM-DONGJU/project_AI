@@ -5,8 +5,9 @@
       <router-link to="/" id="nav_logo"><img src="@/assets/nav_logo.png"/></router-link>
       <router-link to="/play" id="menu_play">게임하기</router-link><div id="first_divide">|</div>
       <router-link to="/community" id="menu_community">커뮤니티</router-link><div id="second_divide">|</div>
-      <router-link to="/login" id="menu_login">로그인</router-link><div id="third_divide">|</div>
-      <router-link to="/member_join" id="menu_member_join">회원가입</router-link>
+      <router-link to="/login" id="menu_login" v-if="!$store.state.token">로그인</router-link><div id="third_divide">|</div>
+	  <div id="menu_login" v-if="$store.state.token" @click="signOut">로그아웃</div><div id="third_divide"></div>
+      <router-link to="/member_join" id="menu_member_join" v-if="!$store.state.token">회원가입</router-link>
     </div>
     <router-view/>
 	<div id="footer">
@@ -52,6 +53,7 @@
 import GoogleLogin from 'vue-google-login'
 import Login from '@/components/login.vue'
 import MemberJoin from '@/components/member_join.vue'
+import store from './store'
 
 // export default {
 //   mounted () {
@@ -77,41 +79,46 @@ export default {
       params: {
           client_id: "519684726036-tj9fqobp9h04r69vke7hm9b8qgclftem.apps.googleusercontent.com"
       },
-      Userinfo: [],
-      // only needed if you want to render the button with the google ui
+      userInfo: [],
+	  // only needed if you want to render the button with the google ui
+	  isLoading: true,
     }
   },
-  created() {
-    this.fetchUserinfo();
-  },
+//   created() {
+// 	  const response = this.$http.get('/api/login/login', {
+// 		  headers : {
+// 			  Authorization: 'dj test ' + localStorage.getItem('token')
+// 		  }
+// 	  });
 
-  components: {
-    GoogleLogin,
-    Login,
-    MemberJoin
-  },
-  methods: {
-    onSuccess(googleUser) {
-      console.log(googleUser);
+// 	  console.log(response);
+//   },
+	mounted () {
+		this.$store.commit('getToken');
+  	},
 
-      // This only gets the user information: id, name, imageUrl and email
-      console.log(googleUser.getBasicProfile());
-    },
-    onFailure(googleUser) {
-      console.log("실패");
+	components: {
+		GoogleLogin,
+		Login,
+		MemberJoin
+	},
+	methods: {
+		onSuccess(googleUser) {
+		console.log(googleUser);
 
-      // This only gets the user information: id, name, imageUrl and email
-    },
-    fetchUserinfo() {
-      this.$http.get('http://localhost:3000/show-all-data/apis').then(ret => {
-        if (ret.status != 200) {
-          return []
-        }
-        this.Userinfo = ret.data;
-        console.log(typeof(ret.data));
-      })
-    }
-  },
+		// This only gets the user information: id, name, imageUrl and email
+		console.log(googleUser.getBasicProfile());
+		},
+		onFailure(googleUser) {
+		console.log("실패");
+
+		// This only gets the user information: id, name, imageUrl and email
+		},
+		signOut () {
+      // localStorage.removeItem('token')
+			this.$store.commit('delToken');
+	    }
+	},
 }
 
 
@@ -256,6 +263,12 @@ export default {
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+}
+
+#menu_login { 
+  font-weight: bold;
+  color: #2c3e50;
+
 }
 
 /* #nav a.router-link-exact-active {
