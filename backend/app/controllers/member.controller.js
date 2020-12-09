@@ -1,5 +1,5 @@
 const db = require('../models'); // 자동으로 models 폴더 하위의 index.js를 인식.
-const boardModel = require('../models/board.model');
+// const boardModel = require('../models/board.model');
 
 const Member = db.member;
 const Board = db.board;
@@ -32,5 +32,89 @@ exports.createBoard = (member_id, board) => {
         })
         .catch((err) => {
             console.log('>> Error while creating board: ' + err);
+        })
+}
+
+exports.findAll2 = (req, res) => {
+    const title = req.query.title;
+    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+
+    Board.findAll({ where: condition })
+        .then(data => {
+        res.send(data);
+        })
+        .catch(err => {
+        res.status(500).send({
+            message:
+            err.message || "Some error occurred while retrieving tutorials."
+        });
+        });
+}
+
+// exports.findAll = (req, res) => {
+//     console.log('여긴?');
+//     Member.findAll({ include: [{model : Board, as : 'board'}] })
+//         .then(member => {
+//             const resObj = member.map(member => {
+//                 return Object.assign(
+//                     {},
+//                     {
+//                         // member_id : member.id,
+//                         member_nickname : member.member_nickname,
+//                         board : member.board.map(board => {
+//                             return Object.assign(
+//                                 {},
+//                                 {
+//                                     board_id : board.id,
+//                                     // member_id : board.member_id,
+//                                     board_title : board.board_title,
+//                                     board_content : board.board_content
+//                                 }
+//                             )
+//                         })
+//                     }
+//                 )
+//                 console.log('끝');
+//                 res.json(resObj);
+//             })
+//         })
+//         .catch(err => {
+//         res.status(500).send({
+//             message:
+//             err.message || "Some error occurred while retrieving tutorials."
+//         });
+//         });
+// }
+
+exports.findAll = (req, res) => {
+    console.log('여긴?');
+    Board.findAll(
+        {include: [{model : Member, as : 'member'}] })
+        .then(data => {
+           res.send(data);
+        })
+        .catch(err => {
+        res.status(500).send({
+            message:
+            err.message || "Some error occurred while retrieving tutorials."
+        });
+        });
+}
+
+exports.findBoardById = (req, res) => {
+
+    const id = req.params.id
+
+    Board.findOne({
+        where : {member_id : id},
+        include: [{model : Member, as : 'member'}]
+    })
+        .then((data) => {
+            console.log('쿼리날림?');
+            res.send(data);
+        })
+        .catch((err, id) => {
+            console.log('못날림');
+            console.log(`>> Error while finding board : is ${id} is `, err);
         })
 }

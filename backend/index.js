@@ -2,10 +2,10 @@ const express = require('express')
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const port = process.env.port || 3000;
+const port = process.env.port || 8080;
 
 let corsOptions = {
-    origin: 'http;//localhost:8081'
+    origin: 'http://localhost:8081'
 }
 
 app.use(cors(corsOptions));
@@ -18,30 +18,33 @@ app.get("/", (req,res) =>{
     res.json({message: "Welcome"});
 })
 
-const db = require('./app/models');
-const controller = require('./app/controllers/member.controller');
 
-const run = async () => {
+// const db = require('./app/models');
+// const controller = require('./app/controllers/member.controller');
 
-    const tut1 = await controller.createMember({
-        member_email : 'junghoyou2@gmail.com',
-        member_pw : '1234',
-        member_nickname: 'fweqws',
-        member_google: 1
-    });
+// const run = async () => {
 
-    await controller.createBoard(tut1.id, {
-        board_title : 'this is board_title',
-        board_content : 'here is board_content'
-    })
-};
+//     const tut1 = await controller.createMember({
+//         member_email : 'junghoyou2@gmail.com',
+//         member_pw : '1234',
+//         member_nickname: 'fweqws',
+//         member_google: 1
+//     });
+
+//     await controller.createBoard(tut1.id, {
+//         board_title : 'this is board_title',
+//         board_content : 'here is board_content'
+//     })
+// };
 
 //db.sequelize.sync();
-db.sequelize.sync({force:true}).then(() => { // 개발 환경에서 자동 DB drop 및 재생성 설정 -> force : true
+// db.sequelize.sync({force:true}).then(() => { // 개발 환경에서 자동 DB drop 및 재생성 설정 -> force : true
     
-    console.log('Drop and re-sync db.');
-    run();
-});
+//     console.log('Drop and re-sync db.');
+//     run();
+// });
+
+require("./app/routes/board.routes")(app);
 
 app.listen(port, ()=> {
     console.log(`Server is running on port ${port}`);
