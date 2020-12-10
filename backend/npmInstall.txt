@@ -1,4 +1,7 @@
 - 정호가 설치한 모듈.
     1. sequelize^2.2.5 : mysql ORM module on node.js
-    2. mysql2^6.3.5 : me too, maybe?;)
-    3. mariadb^2.5.1 : Are you kidding me? it's literally 'm.a.r.i.a.d.b' ok?
+    2. mysql2^6.3.5
+    3. mariadb^2.5.1
+---- 동주 ----
+    1. npm install CORS
+    2. npm install bcrypt

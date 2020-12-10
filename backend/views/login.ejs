@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="519684726036-tj9fqobp9h04r69vke7hm9b8qgclftem.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>login</h1>
+    <form method = "post" id='userInfo'>
+        <label for="">id:<input type="text" name = 'member_email' class='email'><br></label>
+        <label for="">pw:<input type="password" name = 'member_pw' class='pw'><br></label>
+        <label for="">pw-re:<input type="password" name = 'member_pw_re' class='pw_re'><br></label>
+        <label for="">Nickname:<input type="text" name = 'member_nickname' class='nickname'><br></label>
+        <label for="" style="display: none;"><input type="number" name = 'member_google' class='google'></label>
+        <input type = "submit">
+        <div id="my-signin2"></div>
+    </form>
+</body>
+    <script>
+        function onSuccess(googleUser) {
+            $('.email')[0]['value'] = [googleUser.getBasicProfile().getEmail()];
+            $('.nickname')[0]['value'] = [googleUser.getBasicProfile().getName()];
+            $('.google')[0]['value'] = 1;
+            document.getElementById('userInfo').submit();
+        }
+        function onFailure(error) {
+            console.log(error);
+        }
+        function renderButton() {
+            gapi.signin2.render('my-signin2', {
+                'scope': 'profile email',
+                'width': 240,
+                'height': 50,
+                'longtitle': true,
+                'theme': 'dark',
+                'onsuccess': onSuccess,
+                'onfailure': onFailure
+            });
+        }
+    </script>
+</html>

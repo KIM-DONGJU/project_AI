@@ -34,14 +34,13 @@ export default {
         return {
             id  : this.$route.params.id,
             currentTutorial : null,
-            message : ''
+            // message : ''
         }
     },
 
     methods : {
         getTutorial(){
-            // alert(this.id)
-            TutorialDataService.get(this.id)
+            TutorialDataService.get(this.$route.params.id)
                 .then(response => {
                     this.currentTutorial = response.data;
                     console.log(response.data);
@@ -50,7 +49,7 @@ export default {
     },
 
     mounted() {
-        this.message = '';
+        // this.message = '';
         this.getTutorial(this.$route.params.id);
     }
 

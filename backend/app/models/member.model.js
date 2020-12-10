@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
             type : DataTypes.INTEGER(2)
         }
     },
-        {
+        {   
+            timestamps: false,
             underscored : true,
             freezeTableName: true,//sequelize에서 테이블 자동 생성 시 복수형으로 안되도록 프리징.
         }

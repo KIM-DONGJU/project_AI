@@ -7,9 +7,12 @@ module.exports = app => {
     // router.post("/", tutorials.create);
   
     // Retrieve all Tutorials
-    router.get("/", controller.findAll);
+    router.get('/', controller.findAll);
 
-    router.get('/:id', controller.findBoardById);
+
+    var cors = require('cors');
+
+    router.get('/:id', cors(8080),controller.findBoardById);
   
     // // Retrieve all published Tutorials
     // router.get("/published", tutorials.findAllPublished);

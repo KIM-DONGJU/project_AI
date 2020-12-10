@@ -51,41 +51,6 @@ exports.findAll2 = (req, res) => {
         });
 }
 
-// exports.findAll = (req, res) => {
-//     console.log('여긴?');
-//     Member.findAll({ include: [{model : Board, as : 'board'}] })
-//         .then(member => {
-//             const resObj = member.map(member => {
-//                 return Object.assign(
-//                     {},
-//                     {
-//                         // member_id : member.id,
-//                         member_nickname : member.member_nickname,
-//                         board : member.board.map(board => {
-//                             return Object.assign(
-//                                 {},
-//                                 {
-//                                     board_id : board.id,
-//                                     // member_id : board.member_id,
-//                                     board_title : board.board_title,
-//                                     board_content : board.board_content
-//                                 }
-//                             )
-//                         })
-//                     }
-//                 )
-//                 console.log('끝');
-//                 res.json(resObj);
-//             })
-//         })
-//         .catch(err => {
-//         res.status(500).send({
-//             message:
-//             err.message || "Some error occurred while retrieving tutorials."
-//         });
-//         });
-// }
-
 exports.findAll = (req, res) => {
     console.log('여긴?');
     Board.findAll(

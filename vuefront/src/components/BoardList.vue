@@ -77,16 +77,26 @@ export default {
   },
   methods: {
     retrieveTutorials() {
+      // this.$http.get('/api/show-all-data/board')
+      //   .then(response => {
+      //     this.tutorials = response.data;
+      //     console.log(response.data);
+      //   })
+      //   .catch((e) => {
+      //     alert('못받음 ㅠ ')
+      //     console.log(e);
+      //   });
 
-      TutorialDataService.getAll()
+    TutorialDataService.getAll()
         .then(response => {
           this.tutorials = response.data;
           console.log(response.data);
         })
         .catch((e) => {
-          alert('못받음 ㅠ ')
+          alert('못받음')
           console.log(e);
         });
+
     },
 
     refreshList() {
@@ -98,8 +108,7 @@ export default {
     setActiveTutorial(tutorial, index) {
       this.currentTutorial = tutorial;
       this.currentIndex = index;
-        
-      this.$router.push({name : 'Detail', params : {id : tutorial.id}})
+      this.$router.push({name : 'Detail', params : {id : tutorial.member.id}})
     },
     
     searchTitle() {
