@@ -1,28 +1,28 @@
 <template>
-  <div class="Play">
+  <div class="play">
     <div id="play_title">
-      <p id="play_title_msg">오른쪽 <b>선생님의 동작</b>에 맞춰서 함께 따라해보세요!</p>
+    	<p id="play_title_msg">오른쪽 <b>선생님의 동작</b>에 맞춰서 함께 따라해보세요!</p>
+		
+		<!-- 플레이 영역 -->
+		<div id="play_area">
+			<button v-on:click="exit_game" id="exit_game">게임종료</button>
+
+			<!-- 유저 영역 -->
+			<div id="user_movie">
+				<p id="user_name">원준수 어린이</p>
+			</div>
+
+			<!-- 선생님 영역 -->
+			<div id="teacher_movie">
+				<p id="teacher_name">바비 선생님</p>
+			</div>
+		</div>
     </div>
-    
-    <div id="play_area">
-      <!-- 왼쪽 유저 영상 -->
-      <div id="user_movie">
-        <p id="user_name">원준수 어린이</p>
-      </div>
-      
-      <!-- 점수 현황-->
-      <p id="my_score">현재 점수 : 30 / 100</p>
 
-      <!-- 오른쪽 모델 출력 영상 -->
-      <div id="teacher_movie">
-        <p id="teacher_name">바비 선생님</p>
-      </div>
-    </div>
-
-	<div id="help">
-
-		<!-- '도움이 필요하세요? 버튼 -->
-		<button v-on:click="HowTo" id="HowTo"></button>
+	<div id="introduce_footer">
+		<p id="developer_contact">T. 010-5197-3175</p><p id="developer_email">E. admin@pp-teacher.io</p>
+		<p id="developer_name">원준수 / 김동주 / 김수양 / 유정호 / 유재혁</p>
+		<a href="#"><button v-on:click="goUp" id="go-up"></button></a>
 	</div>
   </div>
 </template>
@@ -32,72 +32,81 @@
 export default {
   name: 'Play',
 	methods: {
-		HowTo:function(){
-			alert('해당 기능은 오픈 준비중입니다.')
+		exit_game:function(){
+
+			if(confirm("'확인' 버튼을 클릭하면 게임을 중단하고 메인 화면으로 이동합니다.") == true){
+				this.$router.push('/')
+			}
+
+			else{
+				return;
+			}
 		}
 	},
 }
 </script>
 
 <style scoped>
+.play{
+	overflow-x: hidden;
+}
+
 #play_title{
-  position: absolute;
+	position: absolute;
 	overflow: visible;
-	width: 1920px;
-	height: 100px;
+	width: 100%;
+	height: 75px;
 	left: 0px;
-	top: 155px;
+	top: 100px;
   	background-color:#F9688E;
 }
 
 #play_title_msg{
-	position: relative;
-    top:7px;
+	position: absolute;
 	width: 490px;
 	white-space: nowrap;
     left:710px;
 	font-family: NanumBarunGothic;
 	font-style: normal;
 	font-weight: lighter;
-	font-size: 28px;
+	font-size: 25px;
 	color: rgba(255,255,255,1);
 }
 
 #play_area{
-  position: absolute;
+	background-color:#F1F2EB;
+	width:100%;
+	position:absolute;
 	overflow: visible;
-	width: 1920px;
-	height: 770px;
-	left: 0px;
-	top: 255px;
-  background-color:#F1F2EB;
+	top:75px;
+	height:794px;
 }
 
 #user_movie{
   position: absolute;
 	overflow: visible;
 	width: 550px;
-	height: 630px;
+	height: 590px;
 	left: 260px;
-	top: 94px;
-  background-color:#ffffff;
-  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	top: 50px;
+  	background-color:#ffffff;
+  	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 }
 
 #teacher_movie{
-  position: absolute;
+	position: absolute;
 	overflow: visible;
 	width: 550px;
-	height: 630px;
+	height: 590px;
 	left: 1111px;
-	top: 94px;
-  background-color:#ffffff;
-  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	top: 50px;
+  	background-color:#ffffff;
+  	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 }
 
 #user_name{
     left: 198.5px;
-		top: 555.5px;
+		top: 525px;
 		position: absolute;
 		overflow: visible;
 		width: 155px;
@@ -113,7 +122,7 @@ export default {
 
 #teacher_name{
   left:210.5px;
-		top: 555.5px;
+		top: 525px;
 		position: absolute;
 		overflow: visible;
 		width: 155px;
@@ -126,48 +135,104 @@ export default {
 		letter-spacing: 1px;
 }
 
-#my_score{
-    left:843px;
-	text-align: center;
-	top: 10.5px;
+
+#introduce_footer::before{
+	content: "";
 	position: absolute;
-	overflow: visible;
-	width: 155px;
-	white-space: nowrap;
-	font-family: NanumBarunGothic;
-	font-style: normal;
-	font-weight: lighter;
-	font-size: 25px;
-	color: rgba(0,0,0,1);
-	letter-spacing: 1px;
+	height:10.5%;
+	top:89.5%;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-color: #222222;
 }
 
-#help{
-	top: 1025px;
+#developer_contact{
+  	left: 1%;
+	top: 92%;
 	position: absolute;
 	overflow: visible;
-	width: 1920px;
-	height:75px;
+	width: 343px;
 	white-space: nowrap;
+	line-height: 24px;
+	margin-top: -4.5px;
+	text-align: left;
 	font-family: NanumBarunGothic;
 	font-style: normal;
-	font-weight: lighter;
-	font-size: 25px;
-	background-color: #ffffff;
-	letter-spacing: 1px;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(255,255,255,1);
+    white-space: pre;
 }
 
-#HowTo{
-	left: 35px;
-	top: 25px;
+#developer_email{
+  	left: 11%;
+	top: 92%;
 	position: absolute;
 	overflow: visible;
-	width: 226.5px;
-	height:28px;
+	width: 343px;
 	white-space: nowrap;
-	background-color:#ffffff;
+	line-height: 24px;
+	margin-top: -4.5px;
+	text-align: left;
+	font-family: NanumBarunGothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(255,255,255,1);
+    white-space: pre;
+}
+
+#developer_name{
+  	left: 1%;
+	top: 96%;
+	position: absolute;
+    padding-bottom: 1%;
+	overflow: visible;
+	width: 343px;
+	white-space: nowrap;
+	line-height: 24px;
+	margin-top: -4.5px;
+	text-align: left;
+	font-family: NanumBarunGothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color:#B0B0B0;
+}
+
+#go-up{
+	background-color:#444444;
+	background-image: url("../assets/btn_arrow.png");
+	color:#ffffff;
+	font-style: bold;
+	background-repeat: no-repeat;
+	position: absolute;
+	overflow: visible;
+	background-position: center;
+	width: 80px;
+	background-size: 20%;
+	font-family: NanumBarunGothic;
 	border:0;
-	background: url(../assets/help.png) no-repeat;
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	height: 80px;
+	left: 95%;
+	top: 90.7%;
 }
 
+#exit_game{
+	position: absolute;
+	border:0;
+	overflow: visible;
+	top:25px;
+	font-style: bold;
+	left:885px;
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	font-family: NanumBarunGothic;
+	background-color:#F9688E;
+	color:#fff;
+	border-radius: 10px;
+	width:150px;
+	height:45px;
+}
 </style>
