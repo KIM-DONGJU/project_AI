@@ -1,8 +1,8 @@
 module.exports = {
     HOST: "localhost",
-    port : 3307,
+    port : 3306,
     USER: "root",
-    PASSWORD: "1234",
+    PASSWORD: "cjsend12",
     DB: "user",
     dialect: "mariadb",
   };

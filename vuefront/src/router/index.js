@@ -33,6 +33,11 @@ const routes = [
     name: "Detail",
     component: () => import("../components/BoardDetail")
   },
+  {
+    path:"/board/:id",
+    name:"Delete",
+    component: () => import("../components/BoardDetail")
+  },
   // {
   //   path: "/add",
   //   name: "add",

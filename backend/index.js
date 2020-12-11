@@ -19,13 +19,14 @@ var passwordChangeRouter = require('./routes/password-change');
 
 const app = express();
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const port = process.env.port || 3000;
 
 let corsOptions = {
-    origin: 'http://localhost:8080'
+    origin: 'http://localhost:8081'
 }
 
+const cors = require('cors');
+app.use(cors(corsOptions));
 // ========== app.js 에서 이동한 부분 //
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -46,12 +47,12 @@ app.use('/join', joinRouter);
 app.use('/password', passwordChangeRouter);
 
 
+
+
 var boardRouter = require('./routes/board')
 app.use('/api/board', boardRouter)
 
 // ========== app.js 에서 이동한 부분 //
-
-app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 
@@ -113,4 +114,4 @@ module.exports = app;
 
 app.listen(3000,()=>{
   console.log('Serve is up and running at the port' + port)
-})
+})  

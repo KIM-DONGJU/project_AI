@@ -45,7 +45,7 @@ var cors = require('cors');
 
 const controller = require("../app/controllers/member.controller.js");
 
-router.get("/board", cors(8080),controller.findAll);
+router.get("/board", cors(8081),controller.findAll);
 
 const mysql_db = require('../mysql-db');
 

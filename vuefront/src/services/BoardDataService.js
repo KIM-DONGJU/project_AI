@@ -18,6 +18,10 @@ class BoardDataService {
 
     }
 
+    deleteBoard(id) {
+        return http.delete(`/board/${id}`);
+    }
+
 }
 
 export default new BoardDataService();

@@ -90,11 +90,9 @@ export default {
     TutorialDataService.getAll()
         .then(response => {
           this.tutorials = response.data;
-          console.log(response.data);
         })
         .catch((e) => {
           alert('못받음')
-          console.log(e);
         });
 
     },
@@ -108,7 +106,7 @@ export default {
     setActiveTutorial(tutorial, index) {
       this.currentTutorial = tutorial;
       this.currentIndex = index;
-      this.$router.push({name : 'Detail', params : {id : tutorial.member.id}})
+      this.$router.push({name : 'Detail', params : {id : tutorial.id}})
     },
     
     searchTitle() {
