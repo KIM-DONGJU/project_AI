@@ -82,15 +82,12 @@ exports.findAll = (req, res) => {
 }
 
 exports.findBoardById = (req, res) => {
-
     const id = req.params.id
-
     Board.findOne({
-        where : { id : id},
+        where : {id : id},
         include: [{model : Member, as : 'member'}]
     })
         .then((data) => {
-            console.log('쿼리날림?');
             res.send(data);
         })
         .catch((err, id) => {
@@ -121,3 +118,27 @@ exports.updateBoard = (req, res) => {
             console.log('>> Error while updating board: ' + err);
         })
 }
+exports.deleteBoard = (req, res) => {
+    const id = req.params.id;
+  
+    Board.destroy({
+        where: { id: id }
+        })
+        .then(num => {
+            if (num == 1) {
+            res.send({
+                success:true,
+                message: "Tutorial was deleted successfully!"
+            });
+            } else {
+            res.send({
+                message: `Cannot delete Tutorial with id=${id}. Maybe Tutorial was not found!`
+            });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+            message: "Could not delete Tutorial with id=" + id
+            });
+        });
+    };

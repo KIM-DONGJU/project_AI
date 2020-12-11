@@ -1,5 +1,5 @@
 const express = require('express')
-
+const cors = require('cors')
 // ========== app.js 에서 이동한 부분 //
 var createError = require('http-errors');
 var path = require('path');
@@ -19,7 +19,6 @@ var passwordChangeRouter = require('./routes/password-change');
 
 const app = express();
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const port = process.env.port || 3000;
 
 let corsOptions = {
@@ -46,6 +45,8 @@ app.use('/show-all-data', showAllDataRouter);
 app.use('/login', loginRouter);
 app.use('/join', joinRouter);
 app.use('/password', passwordChangeRouter);
+
+
 
 
 var boardRouter = require('./routes/board')
@@ -113,4 +114,4 @@ module.exports = app;
 
 app.listen(3000,()=>{
   console.log('Serve is up and running at the port' + port)
-})
+})  

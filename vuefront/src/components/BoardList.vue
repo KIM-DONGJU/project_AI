@@ -62,7 +62,6 @@ export default {
     TutorialDataService.getAll()
         .then(response => {
           this.tutorials = response.data;
-          console.log(response.data);
         })
         .catch((e) => {
           console.log(e);

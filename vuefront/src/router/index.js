@@ -44,6 +44,16 @@ const routes = [
     component: () => import('../components/BoardUpdate')
   },
   {
+    path : "/board/:id",
+    name : "Delete",
+    component: () => import("../components/BoardDetail")
+  },
+  // {
+  //   path: "/add",
+  //   name: "add",
+  //   component: () => import("./components/AddBoard")
+  // }
+  {
     path: '/member_join',
     name: 'member_join',
     component: member_join

@@ -21,6 +21,10 @@ class BoardDataService {
         return http.put('/board', data)
     }
 
+    deleteBoard(id) {
+        return http.delete(`/board/${id}`);
+    }
+
 }
 
 export default new BoardDataService();

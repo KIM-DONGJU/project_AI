@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcrypt');
-const jwt = require("jsonwebtoken");
 var cors = require('cors');
 
 secret = 'p!@#i!@#n!@#k!@#p!@#a!@#n!@#g!@#u!@#i!@#n';
@@ -26,11 +25,9 @@ router.post('/checklogin',function (req, res) {
         bcrypt.compare(pw, row[0].member_pw, function (err, res2) {
           if (res2) {
             let user = {
-              member_id : row[0].id,
+              id : row[0].id,
               member_nickname : row[0].member_nickname
             };
-            // const token = jwt.sign({ user }, secret);
-
             res.json({ // 로그인 성공
               user,
               success: true,

@@ -20,11 +20,12 @@
 					</tr>
 				</table>
 		</form>
-        <div>
+        <div v-if="this.session_id == this.member_id">
             <button class = 'btn btn-outline-secondary' type = 'button' @click = 'updateTutorial'
-            v-if="this.session_id == this.member_id"
             >수정</button>
+            <button class = 'btn btn-outline-secondary' type = 'button' v-on:click="boardDelete" >삭제</button>
         </div>
+
     </div>
 </template>
 
@@ -38,9 +39,16 @@ export default {
     data() {
         return {
             id  : this.$route.params.id,
-            currentTutorial : null,
+            currentTutorial : {
+                board_title:'',
+                member: {
+                    member_nickname: '',
+                },
+                board_content:''
+            },
+            member_id : '',
             session_id : '',
-            member_id : ''
+            // message : ''
         }
     },
 
@@ -51,18 +59,37 @@ export default {
                     this.currentTutorial = response.data;
                     console.log(response.data);
                     this.member_id = response.data.member_id;
-                    this.session_id = JSON.parse(sessionStorage.getItem('token')).member_id;
+                    this.session_id = JSON.parse(sessionStorage.getItem('token')).id;
                 })
         },
         updateTutorial(){
             this.$router.push({name: 'Update', params : {id: this.$route.params.id}})
-        }
+                    this.member_id = response.data.member_id;
+                    this.session_id = JSON.parse(sessionStorage.getItem('token')).id;
+                },
+        boardDelete() {
+            TutorialDataService.deleteBoard(this.id)
+			.then(
+				(res) => {
+                    if(res.data.success) {
+                        this.$router.go(-1)
+                        console.log('success')
+                    } else {
+                        alert('삭제 안됐어')
+                    }
+                    
+				},
+				(err) => { // error 를 보여줌
+					alert('error');
+				}
+			)
+			.catch(err => {
+				alert(err);
+			})
+        },
     },
-
     mounted() {
         this.getTutorial(this.$route.params.id);
     }
-
-    
 }
 </script>

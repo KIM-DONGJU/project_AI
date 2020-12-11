@@ -78,8 +78,9 @@ export default {
 				.then(
 					(res) => {  //로그인 성공
 						if (res.data.success == true) {
-							sessionStorage.setItem('token', res.data.user);
+							sessionStorage.setItem('token', JSON.stringify(res.data.user));
 							this.$store.commit('getToken')
+							console.log(JSON.parse(sessionStorage.getItem('token')).id);
 							this.$router.push('/');
 						} else {
 							this.$http.post('/api/join/signUp', {
@@ -122,10 +123,9 @@ export default {
 			.then(
 				(res) => {
 					if (res.data.success == true) {
-						// console.log(res.data.user);
 						sessionStorage.setItem('token', JSON.stringify(res.data.user));
-						console.log(JSON.parse(sessionStorage.getItem('token')))
 						this.$store.commit('getToken')
+						console.log(JSON.parse(sessionStorage.getItem('token')).id, '토큰의 id는?');
 						this.$router.push('/');
 					} else {
 						alert(res.data.message);
