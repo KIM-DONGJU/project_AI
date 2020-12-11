@@ -57,7 +57,7 @@ export default {
       var data = {
         board_title: this.tutorial.title,
         board_content: this.tutorial.description,
-        member_id : this.$route.params.id,
+        member_id : JSON.parse(sessionStorage.getItem('token')).id,
       };
 
       TutorialDataService.createBoard(data)
