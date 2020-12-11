@@ -26,12 +26,13 @@ router.post('/checklogin',function (req, res) {
         bcrypt.compare(pw, row[0].member_pw, function (err, res2) {
           if (res2) {
             let user = {
-              member_id : row[0].member_id,
+              member_id : row[0].id,
               member_nickname : row[0].member_nickname
             };
-            const token = jwt.sign({ user }, secret);
+            // const token = jwt.sign({ user }, secret);
+
             res.json({ // 로그인 성공
-              token,
+              user,
               success: true,
               message: 'Login successful!'
             })

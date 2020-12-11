@@ -78,7 +78,7 @@ export default {
 				.then(
 					(res) => {  //로그인 성공
 						if (res.data.success == true) {
-							sessionStorage.setItem('token', res.data.token);
+							sessionStorage.setItem('token', res.data.user);
 							this.$store.commit('getToken')
 							this.$router.push('/');
 						} else {
@@ -122,7 +122,9 @@ export default {
 			.then(
 				(res) => {
 					if (res.data.success == true) {
-						sessionStorage.setItem('token', res.data.token);
+						// console.log(res.data.user);
+						sessionStorage.setItem('token', JSON.stringify(res.data.user));
+						console.log(JSON.parse(sessionStorage.getItem('token')))
 						this.$store.commit('getToken')
 						this.$router.push('/');
 					} else {

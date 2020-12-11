@@ -19,7 +19,12 @@
 						<td>{{currentTutorial.board_content}}</td>
 					</tr>
 				</table>
-			</form>
+		</form>
+        <div>
+            <button class = 'btn btn-outline-secondary' type = 'button' @click = 'updateTutorial'
+            v-if="this.session_id == this.member_id"
+            >수정</button>
+        </div>
     </div>
 </template>
 
@@ -34,22 +39,27 @@ export default {
         return {
             id  : this.$route.params.id,
             currentTutorial : null,
-            // message : ''
+            session_id : '',
+            member_id : ''
         }
     },
 
     methods : {
         getTutorial(){
-            TutorialDataService.get(this.$route.params.id)
+            TutorialDataService.get(this.id)
                 .then(response => {
                     this.currentTutorial = response.data;
                     console.log(response.data);
+                    this.member_id = response.data.member_id;
+                    this.session_id = JSON.parse(sessionStorage.getItem('token')).member_id;
                 })
+        },
+        updateTutorial(){
+            this.$router.push({name: 'Update', params : {id: this.$route.params.id}})
         }
     },
 
     mounted() {
-        // this.message = '';
         this.getTutorial(this.$route.params.id);
     }
 

@@ -26,6 +26,8 @@ let corsOptions = {
     origin: 'http://localhost:8080'
 }
 
+app.use(cors(corsOptions));
+
 // ========== app.js 에서 이동한 부분 //
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -50,8 +52,6 @@ var boardRouter = require('./routes/board')
 app.use('/api/board', boardRouter)
 
 // ========== app.js 에서 이동한 부분 //
-
-app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 

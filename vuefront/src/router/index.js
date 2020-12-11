@@ -33,11 +33,16 @@ const routes = [
     name: "Detail",
     component: () => import("../components/BoardDetail")
   },
-  // {
-  //   path: "/add",
-  //   name: "add",
-  //   component: () => import("./components/AddBoard")
-  // }
+  {
+    path: '/board',
+    name: 'Write',
+    component: () => import('../components/BoardWrite')
+  },
+  {
+    path: '/board',
+    name: 'Update',
+    component: () => import('../components/BoardUpdate')
+  },
   {
     path: '/member_join',
     name: 'member_join',

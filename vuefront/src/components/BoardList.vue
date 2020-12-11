@@ -35,30 +35,11 @@
                 </div>
             </div>
         </div>
-    <!-- </div> reponsive-table div -->
-    <!-- <div class="col-md-6"> 상세보기 부분
-      <div v-if="currentTutorial">
-        <div>
-          <label><strong>Title:</strong></label> {{ currentTutorial.title }}
-        </div>
-        <div>
-          <label><strong>Description:</strong></label> {{ currentTutorial.description }}
-        </div>
-        <div>
-          <label><strong>Status:</strong></label> {{ currentTutorial.published ? "Published" : "Pending" }}
-        </div>
 
-        <a class="badge badge-warning"
-          :href="'/tutorials/' + currentTutorial.id"
-        >
-          Edit
-        </a>
-      </div>
-      <div v-else>
-        <br />
-        <p>Please click on a Tutorial...</p>
-      </div>
-    </div> -->
+        <div>
+          <button class = 'btn btn-outline-secondary' type = 'button' @click = 'writeBoard'>글쓰기</button>
+        </div>
+    <!-- </div> reponsive-table div -->
   </div>
 </template>
 
@@ -77,15 +58,6 @@ export default {
   },
   methods: {
     retrieveTutorials() {
-      // this.$http.get('/api/show-all-data/board')
-      //   .then(response => {
-      //     this.tutorials = response.data;
-      //     console.log(response.data);
-      //   })
-      //   .catch((e) => {
-      //     alert('못받음 ㅠ ')
-      //     console.log(e);
-      //   });
 
     TutorialDataService.getAll()
         .then(response => {
@@ -93,7 +65,6 @@ export default {
           console.log(response.data);
         })
         .catch((e) => {
-          alert('못받음')
           console.log(e);
         });
 
@@ -108,7 +79,7 @@ export default {
     setActiveTutorial(tutorial, index) {
       this.currentTutorial = tutorial;
       this.currentIndex = index;
-      this.$router.push({name : 'Detail', params : {id : tutorial.member.id}})
+      this.$router.push({name : 'Detail', params : {id : tutorial.id}})
     },
     
     searchTitle() {
@@ -123,6 +94,11 @@ export default {
     },
     detailView() {
         this.$router.push({name : 'Detail', params : {id : this.tutorials.board_id}})
+    },
+
+    writeBoard() {
+      console.log(typeof JSON.parse(sessionStorage.getItem('token')).member_id);
+      this.$router.push({name : 'Write', params : {id : JSON.parse(sessionStorage.getItem('token')).member_id}})
     }
   },
   mounted() {
