@@ -29,6 +29,13 @@
         </div>
         </div>
       </div>
+      
+      <!--Footer 영역 -->
+      <div id="introduce_footer">
+		    <p id="developer_contact">T. 010-5197-3175</p><p id="developer_email">E. admin@pp-teacher.io</p>
+		    <p id="developer_name">원준수 / 김동주 / 김수양 / 유정호 / 유재혁</p>
+		    <a href="#"><button v-on:click="goUp" id="go-up"></button></a>
+	    </div>
     </div>
   </div>
 </template>
@@ -121,6 +128,9 @@ export default {
 }
 </script>
 <style scoped>
+.login{
+  overflow-x:hidden;
+}
 #login_logo{
     filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 		position: absolute;
@@ -133,10 +143,10 @@ export default {
 
 #login_bg{
   position: absolute;
-	width: 1920px;
+	width: 100%;
 	height: 925px;
 	left: 0px;
-	top: 155px;
+	top: 100px;
 	overflow: visible;
 	background-image: url("../assets/login_bg.jpg");
 	background-color:rgba(0,0,0,0.5);
@@ -407,6 +417,90 @@ export default {
 	left: 84px;
 	top: 691px;
 	overflow: visible;
+}
+
+#introduce_footer::before{
+	content: "";
+	position: absolute;
+	height:10.7%;
+	top:100%;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-color: #222222;
+}
+
+#developer_contact{
+  	left: 1%;
+	top: 102.5%;
+	position: absolute;
+	overflow: visible;
+	width: 343px;
+	white-space: nowrap;
+	line-height: 24px;
+	margin-top: -4.5px;
+	text-align: left;
+	font-family: NanumBarunGothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(255,255,255,1);
+    white-space: pre;
+}
+
+#developer_email{
+  	left: 11%;
+	top: 102.5%;
+	position: absolute;
+	overflow: visible;
+	width: 343px;
+	white-space: nowrap;
+	line-height: 24px;
+	margin-top: -4.5px;
+	text-align: left;
+	font-family: NanumBarunGothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(255,255,255,1);
+    white-space: pre;
+}
+
+#developer_name{
+  	left: 1%;
+	top: 106.5%;
+	position: absolute;
+    padding-bottom: 1%;
+	overflow: visible;
+	width: 343px;
+	white-space: nowrap;
+	line-height: 24px;
+	margin-top: -4.5px;
+	text-align: left;
+	font-family: NanumBarunGothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color:#B0B0B0;
+}
+
+#go-up{
+	background-color:#444444;
+	background-image: url("../assets/btn_arrow.png");
+	color:#ffffff;
+	font-style: bold;
+	background-repeat: no-repeat;
+	position: absolute;
+	overflow: visible;
+	background-position: center;
+	width: 80px;
+	background-size: 20%;
+	font-family: NanumBarunGothic;
+	border:0;
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	height: 80px;
+	left: 95%;
+	top: 101.2%;
 }
 
 </style>
