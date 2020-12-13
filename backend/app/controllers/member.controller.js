@@ -41,7 +41,7 @@ exports.createBoard = (req, res) => {
 exports.findAll2 = (req, res) => {//search
     const title = req.params.title;
 
-    var condition = title ? { board_title: { [Op.like]: `%${title}%` } } : null;
+    var condition = { board_title: { [Op.like]: `%${title}%` } };
 
     Board.findAll({include: [{model : Member, as : 'member'}], where: condition })
         .then(data => {

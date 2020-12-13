@@ -74,7 +74,6 @@ export default {
 			.catch(err => {
 				alert(err);
       })
-
     },
 
     refreshList() {
@@ -90,23 +89,25 @@ export default {
     },
     
     searchTitle() {
-      // TutorialDataService.findByTitle(this.title)
-      //   .then(response => {
-      //     this.tutorials = response.data;
-      //     console.log(response.data);
-      //   })
-      //   .catch(e => {
-      //     console.log(e);
-      //   });
+      if (this.title != '') {
+        this.$http.get(`/api/board/search/${this.title}`)
+        // this.$http.get(`/api/board/search?title=${this.title}`)
+        .then( response => {
+          this.tutorials = response.data
+        })
+        .catch(err => {
+				  alert(err);
+        })
+      } else {
+          this.$http.get('/api/board')
+			    .then(response => {
+            this.tutorials = response.data;
+          })
+			    .catch(err => {
+				    alert(err);
+      })
 
-      this.$http.get(`/api/board/search/${this.title}`)
-      // this.$http.get(`/api/board/search?title=${this.title}`)
-      .then( response => {
-        this.tutorials = response.data
-      })
-      .catch(err => {
-				alert(err);
-      })
+      }
     },
     detailView() {
         this.$router.push({name : 'Detail', params : {id : this.tutorials.board_id}})
