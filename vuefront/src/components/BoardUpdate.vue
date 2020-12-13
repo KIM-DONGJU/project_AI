@@ -38,31 +38,36 @@ export default {
     data() {
         return {
             id  : this.$route.params.id,
-            currentTutorial : null,
+            currentTutorial : {
+                board_title:'',
+                member: {
+                    member_nickname: '',
+                },
+                board_content:''
+            }
         }
     },
 
     methods : {
         getTutorial(){
-            TutorialDataService.get(this.id)
-                .then(response => {
+             this.$http.get(`/api/board/${this.id}`)
+		    	.then(response => {
                     this.currentTutorial = response.data;
-                    console.log(response.data);
+                    console.log(this.currentTutorial);
                 })
+
         },
         updateTutorial(){
-
+            const id = this.currentTutorial.id
             var data = {
                 board_title: this.currentTutorial.board_title,
                 board_content: this.currentTutorial.board_content,
                 board_id : this.currentTutorial.id
             };
-            TutorialDataService.update(data)
-                .then(response=>{
-                    this.$router.push({name : 'board'})
-                }).catch( (err) => {
-                    console.log(err);
-                })
+            this.$http.put('/api/board', data)
+		    	.then(response => {
+                    this.$router.push({name: 'board'})
+                })  
         }
     },
 

@@ -4,18 +4,17 @@ const controller = require("../app/controllers/member.controller.js");
 
 var cors = require('cors');
 
-router.get("/", cors(8080), controller.findAll);
+router.get('/', controller.findAll);
 
-router.delete('/:id', cors(8080), controller.deleteBoard);
+router.delete('/:id', controller.deleteBoard);
 
-router.get('/:id', cors(8080),controller.findBoardById);
+router.get('/:id',controller.findBoardById);
 
-// router.get('/delete', function (req, res) {
-//     console.log("응답은 된다")
-//   });
+// router.get('/search/:title', controller.findAll2)
+router.get('/search/:title', controller.findAll2)
 
-router.post('/', cors(8080), controller.createBoard)
+router.post('/', controller.createBoard)
 
-router.put('/', cors(8080), controller.updateBoard)
+router.put('/', controller.updateBoard)
 
 module.exports = router;

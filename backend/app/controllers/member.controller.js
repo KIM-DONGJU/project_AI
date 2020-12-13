@@ -1,8 +1,11 @@
+const { sequelize } = require('../models');
 const db = require('../models'); // 자동으로 models 폴더 하위의 index.js를 인식.
-// const boardModel = require('../models/board.model');
+
+const Op = db.Sequelize.Op;
 
 const Member = db.member;
 const Board = db.board;
+
 
 exports.createMember = (member) => {
     return Member.create({
@@ -20,21 +23,6 @@ exports.createMember = (member) => {
         })       
 }
 
-// exports.createBoard = (member_id, board) => {
-//     return Board.create({
-//         board_title : board.board_title,
-//         board_content : board.board_content,
-//         member_id : member_id
-//     })
-//         .then((board) => {
-//             console.log(">> Created board: " + JSON.stringify(board, null, 4));
-//             return board;
-//         })
-//         .catch((err) => {
-//             console.log('>> Error while creating board: ' + err);
-//         })
-// }
-
 exports.createBoard = (req, res) => {
     return Board.create({
         board_title : req.body.board_title,
@@ -51,17 +39,18 @@ exports.createBoard = (req, res) => {
 }
 
 exports.findAll2 = (req, res) => {//search
-    const title = req.query.title;
-    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+    const title = req.params.title;
 
-    Board.findAll({ where: condition })
+    var condition = title ? { board_title: { [Op.like]: `%${title}%` } } : null;
+
+    Board.findAll({include: [{model : Member, as : 'member'}], where: condition })
         .then(data => {
         res.send(data);
         })
         .catch(err => {
         res.status(500).send({
             message:
-            err.message || "Some error occurred while retrieving tutorials."
+            err.message || "Some error occurred while retrieving boards."
         });
         });
 }
@@ -83,22 +72,23 @@ exports.findAll = (req, res) => {
 
 exports.findBoardById = (req, res) => {
     const id = req.params.id
+    console.log(id, 'test');
     Board.findOne({
         where : {id : id},
         include: [{model : Member, as : 'member'}]
     })
         .then((data) => {
+            console.log(data);
             res.send(data);
         })
         .catch((err, id) => {
-            console.log('못날림');
             console.log(`>> Error while finding board : is ${id} is `, err);
         })
 }
 
 exports.updateBoard = (req, res) => {
-    
     const id = req.body.board_id
+    console.log(id, 'update id');
 
     Board.update(req.body,{
         where : {id: id}

@@ -54,23 +54,53 @@ export default {
 
     methods : {
         getTutorial(){
-            TutorialDataService.get(this.id)
-                .then(response => {
+            // TutorialDataService.get(this.id)
+            //     .then(response => {
+            //         this.currentTutorial = response.data;
+            //         console.log(response.data);
+            //         this.member_id = response.data.member_id;
+            //         this.session_id = JSON.parse(sessionStorage.getItem('token')).id;
+            //     })
+            this.$http.get(`/api/board/${this.id}`)
+		    	.then(response => {
                     this.currentTutorial = response.data;
-                    console.log(response.data);
+                    console.log(this.currentTutorial);
                     this.member_id = response.data.member_id;
                     this.session_id = JSON.parse(sessionStorage.getItem('token')).id;
                 })
+			.catch(err => {
+				alert(err);
+      })
+
+            
         },
         updateTutorial(){
             this.$router.push({name: 'Update', params : {id: this.$route.params.id}})
-                    this.member_id = response.data.member_id;
-                    this.session_id = JSON.parse(sessionStorage.getItem('token')).id;
+                    // this.member_id = response.data.member_id;
+                    // this.session_id = JSON.parse(sessionStorage.getItem('token')).id;
                 },
         boardDelete() {
-            TutorialDataService.deleteBoard(this.id)
-			.then(
-				(res) => {
+            // TutorialDataService.deleteBoard(this.id)
+			// .then(
+			// 	(res) => {
+            //         if(res.data.success) {
+            //             this.$router.go(-1)
+            //             console.log('success')
+            //         } else {
+            //             alert('삭제 안됐어')
+            //         }
+                    
+			// 	},
+			// 	(err) => { // error 를 보여줌
+			// 		alert('error');
+			// 	}
+			// )
+			// .catch(err => {
+			// 	alert(err);
+            // })
+            
+            this.$http.delete(`/api/board/${this.id}`)
+            .then((res) => {
                     if(res.data.success) {
                         this.$router.go(-1)
                         console.log('success')
@@ -85,7 +115,7 @@ export default {
 			)
 			.catch(err => {
 				alert(err);
-			})
+            })
         },
     },
     mounted() {

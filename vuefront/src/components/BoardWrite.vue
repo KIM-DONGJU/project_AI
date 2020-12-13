@@ -60,16 +60,16 @@ export default {
         member_id : JSON.parse(sessionStorage.getItem('token')).id,
       };
 
-      TutorialDataService.createBoard(data)
+        this.$http.post('api/board',data)
         .then(response => {
           this.tutorial.id = response.data.id;
-          console.log(response.data);
           this.submitted = true;
           this.$router.push({name : 'board'})
         })
         .catch(e => {
           console.log(e);
-        });
+        })
+
     },
     
     newTutorial() {

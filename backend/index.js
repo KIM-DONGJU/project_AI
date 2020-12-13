@@ -50,7 +50,7 @@ app.use('/password', passwordChangeRouter);
 
 
 var boardRouter = require('./routes/board')
-app.use('/api/board', boardRouter)
+app.use('/board', boardRouter)
 
 // ========== app.js 에서 이동한 부분 //
 
