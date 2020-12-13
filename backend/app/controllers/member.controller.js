@@ -38,27 +38,12 @@ exports.createBoard = (req, res) => {
         })
 }
 
-exports.findAll2 = (req, res) => {//search
-    const title = req.params.title;
-
+exports.findAll = (req, res) => {
+    const title = req.query.title;
     var condition = title ? { board_title: { [Op.like]: `%${title}%` } } : null;
 
-    Board.findAll({include: [{model : Member, as : 'member'}], where: condition })
-        .then(data => {
-        res.send(data);
-        })
-        .catch(err => {
-        res.status(500).send({
-            message:
-            err.message || "Some error occurred while retrieving boards."
-        });
-        });
-}
-
-exports.findAll = (req, res) => {
-    console.log('여긴?');
     Board.findAll(
-        {include: [{model : Member, as : 'member'}] })
+        {include: [{model : Member, as : 'member'}] , where: condition }, )
         .then(data => {
            res.send(data);
         })

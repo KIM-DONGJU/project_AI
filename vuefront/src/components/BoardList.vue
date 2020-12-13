@@ -2,7 +2,6 @@
     <div class="list row">
         <div class="col-md-6">
         <h4>Board List</h4>
-        <!-- <div class="table-responsive"> -->
             <table class="table">
                 <thead>
                     <tr>
@@ -39,7 +38,6 @@
         <div>
           <button class = 'btn btn-outline-secondary' type = 'button' @click = 'writeBoard'>글쓰기</button>
         </div>
-    <!-- </div> reponsive-table div -->
   </div>
 </template>
 
@@ -58,15 +56,6 @@ export default {
   },
   methods: {
     retrieveTutorials() {
-
-    // TutorialDataService.getAll()
-    //     .then(response => {
-    //       this.tutorials = response.data;
-    //     })
-    //     .catch((e) => {
-    //       console.log(e);
-    //     });
-
     this.$http.get('/api/board')
 			.then(response => {
           this.tutorials = response.data;
@@ -90,17 +79,7 @@ export default {
     },
     
     searchTitle() {
-      // TutorialDataService.findByTitle(this.title)
-      //   .then(response => {
-      //     this.tutorials = response.data;
-      //     console.log(response.data);
-      //   })
-      //   .catch(e => {
-      //     console.log(e);
-      //   });
-
-      this.$http.get(`/api/board/search/${this.title}`)
-      // this.$http.get(`/api/board/search?title=${this.title}`)
+      this.$http.get(`/api/board/?title=${this.title}`)
       .then( response => {
         this.tutorials = response.data
       })
