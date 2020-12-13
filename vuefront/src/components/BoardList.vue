@@ -63,7 +63,6 @@ export default {
 			.catch(err => {
 				alert(err);
       })
-
     },
 
     refreshList() {
@@ -86,7 +85,8 @@ export default {
       .catch(err => {
 				alert(err);
       })
-    },
+
+      },
     detailView() {
         this.$router.push({name : 'Detail', params : {id : this.tutorials.board_id}})
     },
@@ -95,7 +95,7 @@ export default {
       console.log(typeof JSON.parse(sessionStorage.getItem('token')).member_id);
       this.$router.push({name : 'Write', params : {id : JSON.parse(sessionStorage.getItem('token')).member_id}})
     }
-  },
+},
   mounted() {
     this.retrieveTutorials();
   }

@@ -30,7 +30,6 @@ exports.createBoard = (req, res) => {
         member_id : req.body.member_id
     })
         .then((board) => {
-            // console.log(">> Created board: " + JSON.stringify(board, null, 4));
             res.send(board)
         })
         .catch((err) => {
