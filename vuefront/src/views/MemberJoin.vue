@@ -11,11 +11,11 @@
 
                     <!-- 비밀번호 입력하는 부분 -->
                     <p id="pw_text">비밀번호</p>
-                    <input type="text" id="member_join_pw" placeholder="비밀번호"/>
+                    <input type="password" id="member_join_pw" placeholder="비밀번호"/>
 
                     <!-- 비밀번호 확인 입력하는 부분 -->
                     <p id="pw_text_repeat">비밀번호 확인</p>
-                    <input type="text" id="member_join_pw_repeat" placeholder="비밀번호 확인"/>
+                    <input type="password" id="member_join_pw_repeat" placeholder="비밀번호 확인"/>
 
                     <!-- 닉네임을 입력하는 부분 -->
                     <p id="nickname_text">닉네임</p>

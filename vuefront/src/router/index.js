@@ -28,6 +28,21 @@ const routes = [{
     name: 'SelectTeacher',
     component: () =>
         import ('../views/SelectTeacher.vue')
+}, {
+    path: '/community',
+    name: 'Community',
+    component: () =>
+        import ('../views/Community.vue')
+}, {
+    path: '/community_write',
+    name: 'CommunityWrite',
+    component: () =>
+        import ('../views/CommunityWrite.vue')
+}, {
+    path: '/community_update',
+    name: 'CommunityUpdate',
+    component: () =>
+        import ('../views/CommunityUpdate.vue')
 }]
 
 const router = new VueRouter({
