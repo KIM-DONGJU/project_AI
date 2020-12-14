@@ -29,20 +29,20 @@ const routes = [{
     component: () =>
         import ('../views/SelectTeacher.vue')
 }, {
-    path: '/community',
-    name: 'Community',
+    path: '/board',
+    name: 'board',
     component: () =>
-        import ('../views/Community.vue')
+        import ('../views/BoardList.vue')
 }, {
-    path: '/community_write',
-    name: 'CommunityWrite',
+    path: '/board_write',
+    name: 'BoardWrite',
     component: () =>
-        import ('../views/CommunityWrite.vue')
+        import ('../views/BoardWrite.vue')
 }, {
-    path: '/community_detail',
-    name: 'CommunityDetail',
+    path: '/board_detail',
+    name: 'BoardDetail',
     component: () =>
-        import ('../views/CommunityDetail.vue')
+        import ('../views/BoardDetail.vue')
 }]
 
 const router = new VueRouter({

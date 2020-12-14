@@ -3,7 +3,7 @@
     <div id="nav">
       <router-link to="/" id="nav_logo"><img src="@/assets/nav_logo.png"/></router-link>
       <router-link to="/play" id="menu_play">게임하기</router-link><div id="first_divide">|</div>
-      <router-link to="/community" id="menu_community">커뮤니티</router-link><div id="second_divide">|</div>
+      <router-link to="/board" id="menu_community">커뮤니티</router-link><div id="second_divide">|</div>
       <router-link to="/login" id="menu_login">로그인</router-link><div id="third_divide">|</div>
       <router-link to="/member_join" id="menu_member_join">회원가입</router-link>
     </div>

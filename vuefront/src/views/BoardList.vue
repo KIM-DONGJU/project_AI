@@ -1,35 +1,53 @@
 <template>
-    <div class="community_write">
-        <div id="community_write_bg">
-			<p id="community_write_introduce_text">커뮤니티</p>
-			<p id="community_write_sub_text">서비스 후기 및 다양한 육아 꿀팁을 공유해보세요!</p>
+    <div class="board_list">
+        <div id="board_list_bg">
+			<p id="board_list_introduce_text">커뮤니티</p>
+			<p id="board_list_sub_text">서비스 후기 및 다양한 육아 꿀팁을 공유해보세요!</p>
     	</div>
 
-        <div id="write_area">
-            <input type="text" id="community_write_subject" placeholder="게시글 제목을 입력하세요."/>
-            <textarea id="community_write_contents" rows="10" placeholder="내용을 입력하세요."/>
-            <button v-on:click="contents_write" id="contents_write">등록</button>
+        <div>
+        <input type="text" id="enter_search_contents"/>
+        <button v-on:click="search_contents" id="search_contents">검색</button>
+
+        <table class="board_list_table">
+            <thead>
+                <tr>
+                    <th scope="col">제목</th>
+                    <th scope="col">작성자</th>
+                    <th scope="col">작성일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>테스트1</td>
+                    <td>테스트2</td>
+                    <td>테스트3</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button v-on:click="write_contents" id="write_contents">글쓰기</button>
         </div>
 
-        <div id="community_write_footer">
+        <div id="board_list_footer">
 			<p id="developer_contact">T. 010-5197-3175</p><p id="developer_email">E. admin@pp-teacher.io</p>
 			<p id="developer_name">원준수 / 김동주 / 김수양 / 유정호 / 유재혁</p>
 			<a href="#"><button v-on:click="goUp" id="go-up"></button></a>
 		</div>
     </div>
 </template>
+
 <script>
 export default {
-	methods: {
-		contents_write:function(){
-			this.$route.push('/community_detail')
-		}
-	},
+    methods: {
+        write_contents:function(){
+            this.$router.push('/board_write')
+        }
+    },
 }
 </script>
-
 <style scoped>
-#community_write_bg{
+#board_list_bg{
 	position: absolute;
 	width: 100%;
 	height: 31%;
@@ -41,7 +59,7 @@ export default {
 	background-color:rgba(0,0,0,0.5);
 }
 
-#community_write_bg::before{
+#board_list_bg::before{
 	content: "";
 	opacity: 0.5;
 	position: absolute;
@@ -53,7 +71,7 @@ export default {
 	background-color: #000;
 }
 
-#community_write_introduce_text{
+#board_list_introduce_text{
     filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	left: 863.5px;
 	top: 16%;
@@ -70,7 +88,7 @@ export default {
 	letter-spacing: 0.1px;
 }
 
-#community_write_sub_text{
+#board_list_sub_text{
     filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	left: 751.5px;
 	top: 52%;
@@ -88,49 +106,57 @@ export default {
 	letter-spacing: 0.1px;
 }
 
-#community_write_subject{
+#enter_search_contents{
     position: absolute;
 	overflow: visible;
-	width: 838px;
-	height: 68px;
+	width: 355px;
+	height: 45px;
+    fill: rgba(255,255,255,1);
+	left: 70%;
     font-family: NanumBarunGothic;
-    font-size: 21px;
-    left:30%;
-	top: 45%;
-    opacity: 0.45;
-	fill: rgba(255,255,255,1);
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-    text-indent:0.5em;
+    font-size:18px;
+    text-indent:1em;
+	top: 432px;
+    color: rgba(0,0,0,1);
 }
 
-#community_write_contents{
-    position: absolute;
+#search_contents{
+    fill: rgba(241,242,235,1);
+	shape-rendering: auto;
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
 	overflow: visible;
-	width: 840px;
-	height: 540px;
+    background-color: #8E8E8E;
+    color: rgba(255,255,255,1);
     font-family: NanumBarunGothic;
-    font-size: 21px;
-    left:30%;
-    padding-top:0.7%;
-	top: 54%;
-    opacity: 0.45;
-	fill: rgba(255,255,255,1);
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-    resize: none;
-	shape-rendering: auto;
-    text-indent:0.5em;
+	font-style: normal;
+	font-weight: normal;
+    font-size:18px;
+    border:0;
+	width: 100px;
+	height:50px;
+	left: 89.7%;
+	top: 432px;
 }
 
-#community_write_footer::before{
+#write_contents{
+	position: absolute;
+	overflow: visible;
+	width: 135px;
+    height:50px;
+    border:0.1;
+    border-color:#707070;
+    border-radius: 8px;
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+    background-color: #F1F2EB;
+    font-family: NanumBarunGothic;
+    font-style: bold;
+    font-size: 20px;
+	left: 87%;
+	top: 112%;
+}
+
+#board_list_footer::before{
 	content: "";
 	position: absolute;
 	height:10.7%;
@@ -214,19 +240,29 @@ export default {
 	top: 121.6%;
 }
 
-#contents_write{
-    left:68%;
-    top:113%;
-    width:122px;
-    height:45px;
-    border-radius: 8px;
-    color: rgba(255,255,255,1);
-    font-family: NanumBarunGothic;
-    border:0;
-    background-color: rgba(246,115,149,1);
-    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-    position: absolute;
+.board_list_table{
+	position: absolute;
 	overflow: visible;
+	border:solid 2px #BEBEBE;
+	font-family: NanumBarunGothic;
+	top:51%;
+	font-size: 20px;
+	left:5%;
+	border-left: none;
+	border-right:none;
+	height:8%;
+	width:90%;
+	border-collapse: collapse;
 }
 
+th{
+	border:1px solid black;
+	border-left:none;
+	border-right:none;
+	padding:10px;
+}
+
+td{
+	padding:10px;
+}
 </style>
