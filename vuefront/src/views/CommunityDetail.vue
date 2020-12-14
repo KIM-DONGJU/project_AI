@@ -1,16 +1,34 @@
 <template>
-    <div class="community_update">
+    <div class="community_detail">
         <div id="community_update_bg">
 			<p id="community_update_introduce_text">커뮤니티</p>
 			<p id="community_update_sub_text">서비스 후기 및 다양한 육아 꿀팁을 공유해보세요!</p>
+
+			<form>
+				<table class="community_info_table">
+					<colgroup>
+						<col width="15%" />
+						<col width="*" />
+					</colgroup>
+					<tr>
+						<td><p id="community_subject">수정할 게시글 제목</p><br><p id="community_writer_info">작성자명 / 작성시간</p></td>
+					</tr>
+				</table>
+
+				<table class="community_content_table">
+					<colgroup>
+						<col width="15%" />
+						<col width="*" />
+					</colgroup>
+					<tr>
+						<td><p id="community_contents">수정할 게시글 내용</p></td>
+					</tr>
+				</table>
+			</form>
+		
     	</div>
-
-        <div id="update_area">
-            <input type="text" id="community_update_subject" placeholder="게시글 제목 수정하기"/>
-            <textarea id="community_update_contents" rows="10" placeholder="게시글 내용 입력하기"/>
-            <button v-on:click="contents_write" id="contents_update">수정</button>
-        </div>
-
+		<button v-on:click="contents_modified" id="contents_modified">수정</button>
+		<button v-on:click="contents_deleted" id="contents_deleted">삭제</button>
         <div id="community_update_footer">
 			<p id="developer_contact">T. 010-5197-3175</p><p id="developer_email">E. admin@pp-teacher.io</p>
 			<p id="developer_name">원준수 / 김동주 / 김수양 / 유정호 / 유재혁</p>
@@ -220,4 +238,107 @@
 	overflow: visible;
 }
 
+.community_info_table{
+	position: absolute;
+	overflow: visible;
+	border:solid 2px #BEBEBE;
+	top:110%;
+	left:25%;
+	height:35%;
+	width:50%;
+}
+
+.community_content_table{
+	position: absolute;
+	overflow: visible;
+	border:solid 2px #BEBEBE;
+	top:150%;
+	left:25%;
+	height:175%;
+	width:50%;
+}
+
+#contents_modified{
+    left:61.5%;
+    top:113%;
+    width:122px;
+    height:45px;
+    border-radius: 8px;
+    color: rgba(255,255,255,1);
+    font-family: NanumBarunGothic;
+    border:0;
+    background-color: rgba(246,115,149,1);
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+    position: absolute;
+	overflow: visible;
+}
+
+#contents_deleted{
+	left:68.5%;
+    top:113%;
+    width:122px;
+    height:45px;
+    border-radius: 8px;
+    color: rgba(255,255,255,1);
+    font-family: NanumBarunGothic;
+    border:0;
+    background-color: rgba(246,115,149,1);
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+    position: absolute;
+	overflow: visible;
+}
+
+#community_subject{
+	left: 1%;
+	top: 15%;
+	position: absolute;
+	overflow: visible;
+	width: 307px;
+	white-space: nowrap;
+	line-height: 57px;
+	margin-top: -8.5px;
+	text-align: center;
+	font-family: NanumBarunGothic;
+	font-style: normal;
+	font-weight: lighter;
+	font-size: 40px;
+	color: rgba(0,0,0,1);
+	letter-spacing: 0.1px;
+}
+
+#community_writer_info{
+	left: 1.2%;
+	top: 71px;
+	position: absolute;
+	overflow: visible;
+	width: 179px;
+	white-space: nowrap;
+	line-height: 31px;
+	margin-top: -4.5px;
+	text-align: center;
+	font-family: NanumBarunGothic;
+	font-style: normal;
+	font-weight: lighter;
+	font-size: 22px;
+	color: rgba(168,168,168,1);
+	letter-spacing: 0.1px;
+}
+
+#community_contents{
+	left: 1.2%;
+	top:4%;
+	position: absolute;
+	overflow: visible;
+	width: 179px;
+	white-space: nowrap;
+	line-height: 31px;
+	margin-top: -4.5px;
+	text-align: center;
+	font-family: NanumBarunGothic;
+	font-style: normal;
+	font-weight: lighter;
+	font-size: 22px;
+	color: rgba(168,168,168,1);
+	letter-spacing: 0.1px;
+}
 </style>

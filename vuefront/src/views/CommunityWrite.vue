@@ -22,7 +22,7 @@
 export default {
 	methods: {
 		contents_write:function(){
-			this.$route.push('/community_update')
+			this.$route.push('/community_detail')
 		}
 	},
 }

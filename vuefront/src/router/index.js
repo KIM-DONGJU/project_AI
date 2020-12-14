@@ -39,10 +39,10 @@ const routes = [{
     component: () =>
         import ('../views/CommunityWrite.vue')
 }, {
-    path: '/community_update',
-    name: 'CommunityUpdate',
+    path: '/community_detail',
+    name: 'CommunityDetail',
     component: () =>
-        import ('../views/CommunityUpdate.vue')
+        import ('../views/CommunityDetail.vue')
 }]
 
 const router = new VueRouter({

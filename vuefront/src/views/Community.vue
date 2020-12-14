@@ -9,7 +9,7 @@
         <input type="text" id="enter_search_contents"/>
         <button v-on:click="search_contents" id="search_contents">검색</button>
 
-        <table class="test">
+        <table class="contents_table">
             <thead>
                 <tr>
                     <th scope="col">제목</th>
@@ -112,7 +112,7 @@ export default {
 	width: 355px;
 	height: 45px;
     fill: rgba(255,255,255,1);
-	left: 1380px;
+	left: 70%;
     font-family: NanumBarunGothic;
     font-size:18px;
     text-indent:1em;
@@ -135,7 +135,7 @@ export default {
     border:0;
 	width: 100px;
 	height:50px;
-	left: 1760px;
+	left: 89.7%;
 	top: 432px;
 }
 
@@ -152,7 +152,7 @@ export default {
     font-family: NanumBarunGothic;
     font-style: bold;
     font-size: 20px;
-	left: 1725px;
+	left: 87%;
 	top: 112%;
 }
 
@@ -240,9 +240,29 @@ export default {
 	top: 121.6%;
 }
 
-table::before {
-    width: 100%;
-    border: 1px solid #444444;
+.contents_table{
+	position: absolute;
+	overflow: visible;
+	border:solid 2px #BEBEBE;
+	font-family: NanumBarunGothic;
+	top:51%;
+	font-size: 20px;
+	left:5%;
+	border-left: none;
+	border-right:none;
+	height:8%;
+	width:90%;
+	border-collapse: collapse;
 }
 
+th{
+	border:1px solid black;
+	border-left:none;
+	border-right:none;
+	padding:10px;
+}
+
+td{
+	padding:10px;
+}
 </style>
