@@ -14,68 +14,72 @@ import Delete from '../components/BoardDetail'
 
 Vue.use(VueRouter);
 
-const routes = [
-  {
-    path: '/',
-    name: 'Main',
-    component: Main
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: About
-  },
-  {
-    path: "/board",
-    // alias: "/board",
-    name: "board",
-    component: Board
-  },
-  {
-    path: "/board/:id",
-    name: "Detail",
-    component: Detail
-  },
-  {
-    path: '/board',
-    name: 'Write',
-    component: Write
-  },
-  {
-    path: '/board',
-    name: 'Update',
-    component: Update
-  },
-  {
-    path : "/board/:id",
-    name : "Delete",
-    component: Delete
-  },
-  {
-    path: '/member_join',
-    name: 'member_join',
-    component: member_join
-  }, 
-  {
-    path: '/login',
-    name: 'login',
-    component: login
-  },
-  {
-    path: '/play',
-    name: 'play',
-    component: play
-  },
-  {
-    path: '/find_id_pw',
-    name: 'find_id_pw',
-    component: find_id_pw
-  }
+const routes = [{
+        path: '/',
+        name: 'Main',
+        component: Main
+    },
+    {
+        path: '/about',
+        name: 'About',
+        component: About
+    },
+    {
+        path: "/board",
+        // alias: "/board",
+        name: "board",
+        component: Board
+    },
+    {
+        path: "/board/:id",
+        name: "Detail",
+        component: Detail
+    },
+    {
+        path: '/board',
+        name: 'Write',
+        component: Write
+    },
+    {
+        path: '/board',
+        name: 'Update',
+        component: Update
+    },
+    {
+        path: "/board/:id",
+        name: "Delete",
+        component: Delete
+    },
+    {
+        path: '/member_join',
+        name: 'member_join',
+        component: member_join
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: login
+    },
+    {
+        path: '/play',
+        name: 'play',
+        component: play
+    },
+    {
+        path: '/find_id_pw',
+        name: 'find_id_pw',
+        component: find_id_pw
+    },
+    {
+        path: '/board_write',
+        name: '/board_write',
+        component: Write
+    }
 ]
 
 export const router = new VueRouter({
-  mode: 'history',
-  routes: routes
+    mode: 'history',
+    routes: routes
 })
 
 export default router
