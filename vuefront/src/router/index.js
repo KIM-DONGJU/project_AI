@@ -69,11 +69,6 @@ const routes = [{
         path: '/find_id_pw',
         name: 'find_id_pw',
         component: find_id_pw
-    },
-    {
-        path: '/board_write',
-        name: '/board_write',
-        component: Write
     }
 ]
 

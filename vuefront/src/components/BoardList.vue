@@ -95,7 +95,6 @@ export default {
     },
 
     writeBoard() {
-		this.$router.push('/board_write')
       console.log(typeof JSON.parse(sessionStorage.getItem('token')).member_id);
       this.$router.push({name : 'Write', params : {id : JSON.parse(sessionStorage.getItem('token')).member_id}})
     }
