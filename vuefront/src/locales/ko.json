@@ -1,0 +1,65 @@
+{
+  "appVue" : {
+    "game" : "게임하기",
+    "community" : "커뮤니티",
+    "login" : "로그인",
+    "logout" : "로그아웃",
+    "signup" : "회원가입"
+  },
+
+  "introVue" : {
+    "intro1" : "실내에서 아이들과 함께 즐길 수 있는 트레이닝",
+    "intro2" : "추운 날씨, 더욱이 코로나 19 때문에 마음 편하게 나갈 수 없는 요즘",
+    "intro3" : "실내에서도 아이들과 함께 마음 편히 놀 수 있는 활동들을 제공합니다.",
+    "playgame" : "지금 시작하기!"
+  },
+
+  "boardListVue" : {
+    "title" : "제목",
+    "author" : "작성자",
+    "createdAt" : "작성일",
+    "search" : "검색",
+    "write" : "작성"
+  },
+
+  "boardDetailVue" : {
+    "title" : "제목",
+    "author" : "작성자",
+    "content" : "내용",
+    "modify" : "수정",
+    "delete"  : "삭제"
+  },
+
+  "boardWriteVue" : {
+    "title" : "제목",
+    "content" : "내용",
+    "write" : "작성"
+  },
+
+  "boardUpdateVue" : {
+    "title" : "제목",
+    "content" : "내용",
+    "modify" : "수정"
+  },
+  "loginVue" : {
+    "main" : "로그인 후 이용하실 수 있습니다.",
+    "id" : "아이디",
+    "pw" : "비밀번호",
+    "login" : "로그인",
+    "info" : "로그인 정보 기억하기",
+    "saveId" : "아이디 저장",
+    "googleLogin" : "구글 계정으로 로그인하기"
+  },
+  "signUpVue" : {
+    "id" : "아이디",
+    "pw" : "비밀번호",
+    "pwCheck" : "비밀번호 확인",
+    "nickname" : "닉네임",
+    "join" : "가입하기"
+  },
+  "playVue" : {
+    "follow" : "선생님과 함께 동작을 따라해보세요!",
+    "score" : "현재 점수 : 30 / 100 "
+  }
+
+}

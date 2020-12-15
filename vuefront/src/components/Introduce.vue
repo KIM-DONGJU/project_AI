@@ -1,9 +1,10 @@
 <template>
 	<div class="introduce">
 		<div id="introduce_bg">
-			<p id="noti_introduce_text">실내에서 아이들과 함께 즐길 수 있는 트레이닝</p>
-			<p id="noti_sub_text">추운 날씨, 더욱이 코로나 19 때문에 마음 편하게 나갈 수 없는 요즘<br>실내에서도 아이들과 함께 마음 편히 놀 수 있는 활동들을 제공합니다.</p>
-			<button v-on:click="letsPlay" id="lets-play">게임하기</button>
+			<p id="noti_introduce_text">{{$t('introVue.intro1')}}</p>
+			<p id="noti_sub_text">{{$t('introVue.intro2')}}</p>
+			<p id="noti_sub_text">{{$t('introVue.intro3')}}</p>
+			<button v-on:click="letsPlay" id="lets-play">{{$t('introVue.playgame')}}</button>
     	</div>
 	</div>
 </template>

@@ -1,10 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import member_join from '@/components/member_join'
-import login from '@/components/login'
-import play from '@/components/play'
-import find_id_pw from '@/components/find_id_pw'
-import Main from '@/components/Main'
+import member_join from '../components/member_join'
+import login from '../components/login'
+import play from '../components/play'
+import find_id_pw from '../components/find_id_pw'
+import Main from '../components/Main'
+import Update from '../components/BoardUpdate'
+import About from '../views/About.vue'
+import Board from '../components/BoardList'
+import Detail from '../components/BoardDetail'
+import Write from '../components/BoardWrite'
+import Delete from '../components/BoardDetail'
 
 Vue.use(VueRouter);
 
@@ -17,42 +23,34 @@ const routes = [
   {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: About
   },
   {
     path: "/board",
     // alias: "/board",
     name: "board",
-    component: () => import("../components/BoardList")
+    component: Board
   },
   {
     path: "/board/:id",
     name: "Detail",
-    component: () => import("../components/BoardDetail")
+    component: Detail
   },
   {
     path: '/board',
     name: 'Write',
-    component: () => import('../components/BoardWrite')
+    component: Write
   },
   {
     path: '/board',
     name: 'Update',
-    component: () => import('../components/BoardUpdate')
+    component: Update
   },
   {
     path : "/board/:id",
     name : "Delete",
-    component: () => import("../components/BoardDetail")
+    component: Delete
   },
-  // {
-  //   path: "/add",
-  //   name: "add",
-  //   component: () => import("./components/AddBoard")
-  // }
   {
     path: '/member_join',
     name: 'member_join',

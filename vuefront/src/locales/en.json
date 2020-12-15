@@ -1,0 +1,65 @@
+{
+  "appVue" : {
+    "game" : "Play the game",
+    "community" : "Community",
+    "login" : "Log in",
+    "logout" : "Log out",
+    "signup" : "Sign up"
+  },
+
+  "introVue" : {
+    "intro1" : "Activity at home with your children",
+    "intro2" : "isn't fairly exhausted for COVID19?",
+    "intro3" : "Don't worry! you can just play at home for our activities!",
+    "playgame" : "Play Now!" 
+  },
+
+  "boardListVue" : {
+    "title" : "title",
+    "author" : "author",
+    "createdAt" : "createAt",
+    "search" : "search",
+    "write" : "write"
+  },
+
+  "boardDetailVue" : {
+    "title" : "title",
+    "author" : "author",
+    "content" : "content"
+  },
+
+  "boardWriteVue" : {
+    "title" : "title",
+    "content" : "content",
+    "write" : "author"
+  },
+
+  "boardUpdateVue" : {
+    "title" : "title",
+    "content" : "content",
+    "modify" : "modify"
+  },
+
+  "loginVue" : {
+    "main" : "Please Use After Log in",
+    "id" : "ID",
+    "pw" : "Password",
+    "login" : "Log in",
+    "info" : "Stay Signed in",
+    "saveId" : "Remember me",
+    "googleLogin" : "Log in with Google"
+  },
+
+  "signUpVue" : {
+    "id" : "ID",
+    "pw" : "Password",
+    "pwCheck" : "Password Confirm",
+    "nickname" : "Nickname",
+    "join" : "Sign Up"
+},
+
+  "playVue" : {
+      "follow" : "Let's follow the teacher",
+      "score" : "Score : 30 / 100 "
+  }
+}

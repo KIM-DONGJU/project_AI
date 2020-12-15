@@ -5,23 +5,23 @@
         <div class="content">
           <img src="../assets/logo.png" id="login_logo">
 
-          <p id="login_introduce_text">로그인 후 이용하실 수 있습니다.</p>
-          <input type="text" id="login_id" placeholder="아이디" v-model="member.member_email"/>
-          <input type="password" id="login_pw" placeholder="비밀번호" v-model="member.member_pw"/>
+          <p id="login_introduce_text">{{$t('loginVue.main')}}</p>
+          <input type="text" id="login_id" :placeholder="$t('loginVue.id')" v-model="member.member_email"/>
+          <input type="password" id="login_pw" :placeholder="$t('loginVue.pw')" v-model="member.member_pw"/>
           <input type="number" name='google' class='google' v-model="member.member_google">
 
-          <button v-on:click="memberLogin" id="service-login">로그인</button>
+          <button v-on:click="memberLogin" id="service-login">{{$t('loginVue.login')}}</button>
           <input type="checkbox" id="remember_login_info_check">
-          <p id="remeber_login_info_text">로그인 정보 기억하기</p>
+          <p id="remeber_login_info_text">{{$t('loginVue.info')}}</p>
           <input type="checkbox" id="save_my_id_check">
-          <p id="save_my_id">아이디 저장</p>
+          <p id="save_my_id">{{$t('loginVue.saveId')}}</p>
           <!-- <button v-on:click="findMyIdPw" id="find_id_my_pw">아이디 / 비밀번호 찾기</button> -->
 
           <!-- 구글 계정 로그인 부분 -->
           <div>
             <GoogleLogin class="google-login-button" :params="params" :onSuccess="onSuccess" :onFailure="onFailure">
               <div id="google-login-text">
-                <span>구글 계정으로 로그인하기</span>
+                <span>{{$t('loginVue.googleLogin')}}</span>
               </div>
             </GoogleLogin>
             <img class="google" alt="googleLogin" src="https://web-staging.brandi.co.kr/static/3.50.7/images/google-logo.png">

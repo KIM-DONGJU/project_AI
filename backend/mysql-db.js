@@ -1,9 +1,9 @@
 const mariadb = require('mysql');
 const connection = mariadb.createConnection({
     host : 'localhost',
-    port : 3306,
+    port : 3307,
     user : 'root',
-    password : 'cjsend12',
+    password : '1234',
     database : 'user'
 });
 

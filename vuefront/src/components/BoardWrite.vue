@@ -2,7 +2,7 @@
   <div class="submit-form">
     <div v-if="!submitted">
       <div class="form-group">
-        <label for="title">제목</label>
+        <label for="title">{{$t('boardWriteVue.title')}}</label><!-- 제목 -->
         <input
           type="text"
           class="form-control"
@@ -14,7 +14,7 @@
       </div>
 
       <div class="form-group">
-        <label for="description">내용</label>
+        <label for="description">{{$t('boardWriteVue.content')}}</label><!-- 내용 -->
         <textarea
           class="form-control"
           id="description"
@@ -24,7 +24,7 @@
         />
       </div>
 
-      <button @click="saveTutorial" class="btn btn-success">작성</button>
+      <button @click="saveTutorial" class="btn btn-success">{{$t('boardWriteVue.write')}}</button><!-- 작성 -->
     </div>
 
     <div v-else>

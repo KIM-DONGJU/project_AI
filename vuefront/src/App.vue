@@ -2,12 +2,16 @@
 <template>
   <div id="app">
     <div id="nav">
+	<button @click="$i18n.locale='ko'">한국어</button>
+    <button @click="$i18n.locale='en'">English</button>
+	<button @click="$i18n.locale='jp'">日本語</button>
+
       <router-link to="/" id="nav_logo"><img src="@/assets/nav_logo.png"/></router-link>
-      <router-link to="/play" id="menu_play">게임하기</router-link><div id="first_divide">|</div>
-      <router-link to="/board" id="menu_community">커뮤니티</router-link><div id="second_divide">|</div>
-      <router-link to="/login" id="menu_login" v-if="!$store.state.token">로그인</router-link><div id="third_divide">|</div>
-	  <div id="menu_login" v-if="$store.state.token" @click="signOut">로그아웃</div><div id="third_divide"></div>
-      <router-link to="/member_join" id="menu_member_join" v-if="!$store.state.token">회원가입</router-link>
+      <router-link to="/play" id="menu_play">{{$t('appVue.game')}}</router-link><div id="first_divide">|</div>
+      <router-link to="/board" id="menu_community">{{$t('appVue.community')}}</router-link><div id="second_divide">|</div>
+      <router-link to="/login" id="menu_login" v-if="!$store.state.token">{{$t('appVue.login')}}</router-link><div id="third_divide">|</div>
+	  <div id="menu_login" v-if="$store.state.token" @click="signOut">{{$t('appVue.logout')}}</div><div id="third_divide"></div>
+      <router-link to="/member_join" id="menu_member_join" v-if="!$store.state.token">{{$t('appVue.signup')}}</router-link>
     </div>
     <router-view/>
 	<div id="footer">

@@ -1,0 +1,68 @@
+{
+    "appVue" : {
+      "game" : "始める", 
+      "community" : "コミュニティー",
+      "login" : "ログイン",
+      "logout" : "ログアウト",
+      "signup" : "pp-teacher新規会員登録"
+    },
+  
+    "introVue" : {
+      "intro1" : "実内で子供たちとともに楽しめるトレーニング",
+      "intro2" : "寒い日、またコロナウイルスのせいで気軽に出られないこの節、",
+      "intro3" : "実内でも子供たちとともに気安く楽しめる活動を提供しております。",
+      "playgame" : "今、始めよう！"
+    },
+  
+    "boardListVue" : {
+
+      "title" : "タイトル",
+      "author" : "作成者",
+      "createdAt" : "作成日",
+      "search" : "検索",
+      "write" : "作成"
+    },
+
+    "boardDetailVue" : {
+        "title" : "タイトル",
+        "author" : "作成者",
+        "content" : "コンテント"
+      },
+    
+      "boardWriteVue" : {
+        "title" : "タイトル",
+        "content" : "コンテント",
+        "write" : "作成"
+      },
+    
+      "boardUpdateVue" : {
+        "title" : "タイトル",
+        "content" : "コンテント",
+        "modify" : "修正"
+      },
+  
+    "loginVue" : {
+        "main" : "ログインするとご利用できます。",
+        "id" : "ID",
+        "pw" : "パスワード",
+        "login" : "ログイン",
+        "info" : "ログイン情報を覚える",
+        "saveId" : "ID セーブ",
+        "googleLogin" : "Googleアカウントでログインする"
+    },
+  
+    "signUpVue" : {
+        "id" : "ID",
+        "pw" : "パスワード",
+        "pwCheck" : "パスワード確認",
+        "nickname" : "ニックネーム",
+        "join" : "会員登録する"
+    },
+  
+    "playVue" : {
+        "follow" : "先生とともに動作をマネしてください!",
+        "score" : "現在の点数 : 30 / 100 "
+    }
+  
+  
+  }

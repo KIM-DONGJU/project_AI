@@ -10,6 +10,18 @@ module.exports = {
             }
         }
     },
+
     lintOnSave: false,
-    outputDir: '../backend/public' // 배포 파일의 위치를 지정함
+
+    // 배포 파일의 위치를 지정함
+    outputDir: '../backend/public',
+
+    pluginOptions: {
+      i18n: {
+        locale: 'en',
+        fallbackLocale: 'en',
+        localeDir: 'locales',
+        enableInSFC: false
+      }
+    }
 }

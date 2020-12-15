@@ -5,9 +5,9 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">제목</th>
-                        <th scope="col">작성자</th>
-                        <th scope="col">작성일</th>
+                        <th scope="col">{{$t('boardListVue.title')}}</th><!-- 제목 -->
+                        <th scope="col">{{$t('boardListVue.author')}}</th><!-- 작성자 -->
+                        <th scope="col">{{$t('boardListVue.createdAt')}}</th><!-- 작성일 -->
                     </tr>
                 </thead>
                 <tbody>
@@ -25,18 +25,18 @@
 
         <div class="col-md-8">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search by title"
+                <input type="text" class="form-control" placeholder="search with title"
                 v-model="title"/>
                 <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="button" @click="searchTitle">
-                    Search
+                    {{$t('boardListVue.search')}} <!-- 검색버튼 -->
                 </button>
                 </div>
             </div>
         </div>
 
-        <div>
-          <button class = 'btn btn-outline-secondary' type = 'button' @click = 'writeBoard'>글쓰기</button>
+        <div v-if='$store.state.token'>
+          <button class = 'btn btn-outline-secondary' type = 'button' @click = 'writeBoard'>{{$t('boardListVue.write')}}</button><!-- 글쓰기 -->
         </div>
   </div>
 </template>
@@ -51,7 +51,8 @@ export default {
       tutorials: [],
       currentTutorial: null,
       currentIndex: -1,
-      title: ""
+      title: "",
+      // placeHolder : {{$t('boardListVue.createdAt')}}
     };
   },
   methods: {

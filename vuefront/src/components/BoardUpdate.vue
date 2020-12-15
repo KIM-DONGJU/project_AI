@@ -2,7 +2,7 @@
 <div>
     <div>
         <div class="form-group">
-        <label for="title">제목</label>
+        <label for="title">{{$t('boardUpdateVue.title')}}</label><!-- 제목 -->
         <input
           type="text"
           class="form-control"
@@ -14,7 +14,7 @@
       </div>
 
       <div class="form-group">
-        <label for="description">내용</label>
+        <label for="description">{{$t('boardUpdateVue.content')}}</label> <!-- 내용 --> 
         <textarea
           class="form-control"
           id="description"
@@ -24,7 +24,7 @@
         />
       </div>
     </div>
-    <button @click="updateTutorial" class="btn btn-success">수정</button>
+    <button @click="updateTutorial" class="btn btn-success">{{$t('boardUpdateVue.modify')}}</button><!-- 수정 -->
 </div>
 </template>
 

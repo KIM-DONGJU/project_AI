@@ -3,12 +3,12 @@
 
   <!-- 메인 안내 메시지 -->
   <div id="play-notification">
-		<span>선생님과 함께 <b>동작</b>을 따라해보세요!</span>
+		<span>{{$t('playVue.follow')}}</span>
 	</div>
 
   <!-- 점수 -->
   <div id="score">
-			<span>현재 점수 : 30 / 100</span>
+			<span>{{$t('playVue.score')}}</span>
 	</div>
 
   <!-- 뒷 배경 -->
