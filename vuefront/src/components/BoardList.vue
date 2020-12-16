@@ -32,14 +32,18 @@
           </tr> 
         </tbody>
       </table>
-      <button id="test" class = 'btn btn-outline-secondary' type = 'button' @click = 'writeBoard'>{{$t('boardListVue.write')}}</button><!-- 글쓰기 -->
+
     </div>
 
-    <div id="board_list_footer">
-		  <p id="developer_contact">T. 010-5197-3175</p><p id="developer_email">E. admin@pp-teacher.io</p>
-		  <p id="developer_name">원준수 / 김동주 / 김수양 / 유정호 / 유재혁</p>
-		  <a href="#"><button v-on:click="goUp" id="go-up"></button></a>
-		</div>
+	<div v-if='$store.state.token'>
+		<button id="test" class = 'btn btn-outline-secondary' type = 'button' @click = 'writeBoard'>{{$t('boardListVue.write')}}</button><!-- 글쓰기 -->
+	</div>
+    
+	<div id="board_list_footer">
+		<p id="developer_contact">T. 010-5197-3175</p><p id="developer_email">E. admin@pp-teacher.io</p>
+		<p id="developer_name">원준수 / 김동주 / 김수양 / 유정호 / 유재혁</p>
+		<a href="#"><button v-on:click="goUp" id="go-up"></button></a>
+	</div>
   </div>
 </template>
 

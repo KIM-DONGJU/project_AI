@@ -23,10 +23,11 @@ export default {
 <style scoped>
 #introduce_bg{
 	position: absolute;
-	width: 1920px;
-	height: 1087px;
+	width: 100%;
+	height: 110%;
 	left: 0px;
-	top: 155px;
+	top: 200px;
+	background-repeat: no-repeat;
 	overflow: visible;
 	background-image: url("../assets/main_bg.png");
 	background-color:rgba(0,0,0,0.5);
