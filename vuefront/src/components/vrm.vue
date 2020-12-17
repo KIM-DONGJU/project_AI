@@ -39,7 +39,7 @@ export default {
       this.camera = new THREE.PerspectiveCamera(
         75,
         // window.innerWidth / window.innerHeight,
-        700/700, //width/Height
+        750/750, //width/Height
         0.1,
         1000
       )
@@ -54,8 +54,8 @@ export default {
       this.renderer.setClearColor( 0xffffff );
 
       // 초기 카메라 설정
-      this.camera.position.z = 1.25
-      this.camera.position.y = 1.25
+      this.camera.position.z = 1.5
+      this.camera.position.y = 1.2
 
       // camera controls
       this.controls = new OrbitControls( this.camera, this.renderer.domElement);
@@ -72,8 +72,8 @@ export default {
       this.loader = new GLTFLoader();
       this.loader.crossOrigin = "anonymous"
       this.loader.load(
-          // "./vrmmodel/AliciaSolid.vrm",
-          "./vrmmodel/4.vrm",
+          "./vrmmodel/teacher1.vrm",
+          // "./vrmmodel/4.vrm",
           // "./vrmmodel/example.vrm",
           (gltf) => {
 
@@ -126,7 +126,7 @@ export default {
         //update vrm
         this.currentVrm.update( deltaTime );
 
-      }else if(this.currentVrm !== undefined && (this.stage==1 || this.stage==3)){
+      }else if(this.currentVrm !== undefined && (this.stage===1)){
         // leftAction
 
         this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Neck).rotation.x = s/4;
@@ -139,7 +139,7 @@ export default {
         //update vrm
         this.currentVrm.update( deltaTime );
 
-      }else if(this.currentVrm !== undefined && this.stage==2){
+      }else if(this.currentVrm !== undefined && this.stage===2){
         // rightAction
 
         //face
@@ -157,26 +157,289 @@ export default {
         //update vrm
         this.currentVrm.update( deltaTime );
 
-      }else if(this.currentVrm !== undefined){
+      }else if(this.currentVrm !== undefined && (this.stage===3||this.stage===10)){
+        // draw circle
+        
         // face
         this.currentVrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.BlinkL, 0);
         this.currentVrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Joy, 0, s);
-        
-        // draw circle
 
-        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Neck).rotation.y = s/4;
+        //left
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftShoulder).rotation.z = s/12;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.y = 0;
         this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.z = 30.5;
         this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftLowerArm).rotation.z = 4.8;
         this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftHand).rotation.x = 3.9;
-        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftShoulder).rotation.z = s/12;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftHand).rotation.z = 0;
+
+        //right
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightShoulder).rotation.y = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightShoulder).rotation.z = -s/12;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.y = 0;
         this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.z = -30.5;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerArm).rotation.x = 0;
         this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerArm).rotation.z = -4.8;
         this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightHand).rotation.x = 3.9;
-        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightShoulder).rotation.z = -s/12;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightHand).rotation.z = 0;
+
+        //body
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.y = 0;
         this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.z = s/4;
+
+        //left leg
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperLeg).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftLowerLeg).rotation.x = 0;
+        
+        //right leg
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperLeg).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerLeg).rotation.x = 0;
         
         //update vrm
         this.currentVrm.update( deltaTime );        
+      }else if(this.currentVrm !== undefined && this.stage===4){
+        //head
+
+        //face
+        this.currentVrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Joy, 0.5 - 0.5*s);
+
+        //left
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftShoulder).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.y = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftLowerArm).rotation.z = 4;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftHand).rotation.x = 3.9;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftHand).rotation.z = 0;
+
+        //right
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightShoulder).rotation.y = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightShoulder).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.y = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerArm).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerArm).rotation.z = -4;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightHand).rotation.x = 3.9;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightHand).rotation.z = 0;
+
+        //body
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.y = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.z = s/4;
+
+        //left leg
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperLeg).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftLowerLeg).rotation.x = 0;
+        
+        //right leg
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperLeg).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerLeg).rotation.x = 0;
+
+        //update vrm
+        this.currentVrm.update( deltaTime );
+      }else if(this.currentVrm !== undefined && this.stage===5){
+        //shoulder
+
+        //face
+        this.currentVrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Joy, 0.5 - 0.5*s);
+
+        //left
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftShoulder).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.y = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.z = 0.8+s/4;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftLowerArm).rotation.z = 4;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftHand).rotation.x = 3.9;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftHand).rotation.z = 1.8;
+
+        //right
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightShoulder).rotation.y = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightShoulder).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.y = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.z = -0.8-s/4;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerArm).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerArm).rotation.z = -4;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightHand).rotation.x = 3.9;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightHand).rotation.z = -1.8;
+
+        //body
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.y = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.z = s/4;
+
+        //left leg
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperLeg).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftLowerLeg).rotation.x = 0;
+        
+        //right leg
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperLeg).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerLeg).rotation.x = 0;
+
+        //update vrm
+        this.currentVrm.update( deltaTime );
+        
+      }else if(this.currentVrm !== undefined && (this.stage===6||this.stage===8)){
+        //knee
+
+        //face
+        this.currentVrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Joy, 0.5 - 0.5*s);
+
+        //left
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftShoulder).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.y = -1.5;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.z = 0.5;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftLowerArm).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftHand).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftHand).rotation.z = 0;
+
+        //right
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightShoulder).rotation.y = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightShoulder).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.y = 1.5;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.z = -0.5;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerArm).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerArm).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightHand).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightHand).rotation.z = 0;
+
+        //body
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.x = -1.3-s/4;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.y = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.z = 0;
+
+        //left leg
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperLeg).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftLowerLeg).rotation.x = 0;
+        
+        //right leg
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperLeg).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerLeg).rotation.x = 0;
+
+        //update vrm
+        this.currentVrm.update( deltaTime );
+
+      }else if(this.currentVrm !== undefined && (this.stage===7||this.stage===9)){
+        //foot
+
+        //left
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftShoulder).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.y = -1.5;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftLowerArm).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftHand).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftHand).rotation.z = 0;
+
+        //right
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightShoulder).rotation.y = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightShoulder).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.y = 1.5;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerArm).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerArm).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightHand).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightHand).rotation.z = 0;
+
+        //body
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.x = -1.7-s/5;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.y = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.z = 0;
+
+        //left leg
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperLeg).rotation.x = 1;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftLowerLeg).rotation.x = -1.5;
+        
+        //right leg
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperLeg).rotation.x = 1;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerLeg).rotation.x = -1.5;
+
+        //update vrm
+        this.currentVrm.update( deltaTime );
+
+      }else if(this.currentVrm !== undefined && this.stage===11){
+        //mommyshark
+
+        //face
+        this.currentVrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Joy, 0.5 - 0.5*s);
+
+        //left
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftShoulder).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.x = -0.1;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.y = -1.7;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftLowerArm).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftHand).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftHand).rotation.z = -0.5+s;
+
+        //right
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightShoulder).rotation.y = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightShoulder).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.y = 1.7;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.z = -0.2;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerArm).rotation.x = 3;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerArm).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightHand).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightHand).rotation.z = 0.5-s;
+
+        //body
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.y = -0.8+s/4;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.z = 0;
+
+        //left leg
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperLeg).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftLowerLeg).rotation.x = 0;
+        
+        //right leg
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperLeg).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerLeg).rotation.x = 0;
+
+        //update vrm
+        this.currentVrm.update( deltaTime );
+      }else if(this.currentVrm !== undefined && this.stage===12){
+        //left
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftShoulder).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.x = 0.3+s/2;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.y = -1.7;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftLowerArm).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftHand).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftHand).rotation.z = 0;
+
+        //right
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightShoulder).rotation.y = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightShoulder).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.x = -0.3-s/2;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.y = 1.7;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperArm).rotation.z = -0.2;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerArm).rotation.x = 3;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerArm).rotation.z = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightHand).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightHand).rotation.z = 0;
+
+        //body
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.y = -0.8+Math.abs(s)/4;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Spine).rotation.z = s/4;
+
+        //left leg
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftUpperLeg).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftLowerLeg).rotation.x = 0;
+        
+        //right leg
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightUpperLeg).rotation.x = 0;
+        this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.RightLowerLeg).rotation.x = 0;
+
+        //update vrm
+        this.currentVrm.update( deltaTime );
       }
       
       this.renderer.render(this.scene, this.camera)
@@ -187,9 +450,9 @@ export default {
       }else if(this.stage===1){
         EventBus.$emit("nextPose", "right");
       }else if(this.stage ===2){
-        EventBus.$emit("nextPose", "left");
-      }else if(this.stage ===3){
         EventBus.$emit("nextPose", "circle");
+      // }else if(this.stage ===3){
+
       }
     }
   },
