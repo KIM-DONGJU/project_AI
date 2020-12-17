@@ -109,7 +109,7 @@ export default {
 	background-color:rgba(0,0,0,0.5);
 }
 
-#member_join_bg::before{
+#member_join_bg::before{ 
 	content: "";
 	opacity: 0.5;
 	position: absolute;
