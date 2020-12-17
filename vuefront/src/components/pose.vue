@@ -25,10 +25,11 @@ export default {
       modelInfo: undefined,
       audio: undefined,
       bgm: undefined,
+      other: "손 흔들어 인사해요~",
       model: "/model/Hellomodel.json",
       metadata: "/model/Hellomodel_meta.json",
       weights: "/model/Hellomodel.weights.bin",
-      answer: "안녕~",
+      answer: "안녕",
       count: 0,
       poseLabel: "준비",
       // modelInfo: {
@@ -48,11 +49,11 @@ export default {
     setup(sketch){
       
       
-      sketch.createCanvas(700,700);
+      sketch.createCanvas(750,750);
       sketch.background(0);
       
       this.video = sketch.createCapture(sketch.VIDEO)
-      this.video.size(700,700);
+      this.video.size(750,750);
       this.video.hide();
       
       this.poseNet = ml5.poseNet(this.video, this.modelLoaded);
@@ -67,8 +68,10 @@ export default {
 
       // audio 
       this.audio = new Audio();
-      this.audio.src = "/audio/v1.wav"
+      this.audio.src = "/audio/follow.wav"
       this.audio.play()
+      this.audio = new Audio();
+      this.audio.src = "/audio/hello.wav"
 
       // bgm
       this.bgm = new Audio();
@@ -82,13 +85,11 @@ export default {
     classifyPose(){
       if(this.pose) {
         let inputs = [];
-        let j = 1;
-        if(this.model == "/model/testmodel.json") j=7;
         for (let i =0; i<this.pose.keypoints.length; i++){
           let x = this.pose.keypoints[i].position.x;
           let y = this.pose.keypoints[i].position.y;
-          inputs.push(x/j);
-          inputs.push(y/j);
+          inputs.push(x/7.5);
+          inputs.push(y/7.5);
         }
         this.brain.classify(inputs,this.gotResult);
       }else{
@@ -102,13 +103,14 @@ export default {
       }
       if(this.poseLabel == this.answer){
         this.count++;
-        if(this.count>40){
-          this.audio.src = "/audio/1.mp3"
+        if(this.count>25) this.audio.play();
+        if(this.count>50){
           this.audio.play();
-          this.nextAction();
           this.count = 0;
+          this.nextAction();
         }
       }else{
+        this.poseLabel = this.other;
         this.count = 0;
       }
       this.classifyPose();
@@ -117,7 +119,7 @@ export default {
       sketch.push()
       sketch.translate(this.video.width,0);
       sketch.scale(-1, 1);
-      sketch.image(this.video,0,0,700,700);
+      sketch.image(this.video,0,0,750,750);
       // console.log(this.model);
 
       if(this.pose){
@@ -130,13 +132,6 @@ export default {
           sketch.line(a.position.x, a.position.y, b.position.x, b.position.y);
         }
 
-        // for (let i=0; i< this.pose.keypoints.length; i++){
-        //   let x = this.pose.keypoints[i].position.x;
-        //   let y = this.pose.keypoints[i].position.y;
-        //   sketch.fill(0);
-        //   sketch.stroke(255);
-        //   sketch.ellipse(x, y, 16, 16);
-        // }
       }
       sketch.pop();
       
@@ -162,10 +157,11 @@ export default {
   created() {
     EventBus.$on("nextPose",(answer) => {
       if(answer === "left"){
-        this.model = "/model/testmodel.json";
-        this.metadata = "/model/testmodel_meta.json";
-        this.weights = "/model/testmodel.weights.bin";
-        this.answer = "잘했어요~";
+        this.model = "/model/Leftmodel.json";
+        this.metadata = "/model/Leftmodel_meta.json";
+        this.weights = "/model/Leftmodel.weights.bin";
+        this.answer = "왼손";
+        this.other = "왼손 올려주세요~"
         this.modelInfo = {
           model: this.model,
           metadata: this.metadata,
@@ -173,11 +169,14 @@ export default {
         }
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.count = 0;
+        this.audio = new Audio();
+        this.audio.src = "/audio/left.wav"
       }else if(answer === "right"){
         this.model = "/model/Rightmodel.json";
         this.metadata = "/model/Rightmodel_meta.json";
         this.weights = "/model/Rightmodel.weights.bin";
-        this.answer = "잘했어요~";
+        this.answer = "오른손";
+        this.other = "오른손 올려주세요~"
         this.modelInfo = {
           model: this.model,
           metadata: this.metadata,
@@ -185,6 +184,23 @@ export default {
         }
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.count = 0;
+        this.audio = new Audio();
+        this.audio.src = "/audio/right.wav"
+      }else if(answer === "circle"){
+        this.model = "/model/Circlemodel.json";
+        this.metadata = "/model/Circlemodel_meta.json";
+        this.weights = "/model/Circlemodel.weights.bin";
+        this.answer = "동그라미";
+        this.other = "머리 위로 동그라미~"
+        this.modelInfo = {
+          model: this.model,
+          metadata: this.metadata,
+          weights: this.weights
+        }
+        this.brain.load(this.modelInfo, this.brainLoaded)
+        this.count = 0;
+        this.audio = new Audio();
+        this.audio.src = "/audio/circle.wav"
       }
     })
   },

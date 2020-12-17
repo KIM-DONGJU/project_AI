@@ -47,7 +47,7 @@ export default {
       // renderer
       this.renderer = new THREE.WebGLRenderer()
       // this.renderer.setSize(window.innerWidth, window.innerHeight);
-      this.renderer.setSize(700, 700);
+      this.renderer.setSize(750, 750);
       this.renderer.setPixelRatio(window.devicePixelRatio);
       // document.body.appendChild(this.renderer.domElement);
       canvas.appendChild(this.renderer.domElement);
@@ -126,7 +126,7 @@ export default {
         //update vrm
         this.currentVrm.update( deltaTime );
 
-      }else if(this.currentVrm !== undefined && this.stage==1){
+      }else if(this.currentVrm !== undefined && (this.stage==1 || this.stage==3)){
         // leftAction
 
         this.currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Neck).rotation.x = s/4;
@@ -187,7 +187,9 @@ export default {
       }else if(this.stage===1){
         EventBus.$emit("nextPose", "right");
       }else if(this.stage ===2){
-        console.log("next");
+        EventBus.$emit("nextPose", "left");
+      }else if(this.stage ===3){
+        EventBus.$emit("nextPose", "circle");
       }
     }
   },
