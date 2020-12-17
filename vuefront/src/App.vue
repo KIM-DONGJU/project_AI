@@ -65,22 +65,6 @@ import Login from '@/components/login.vue'
 import MemberJoin from '@/components/member_join.vue'
 import store from './store'
 
-// export default {
-//   mounted () {
-//       // 로그인에 사용할 버튼 id를 입력해주세요
-//     gapi.signin2.render("g-signin2", {
-//       onsuccess: this.onSignIn, // () 붙이면 안됩니다.
-//     });
-//   },
-//   methods : {
-//     onSignIn (googleUser) {
-//       // 로그인한 유저 정보를 보여줍니다.
-//       console.log(googleUser)
-//       console.log("123123")
-//     }
-//   }
-// }
-
 export default {
   name: 'App',
   data() {

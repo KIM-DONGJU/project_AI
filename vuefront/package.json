@@ -9,11 +9,13 @@
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
   },
   "dependencies": {
+    "@pixiv/three-vrm": "^0.5.5",
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
     "ml5": "^0.6.0",
     "p5": "^1.1.9",
     "parcel-plugin-static-files-copy": "^2.5.0",
+    "three": "^0.123.0",
     "vue": "^2.6.11",
     "vue-google-login": "^2.0.5",
     "vue-i18n": "^8.17.3",
