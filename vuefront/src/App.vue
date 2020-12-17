@@ -19,7 +19,7 @@
 				<router-link to="/play" id="menu_play_kor" class="nav">{{$t('appVue.game')}}</router-link><div id="first_divide_kor">|</div>
 				<router-link to="/board" id="menu_community_kor" class="nav">{{$t('appVue.community')}}</router-link><div id="second_divide_kor">|</div>
 				<router-link to="/login" id="menu_login_kor" class="nav" v-if="!$store.state.token">{{$t('appVue.login')}}</router-link><div id="third_divide_kor">|</div>
-				<div id="menu_login" class="nav" v-if="$store.state.token" @click="signOut">{{$t('appVue.logout')}}</div><div id="third_divide_kor"></div>
+				<div id="menu_login_kor" class="nav" v-if="$store.state.token" @click="signOut">{{$t('appVue.logout')}}</div><div id="third_divide_kor"></div>
       			<router-link to="/member_join" class="nav" id="menu_member_join_kor" v-if="!$store.state.token">{{$t('appVue.signup')}}</router-link>
 			</div>
 
@@ -29,7 +29,7 @@
 				<router-link to="/play" id="menu_play_eng" class="nav">{{$t('appVue.game')}}</router-link><div id="first_divide_eng">|</div>
 				<router-link to="/board" id="menu_community_eng" class="nav">{{$t('appVue.community')}}</router-link><div id="second_divide_eng">|</div>
 				<router-link to="/login" id="menu_login_eng" class="nav" v-if="!$store.state.token">{{$t('appVue.login')}}</router-link><div id="third_divide_eng">|</div>
-				<div id="menu_login" v-if="$store.state.token" @click="signOut">{{$t('appVue.logout')}}</div><div id="third_divide_eng"></div>
+				<div id="menu_login_eng" v-if="$store.state.token" @click="signOut">{{$t('appVue.logout')}}</div><div id="third_divide_eng"></div>
       			<router-link to="/member_join" id="menu_member_join_eng" v-if="!$store.state.token">{{$t('appVue.signup')}}</router-link>
 			</div>
 
@@ -39,7 +39,7 @@
 				<router-link to="/play" id="menu_play_jap" class="nav">{{$t('appVue.game')}}</router-link><div id="first_divide_jap">|</div>
 				<router-link to="/board" id="menu_community_jap" class="nav">{{$t('appVue.community')}}</router-link><div id="second_divide_jap">|</div>
 				<router-link to="/login" id="menu_login_jap" class="nav" v-if="!$store.state.token">{{$t('appVue.login')}}</router-link><div id="third_divide_jap">|</div>
-				<div id="menu_login" v-if="$store.state.token" @click="signOut">{{$t('appVue.logout')}}</div><div id="third_divide_jap"></div>
+				<div id="menu_login_jap" v-if="$store.state.token" @click="signOut">{{$t('appVue.logout')}}</div><div id="third_divide_jap"></div>
       			<router-link to="/member_join" id="menu_member_join_jap" v-if="!$store.state.token">{{$t('appVue.signup')}}</router-link>
 			</div>
 
@@ -49,7 +49,7 @@
 				<router-link to="/play" id="menu_play_eng" class="nav">{{$t('appVue.game')}}</router-link><div id="first_divide_eng">|</div>
 				<router-link to="/board" id="menu_community_eng" class="nav">{{$t('appVue.community')}}</router-link><div id="second_divide_eng">|</div>
 				<router-link to="/login" id="menu_login_eng" class="nav" v-if="!$store.state.token">{{$t('appVue.login')}}</router-link><div id="third_divide_eng">|</div>
-				<div id="menu_login" v-if="$store.state.token" @click="signOut">{{$t('appVue.logout')}}</div><div id="third_divide_eng"></div>
+				<div id="menu_login_eng" v-if="$store.state.token" @click="signOut">{{$t('appVue.logout')}}</div><div id="third_divide_eng"></div>
       			<router-link to="/member_join" id="menu_member_join_eng" v-if="!$store.state.token">{{$t('appVue.signup')}}</router-link>
 			</div>
     	</div>
