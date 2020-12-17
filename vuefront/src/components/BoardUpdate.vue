@@ -14,7 +14,6 @@
         <div id="board_update_footer">
 			<p id="developer_contact">T. 010-5197-3175</p><p id="developer_email">E. admin@pp-teacher.io</p>
 			<p id="developer_name">원준수 / 김동주 / 김수양 / 유정호 / 유재혁</p>
-			<a href="#"><button v-on:click="goUp" id="go-up"></button></a>
 		</div>
     
         <!--<div>
@@ -276,24 +275,5 @@ export default {
 	font-weight: bold;
 	font-size: 15px;
 	color:#B0B0B0;
-}
-
-#go-up{
-	background-color:#444444;
-	background-image: url("../assets/btn_arrow.png");
-	color:#ffffff;
-	font-style: bold;
-	background-repeat: no-repeat;
-	position: absolute;
-	overflow: visible;
-	background-position: center;
-	width: 80px;
-	background-size: 20%;
-	font-family: NanumBarunGothic;
-	border:0;
-	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-	height: 80px;
-	left: 95%;
-	top: 121.6%;
 }
 </style>

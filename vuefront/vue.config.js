@@ -1,8 +1,10 @@
 module.exports = {
+    publicPath: '',
     devServer: { // API 요청이 있을 때 어디에서 처리할지를 설정함
+        disableHostCheck: true,
         proxy: {
             '/api': {
-                target: 'http://localhost:3000',
+                target: 'http://backend:3000',
                 changeOrigin: true,
                 pathRewrite: {
                     '^/api': ''

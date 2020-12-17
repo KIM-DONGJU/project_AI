@@ -66,10 +66,31 @@ export default {
     document.title = "PinkPenguinTeacher - 회원가입"
   },
   methods: {
-  }
-,
+    memberJoin:function(event) {
+         this.$http.post('/api/join/signUp', {
+            member: this.member
+         })
+         .then(
+            (res) => {
+               if (res.data.success == true) {
+            alert(res.data.message);
+            this.$router.push('/')
+               } else {
+                  alert(res.data.message);
+               }
+            },
+        (err) => { // error 를 보여줌
+               alert('Login failed! please check your id or password');
+            }
+         )
+         .catch(err => {
+            alert(err);
+         })
+      },
+  },
 }
 </script>
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
