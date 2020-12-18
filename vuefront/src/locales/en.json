@@ -14,6 +14,13 @@
     "playgame" : "Play Now!" 
   },
 
+  "boardMain" : {
+    "community" : "Community",
+    "communitySubText" : "Share your tips & feedback",
+    "person": "Author",
+    "day" : "Date"
+  },
+
   "boardListVue" : {
     "title" : "title",
     "author" : "author",
@@ -25,13 +32,15 @@
   "boardDetailVue" : {
     "title" : "title",
     "author" : "author",
-    "content" : "content"
+    "content" : "content",
+    "modify" : "modify",
+    "delete"  : "delete"
   },
 
   "boardWriteVue" : {
     "title" : "title",
     "content" : "content",
-    "write" : "author"
+    "write" : "write"
   },
 
   "boardUpdateVue" : {

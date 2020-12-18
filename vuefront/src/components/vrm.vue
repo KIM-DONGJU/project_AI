@@ -9,10 +9,14 @@ import { VRM, VRMSchema} from "@pixiv/three-vrm"
 import EventBus from "../EventBus";
 
 export default {
-  name: 'ThreeTest',
+  name: 'Three',
+  props: [
+    "selectedModel"
+  ],
   data() {
     const clock = new THREE.Clock();
     return {
+      vrmModel:undefined,
       renderer: undefined,
       scene: undefined,
       camera: undefined,
@@ -72,7 +76,7 @@ export default {
       this.loader = new GLTFLoader();
       this.loader.crossOrigin = "anonymous"
       this.loader.load(
-          "./vrmmodel/teacher1.vrm",
+          this.vrmModel,
           // "./vrmmodel/4.vrm",
           // "./vrmmodel/example.vrm",
           (gltf) => {
@@ -473,6 +477,8 @@ export default {
     this.actionHello()
   },
   created() {
+    console.log(this.selectedModel);
+    this.vrmModel = this.selectedModel;
     EventBus.$on("next",() => {
       this.nextPose();
       this.stage++;

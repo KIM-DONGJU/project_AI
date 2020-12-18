@@ -1,41 +1,30 @@
 <template>
     <div class="board_detail">
         <div id="board_detail_update_bg">
-			<p id="board_detail_update_introduce_text">커뮤니티</p>
-			<p id="board_detail_update_sub_text">서비스 후기 및 다양한 육아 꿀팁을 공유해보세요!</p>
+			<p id="board_detail_update_introduce_text">{{$t('boardMain.community')}}</p>
+         	<p id="board_detail_update_sub_text">{{$t('boardMain.communitySubText')}}</p>
         
             <form>
                 <table class="board_detail_info_table">
-                    <colgroup>
-                        <col width="15%" />
-                        <col width="*" />
-                    </colgroup>
                     <tr>
-                        <td><p id="board_detail_subject">{{currentTutorial.board_title}}</p><br><p id="board_detail_writer_info">{{currentTutorial.member.member_nickname}}</p></td>
+                        <td>
+							<p class='board_title'>{{currentTutorial.board_title}}</p><hr>
+							<span class='board_name'>{{$t('boardMain.person')}} : {{currentTutorial.member.member_nickname}}</span>
+							<span class='board_at'>{{$t('boardMain.day')}} : {{currentTutorial.updatedAt.slice(0,10)}}</span>
+						</td>
                     </tr>
                 </table>
-
                 <table class="board_detail_content_table">
-                    <colgroup>
-					    <col width="15%" />
-					    <col width="*" />
-				    </colgroup>
 				    <tr>
 					    <td><p id="board_detail_contents">{{currentTutorial.board_content}}</p></td>
 				    </tr>
                 </table>
             </form>
-
-            <div v-if="this.session_id == this.member_id">
-                <button class = 'btn btn-outline-secondary' type = 'button' id="board_detail_modified" @click = 'updateTutorial'>{{$t('boardDetailVue.modify')}}</button>
-                <button class = 'btn btn-outline-secondary' type = 'button' id="board_detail_deleted" v-on:click="boardDelete" >{{$t('boardDetailVue.delete')}}</button>
+            <div class='update' v-if="this.session_id == this.member_id">
+                <button class='btn btn-outline-secondary' type = 'button' id="board_detail_modified" @click = 'updateTutorial'>{{$t('boardDetailVue.modify')}}</button>
+                <button class='btn btn-outline-secondary' type = 'button' id="board_detail_deleted" v-on:click="boardDelete" >{{$t('boardDetailVue.delete')}}</button>
             </div>
         </div>
-        
-        <div id="board_detail_update_footer">
-		    <p id="developer_contact">T. 010-5197-3175</p><p id="developer_email">E. admin@pp-teacher.io</p>
-			<p id="developer_name">원준수 / 김동주 / 김수양 / 유정호 / 유재혁</p>
-		</div>
     </div>
 </template>
 
@@ -54,7 +43,8 @@ export default {
                 member: {
                     member_nickname: '',
                 },
-                board_content:''
+				board_content:'',
+				createdAt:'',
             },
             member_id : '',
             session_id : '',
@@ -67,7 +57,7 @@ export default {
             this.$http.get(`/api/board/${this.id}`)
                 .then(response => {
                     this.currentTutorial = response.data;
-                    this.member_id = response.data.member_id;
+					this.member_id = response.data.member_id;
                     let session = JSON.parse(sessionStorage.getItem('token'));
                     if(session) {
                         this.session_id = JSON.parse(sessionStorage.getItem('token')).id;
@@ -76,7 +66,7 @@ export default {
                 .catch(err => {
                     alert(err)
                     console.log(response.data)
-            })
+			})
         },
         updateTutorial(){
             this.$router.push({name: 'Update', params : {id: this.id}})
@@ -104,17 +94,34 @@ export default {
         },
     },
     mounted() {
-        this.getTutorial(this.$route.params.id);
+		this.getTutorial(this.$route.params.id);
     }
 }
 </script>
 
 <style scoped>
+.board_name {
+	position: relative;
+	float: left;
+	left:10px;
+	margin-right: 30px;
+}
+.board_at {
+	position: relative;
+	float: left;
+	left:10px;
+	margin-right: 30px;
+}
+
+.board_detail {
+	width:1920px;
+	margin: 0 auto;
+}
+
 #board_detail_update_bg{
 	position: absolute;
-	width: 100%;
-	height: 31%;
-	left: 0px;
+	width: 1920px;
+	height: 300px;
 	top: 100px;
 	background-repeat: no-repeat;
 	overflow: visible;
@@ -169,16 +176,13 @@ export default {
 	letter-spacing: 0.1px;
 }
 
-#board_detail_subject{
-	left: 1%;
-	top: 15%;
-	position: absolute;
+.board_title{
+	position: relative;
+	text-align: left;
+	left:10px;
+	top:0;
 	overflow: visible;
-	width: 307px;
 	white-space: nowrap;
-	line-height: 57px;
-	margin-top: -8.5px;
-	text-align: center;
 	font-family: NanumBarunGothic;
 	font-style: normal;
 	font-weight: lighter;
@@ -187,15 +191,20 @@ export default {
 	letter-spacing: 0.1px;
 }
 
+.board_detail_writer_info {
+	position: absolute;
+	float: left;
+	left:10px;
+}
+
 #board_detail_contents{
-	left: 1.2%;
-	top:4%;
 	position: absolute;
 	overflow: visible;
-	width: 179px;
+	text-align: left;
+	top:10px;
+	left:20px;
 	white-space: nowrap;
 	line-height: 31px;
-	margin-top: -4.5px;
 	text-align: center;
 	font-family: NanumBarunGothic;
 	font-style: normal;
@@ -284,15 +293,15 @@ export default {
     position: absolute;
 	overflow: visible;
 	border:solid 2px #BEBEBE;
-	top:150%;
+	top:155%;
 	left:25%;
-	height:175%;
+	height:170%;
 	width:50%;
 }
 
 #board_detail_modified{
     left:61.5%;
-    margin-top:52%;
+    margin-top:51.5%;
     width:122px;
     height:45px;
     border-radius: 8px;
@@ -307,7 +316,7 @@ export default {
 
 #board_detail_deleted{
     left:68.5%;
-    margin-top:52%;
+    margin-top:51.5%;
     width:122px;
     height:45px;
     border-radius: 8px;

@@ -57,7 +57,7 @@ export default {
 	top: 11%;
 	background-repeat: no-repeat;
 	overflow: visible;
-	background-image: url("../assets/main_bg.png");
+	background-image: url("../assets/main_bg.jpg");
 	background-color:rgba(0,0,0,0.5);
 }
 

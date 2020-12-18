@@ -104,7 +104,7 @@ export default {
       }
       if(this.poseLabel == this.answer){
         this.count++;
-        if(this.count>this.time/2) this.audio.play();
+        if(this.count===this.time/2) this.audio.play();
         if(this.count>this.time){
           this.audio.play();
           this.count = 0;

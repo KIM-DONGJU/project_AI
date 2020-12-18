@@ -533,7 +533,7 @@ export default {
 }
 
 #nav {
-  padding: 100px;
+  padding: 30px;
 }
 
 #nav a {
