@@ -112,7 +112,9 @@ export default {
 	mounted () {
 		this.$store.commit('getToken');
   	},
-
+	  created(){
+		  document.title = "PinkPenguinTeacher에 오신 것을 환영합니다."
+	  },
 	components: {
 		GoogleLogin,
 		Login,

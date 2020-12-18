@@ -33,6 +33,12 @@
 				<p id="noti_sub_text_second_eng">{{$t('introVue.intro3')}}</p>
 				<button v-on:click="letsPlay" id="lets-play-eng">{{$t('introVue.playgame')}}</button>
 			</div>
+
+			<!-- Footer -->
+			<div id="introduce_footer">
+				<p id="developer_contact">T. 010-5197-3175</p><p id="developer_email">E. admin@pp-teacher.io</p>
+				<p id="developer_name">원준수 / 김동주 / 김수양 / 유정호 / 유재혁</p>
+			</div>
     	</div>
 	</div>
 </template>
@@ -286,5 +292,70 @@ export default {
 	height: 45px;
 	left: 46%;
 	top:65%;
+}
+
+#introduce_footer::before{
+	content: "";
+	position: absolute;
+	height:10.5%;
+	top:100%;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-color: #222222;
+}
+
+#developer_contact{
+  	left: 1%;
+	top: 102.5%;
+	position: absolute;
+	overflow: visible;
+	width: 343px;
+	white-space: nowrap;
+	line-height: 24px;
+	margin-top: -4.5px;
+	text-align: left;
+	font-family: NanumBarunGothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(255,255,255,1);
+    white-space: pre;
+}
+
+#developer_email{
+  	left: 11%;
+	top: 102.5%;
+	position: absolute;
+	overflow: visible;
+	width: 343px;
+	white-space: nowrap;
+	line-height: 24px;
+	margin-top: -4.5px;
+	text-align: left;
+	font-family: NanumBarunGothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(255,255,255,1);
+    white-space: pre;
+}
+
+#developer_name{
+  	left: 1%;
+	top: 106.5%;
+	position: absolute;
+    padding-bottom: 1%;
+	overflow: visible;
+	width: 343px;
+	white-space: nowrap;
+	line-height: 24px;
+	margin-top: -4.5px;
+	text-align: left;
+	font-family: NanumBarunGothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color:#B0B0B0;
 }
 </style>

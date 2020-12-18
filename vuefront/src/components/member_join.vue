@@ -32,11 +32,12 @@
             <button v-on:click="memberJoin" id="member-join">가입하기</button>
           </div>
         </div>
-        <!--Footer 영역 -->
+        
+		<!--Footer 영역 -->
         <div id="introduce_footer">
-		        <p id="developer_contact">T. 010-5197-3175</p><p id="developer_email">E. admin@pp-teacher.io</p>
-		        <p id="developer_name">원준수 / 김동주 / 김수양 / 유정호 / 유재혁</p>
-	        </div>
+		    <p id="developer_contact">T. 010-5197-3175</p><p id="developer_email">E. admin@pp-teacher.io</p>
+		    <p id="developer_name">원준수 / 김동주 / 김수양 / 유정호 / 유재혁</p>
+	    </div>
       </div>
   </div>
 </template>
