@@ -447,12 +447,24 @@ export default {
     nextPose() {
       if(this.stage===0){
         EventBus.$emit("nextPose", "left");
-      }else if(this.stage===1){
+      }else if(this.stage=== 1){
         EventBus.$emit("nextPose", "right");
-      }else if(this.stage ===2){
+      }else if(this.stage === 2){
         EventBus.$emit("nextPose", "circle");
-      // }else if(this.stage ===3){
-
+      }else if(this.stage === 3){
+        EventBus.$emit("nextPose", "head");
+      }else if(this.stage === 4){
+        EventBus.$emit("nextPose", "shoulder");
+      }else if(this.stage === 5 || this.stage === 7){
+        EventBus.$emit("nextPose", "knee");
+      }else if(this.stage === 6 || this.stage === 8){
+        EventBus.$emit("nextPose", "foot");
+      }else if(this.stage === 9){
+        EventBus.$emit("nextPose", "circle");
+      }else if(this.stage === 10){
+        EventBus.$emit("nextPose", "mommyShark");
+      }else if(this.stage === 11){
+        EventBus.$emit("nextPose", "daddyShark");
       }
     }
   },

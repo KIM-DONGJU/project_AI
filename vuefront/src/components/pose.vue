@@ -31,6 +31,7 @@ export default {
       weights: "/model/Hellomodel.weights.bin",
       answer: "안녕",
       count: 0,
+      time: 100,
       poseLabel: "준비",
       // modelInfo: {
       //   model: "/model/model.json",
@@ -103,8 +104,8 @@ export default {
       }
       if(this.poseLabel == this.answer){
         this.count++;
-        if(this.count>25) this.audio.play();
-        if(this.count>50){
+        if(this.count>this.time/2) this.audio.play();
+        if(this.count>this.time){
           this.audio.play();
           this.count = 0;
           this.nextAction();
@@ -157,21 +158,23 @@ export default {
   created() {
     EventBus.$on("nextPose",(answer) => {
       if(answer === "left"){
+        this.count = 0;
         this.model = "/model/Leftmodel.json";
         this.metadata = "/model/Leftmodel_meta.json";
         this.weights = "/model/Leftmodel.weights.bin";
         this.answer = "왼손";
         this.other = "왼손 올려주세요~"
+        this.time = 200;
         this.modelInfo = {
           model: this.model,
           metadata: this.metadata,
           weights: this.weights
         }
         this.brain.load(this.modelInfo, this.brainLoaded)
-        this.count = 0;
         this.audio = new Audio();
         this.audio.src = "/audio/left.wav"
       }else if(answer === "right"){
+        this.count = 0;
         this.model = "/model/Rightmodel.json";
         this.metadata = "/model/Rightmodel_meta.json";
         this.weights = "/model/Rightmodel.weights.bin";
@@ -183,10 +186,10 @@ export default {
           weights: this.weights
         }
         this.brain.load(this.modelInfo, this.brainLoaded)
-        this.count = 0;
         this.audio = new Audio();
         this.audio.src = "/audio/right.wav"
       }else if(answer === "circle"){
+        this.count = 0;
         this.model = "/model/Circlemodel.json";
         this.metadata = "/model/Circlemodel_meta.json";
         this.weights = "/model/Circlemodel.weights.bin";
@@ -198,9 +201,99 @@ export default {
           weights: this.weights
         }
         this.brain.load(this.modelInfo, this.brainLoaded)
-        this.count = 0;
         this.audio = new Audio();
         this.audio.src = "/audio/circle.wav"
+      }else if(answer === "head"){
+        this.count = 0;
+        this.model = "/model/Headmodel.json";
+        this.metadata = "/model/Headmodel_meta.json";
+        this.weights = "/model/Headmodel.weights.bin";
+        this.answer = "머리";
+        this.other = "머리가 어딜까요?"
+        this.modelInfo = {
+          model: this.model,
+          metadata: this.metadata,
+          weights: this.weights
+        }
+        this.brain.load(this.modelInfo, this.brainLoaded)
+        this.audio = new Audio();
+        this.audio.src = "/audio/head.wav"
+      }else if(answer === "shoulder"){
+        this.count = 0;
+        this.model = "/model/Shouldermodel.json";
+        this.metadata = "/model/Shouldermodel_meta.json";
+        this.weights = "/model/Shouldermodel.weights.bin";
+        this.answer = "어깨";
+        this.other = "손을 어깨에 올려요~"
+        this.modelInfo = {
+          model: this.model,
+          metadata: this.metadata,
+          weights: this.weights
+        }
+        this.brain.load(this.modelInfo, this.brainLoaded)
+        this.audio = new Audio();
+        this.audio.src = "/audio/Shoulder.wav"
+      }else if(answer === "knee"){
+        this.count = 0;
+        this.model = "/model/Kneemodel.json";
+        this.metadata = "/model/Kneemodel_meta.json";
+        this.weights = "/model/Kneemodel.weights.bin";
+        this.answer = "무릎";
+        this.other = "무릎은 어디에요?"
+        this.modelInfo = {
+          model: this.model,
+          metadata: this.metadata,
+          weights: this.weights
+        }
+        this.brain.load(this.modelInfo, this.brainLoaded)
+        this.audio = new Audio();
+        this.audio.src = "/audio/Knee.wav"
+      }else if(answer === "foot"){
+        this.count = 0;
+        this.model = "/model/Footmodel.json";
+        this.metadata = "/model/Footmodel_meta.json";
+        this.weights = "/model/Footmodel.weights.bin";
+        this.answer = "발";
+        this.other = "발이 손과 만나게 도와주세요~"
+        this.modelInfo = {
+          model: this.model,
+          metadata: this.metadata,
+          weights: this.weights
+        }
+        this.brain.load(this.modelInfo, this.brainLoaded)
+        this.audio = new Audio();
+        this.audio.src = "/audio/Foot.wav"
+      }else if(answer === "mommyShark"){
+        this.count = 0;
+        this.time = 300;
+        this.model = "/model/MommySharkmodel.json";
+        this.metadata = "/model/MommySharkmodel_meta.json";
+        this.weights = "/model/MommySharkmodel.weights.bin";
+        this.answer = "엄마 상어";
+        this.other = "따라해봐요 뚜루루~"
+        this.modelInfo = {
+          model: this.model,
+          metadata: this.metadata,
+          weights: this.weights
+        }
+        this.brain.load(this.modelInfo, this.brainLoaded)
+        this.audio = new Audio();
+        this.audio.src = "/audio/MommyShark.wav"
+      }else if(answer === "daddyShark"){
+        this.count = 0;
+        this.model = "/model/DaddySharkmodel.json";
+        this.metadata = "/model/DaddySharkmodel_meta.json";
+        this.weights = "/model/DaddySharkmodel.weights.bin";
+        this.answer = "아빠 상어";
+        this.other = "따라해봐요 뚜루루~"
+        this.modelInfo = {
+          model: this.model,
+          metadata: this.metadata,
+          weights: this.weights
+        }
+        this.brain.load(this.modelInfo, this.brainLoaded)
+        this.audio = new Audio();
+        this.audio.src = "/audio/DaddyShark.wav"
       }
     })
   },
