@@ -5,16 +5,20 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
   },
   "dependencies": {
+    "@pixiv/three-vrm": "^0.5.5",
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
     "ml5": "^0.6.0",
     "p5": "^1.1.9",
     "parcel-plugin-static-files-copy": "^2.5.0",
+    "three": "^0.123.0",
     "vue": "^2.6.11",
     "vue-google-login": "^2.0.5",
+    "vue-i18n": "^8.17.3",
     "vue-p5": "^0.8.3",
     "vue-p5-component": "^1.0.4",
     "vue-router": "^3.2.0",
@@ -28,6 +32,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "vue-cli-plugin-i18n": "^1.0.1",
     "vue-template-compiler": "^2.6.11"
   }
 }

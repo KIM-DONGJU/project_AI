@@ -1,8 +1,11 @@
+const { sequelize } = require('../models');
 const db = require('../models'); // 자동으로 models 폴더 하위의 index.js를 인식.
-// const boardModel = require('../models/board.model');
+
+const Op = db.Sequelize.Op;
 
 const Member = db.member;
 const Board = db.board;
+
 
 exports.createMember = (member) => {
     return Member.create({
@@ -20,41 +23,26 @@ exports.createMember = (member) => {
         })       
 }
 
-exports.createBoard = (member_id, board) => {
+exports.createBoard = (req, res) => {
     return Board.create({
-        board_title : board.board_title,
-        board_content : board.board_content,
-        member_id : member_id
+        board_title : req.body.board_title,
+        board_content : req.body.board_content,
+        member_id : req.body.member_id
     })
         .then((board) => {
-            console.log(">> Created board: " + JSON.stringify(board, null, 4));
-            return board;
+            res.send(board)
         })
         .catch((err) => {
             console.log('>> Error while creating board: ' + err);
         })
 }
 
-exports.findAll2 = (req, res) => {
-    const title = req.query.title;
-    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
-
-    Board.findAll({ where: condition })
-        .then(data => {
-        res.send(data);
-        })
-        .catch(err => {
-        res.status(500).send({
-            message:
-            err.message || "Some error occurred while retrieving tutorials."
-        });
-        });
-}
-
 exports.findAll = (req, res) => {
-    console.log('여긴?');
+    const title = req.query.title;
+    var condition = title ? { board_title: { [Op.like]: `%${title}%` } } : null;
+
     Board.findAll(
-        {include: [{model : Member, as : 'member'}] })
+        {include: [{model : Member, as : 'member'}] , where: condition }, )
         .then(data => {
            res.send(data);
         })
@@ -67,19 +55,64 @@ exports.findAll = (req, res) => {
 }
 
 exports.findBoardById = (req, res) => {
-
     const id = req.params.id
-
+    console.log(id, 'test');
     Board.findOne({
-        where : {member_id : id},
+        where : {id : id},
         include: [{model : Member, as : 'member'}]
     })
         .then((data) => {
-            console.log('쿼리날림?');
+            console.log(data);
             res.send(data);
         })
         .catch((err, id) => {
-            console.log('못날림');
             console.log(`>> Error while finding board : is ${id} is `, err);
         })
 }
+
+exports.updateBoard = (req, res) => {
+    const id = req.body.board_id
+    console.log(id, 'update id');
+
+    Board.update(req.body,{
+        where : {id: id}
+    })
+        .then((num) => {
+            if(num == 1){
+            res.send({
+                message: `Update Success`
+            })
+            } else {
+                res.send({
+                    message: `Cannot Update Tutorial with id = ${id}`
+                })
+            }
+        })
+        .catch((err) => {
+            console.log('>> Error while updating board: ' + err);
+        })
+}
+exports.deleteBoard = (req, res) => {
+    const id = req.params.id;
+  
+    Board.destroy({
+        where: { id: id }
+        })
+        .then(num => {
+            if (num == 1) {
+            res.send({
+                success:true,
+                message: "Tutorial was deleted successfully!"
+            });
+            } else {
+            res.send({
+                message: `Cannot delete Tutorial with id=${id}. Maybe Tutorial was not found!`
+            });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+            message: "Could not delete Tutorial with id=" + id
+            });
+        });
+    };

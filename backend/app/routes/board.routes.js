@@ -12,7 +12,7 @@ module.exports = app => {
 
     var cors = require('cors');
 
-    router.get('/:id', cors(8080),controller.findBoardById);
+    router.get('/:id', cors(8081),controller.findBoardById);
   
     // // Retrieve all published Tutorials
     // router.get("/published", tutorials.findAllPublished);
