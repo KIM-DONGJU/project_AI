@@ -64,7 +64,7 @@ export default {
          .then(
             (res) => {
                if (res.data.success == true) {
-            alert(res.data.message);
+            alert("가입 완료!");
             this.$router.push('/')
                } else {
                   alert(res.data.message);

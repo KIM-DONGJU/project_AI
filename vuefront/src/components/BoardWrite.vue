@@ -7,8 +7,8 @@
     	</div>
       <div class="form-group">
         <!--<label for="title">{{$t('boardWriteVue.title')}}</label>-->
-        <input type="text" class="title" required v-model="tutorial.title" name="title"/>
-        <textarea id="description" required v-model="tutorial.description" name="description"/>
+        <input type="text" class="title" required v-model="tutorial.title" name="title" placeholder="글 제목"/>
+        <textarea id="description" required v-model="tutorial.description" name="description" placeholder="내용"/>
         <button @click="saveTutorial" id="board_write" class="btn btn-success">{{$t('boardWriteVue.write')}}</button>
       </div>
     </div>
@@ -67,6 +67,13 @@ export default {
 </script>
 
 <style>
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder { text-align: center; }
+input::-webkit-input-placeholder,textarea::-moz-placeholder { text-align: center; }
+input::-webkit-input-placeholder,textarea:-ms-input-placeholder { text-align: center; }
+input::-webkit-input-placeholder,textarea:-moz-placeholder { text-align: center; }
+input::-webkit-input-placeholder,textarea::placeholder { text-align: center; }
+
+
 .submit-form {
 	width:1920px;
 	margin: 0 auto;
@@ -143,6 +150,7 @@ export default {
 	transform: translateX(-50%);
 	width:840px;
 	height: 68px;
+	text-align: left;
 	font-family: NanumBarunGothic;
 	font-size: 21px;
 	opacity: 0.8;

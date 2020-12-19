@@ -23,8 +23,10 @@ export default {
       skeleton: undefined,
       brain: undefined,
       modelInfo: undefined,
+      answerAudio: undefined,
       audio: undefined,
       bgm: undefined,
+      bgmCount: 0,
       other: "손 흔들어 인사해요~",
       model: "/model/Hellomodel.json",
       metadata: "/model/Hellomodel_meta.json",
@@ -66,6 +68,10 @@ export default {
         weights: this.weights
       }
       this.brain.load(this.modelInfo, this.brainLoaded);
+      
+      //answer audio
+      this.answerAudio = new Audio();
+      this.answerAudio.src = "/audio/answer.wav" 
 
       // audio 
       this.audio = new Audio();
@@ -106,7 +112,7 @@ export default {
         this.count++;
         if(this.count===this.time/2) this.audio.play();
         if(this.count>this.time){
-          this.audio.play();
+          this.answerAudio.play();
           this.count = 0;
           this.nextAction();
         }
@@ -202,9 +208,16 @@ export default {
         }
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.bgm.pause()
-        this.bgm = new Audio();
-        this.bgm.src = "/audio/song2.wav"
-        this.bgm.play();
+        this.bgmCount++;
+        if(this.bgmCount === 1){
+          this.bgm = new Audio();
+          this.bgm.src = "/audio/song2.wav"
+          this.bgm.play();
+        }else if (this.bgmCount === 2){
+          this.bgm = new Audio();
+          this.bgm.src = "/audio/song3.wav"
+          this.bgm.play();
+        }
         this.audio = new Audio();
         this.audio.src = "/audio/next.wav"
         this.audio.play();
@@ -239,7 +252,7 @@ export default {
         }
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
-        this.audio.src = "/audio/Shoulder.wav"
+        this.audio.src = "/audio/shoulder.wav"
       }else if(answer === "knee"){
         this.count = 0;
         this.model = "/model/Kneemodel.json";
@@ -305,8 +318,9 @@ export default {
     })
   },
   destroyed() {
-    this.bgm.pause();
     this.audio.pause();
+    this.answerAudio.pause();
+    this.bgm.pause();
   },
 }
 </script>

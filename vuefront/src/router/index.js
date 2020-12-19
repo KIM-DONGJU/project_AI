@@ -11,6 +11,7 @@ import Board from '../components/BoardList'
 import Detail from '../components/BoardDetail'
 import Write from '../components/BoardWrite'
 import Delete from '../components/BoardDetail'
+import award from '../components/award'
 
 Vue.use(VueRouter);
 
@@ -69,6 +70,11 @@ const routes = [{
         path: '/find_id_pw',
         name: 'find_id_pw',
         component: find_id_pw
+    },
+    {
+        path: '/award',
+        name: 'award',
+        component: award
     }
 ]
 
