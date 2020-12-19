@@ -201,6 +201,13 @@ export default {
           weights: this.weights
         }
         this.brain.load(this.modelInfo, this.brainLoaded)
+        this.bgm.pause()
+        this.bgm = new Audio();
+        this.bgm.src = "/audio/song2.wav"
+        this.bgm.play();
+        this.audio = new Audio();
+        this.audio.src = "/audio/next.wav"
+        this.audio.play();
         this.audio = new Audio();
         this.audio.src = "/audio/circle.wav"
       }else if(answer === "head"){
@@ -247,7 +254,7 @@ export default {
         }
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
-        this.audio.src = "/audio/Knee.wav"
+        this.audio.src = "/audio/knee.wav"
       }else if(answer === "foot"){
         this.count = 0;
         this.model = "/model/Footmodel.json";
@@ -262,7 +269,7 @@ export default {
         }
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
-        this.audio.src = "/audio/Foot.wav"
+        this.audio.src = "/audio/foot.wav"
       }else if(answer === "mommyShark"){
         this.count = 0;
         this.time = 300;
@@ -278,7 +285,7 @@ export default {
         }
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
-        this.audio.src = "/audio/MommyShark.wav"
+        this.audio.src = "/audio/mommyShark.wav"
       }else if(answer === "daddyShark"){
         this.count = 0;
         this.model = "/model/DaddySharkmodel.json";
@@ -293,7 +300,7 @@ export default {
         }
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
-        this.audio.src = "/audio/DaddyShark.wav"
+        this.audio.src = "/audio/daddyShark.wav"
       }
     })
   },
