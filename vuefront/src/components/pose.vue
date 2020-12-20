@@ -71,7 +71,7 @@ export default {
       
       //answer audio
       this.answerAudio = new Audio();
-      this.answerAudio.src = "/audio/answer.wav" 
+      this.answerAudio.src = "/audio/beforeLeft.wav" 
 
       // audio 
       this.audio = new Audio();
@@ -104,7 +104,6 @@ export default {
       }
     },
     gotResult(error, results){
-      console.log(error);
       if (results[0].confidence > 0.75){
         this.poseLabel = results[0].label;
       }
@@ -179,6 +178,8 @@ export default {
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
         this.audio.src = "/audio/left.wav"
+        this.answerAudio = new Audio();
+        this.answerAudio.src = "/audio/beforeRight.wav"
       }else if(answer === "right"){
         this.count = 0;
         this.model = "/model/Rightmodel.json";
@@ -194,6 +195,7 @@ export default {
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
         this.audio.src = "/audio/right.wav"
+        this.answerAudio = new Audio();
       }else if(answer === "circle"){
         this.count = 0;
         this.model = "/model/Circlemodel.json";
@@ -213,10 +215,14 @@ export default {
           this.bgm = new Audio();
           this.bgm.src = "/audio/song2.wav"
           this.bgm.play();
+          this.answerAudio = new Audio();
+          this.answerAudio.src = "/audio/beforeHead.wav"
         }else if (this.bgmCount === 2){
           this.bgm = new Audio();
           this.bgm.src = "/audio/song3.wav"
           this.bgm.play();
+          this.answerAudio = new Audio();
+          this.answerAudio.src = "/audio/beforeMommyShark.wav"
         }
         this.audio = new Audio();
         this.audio.src = "/audio/next.wav"
@@ -238,6 +244,8 @@ export default {
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
         this.audio.src = "/audio/head.wav"
+        this.answerAudio = new Audio();
+        this.answerAudio.src = "/audio/beforeShoulder.wav"
       }else if(answer === "shoulder"){
         this.count = 0;
         this.model = "/model/Shouldermodel.json";
@@ -253,6 +261,8 @@ export default {
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
         this.audio.src = "/audio/shoulder.wav"
+        this.answerAudio = new Audio();
+        this.answerAudio.src = "/audio/beforeKnee.wav"
       }else if(answer === "knee"){
         this.count = 0;
         this.model = "/model/Kneemodel.json";
@@ -268,6 +278,8 @@ export default {
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
         this.audio.src = "/audio/knee.wav"
+        this.answerAudio = new Audio();
+        this.answerAudio.src = "/audio/beforeFoot.wav"
       }else if(answer === "foot"){
         this.count = 0;
         this.model = "/model/Footmodel.json";
@@ -283,6 +295,8 @@ export default {
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
         this.audio.src = "/audio/foot.wav"
+        this.answerAudio = new Audio();
+        this.answerAudio.src = "/audio/answer.wav"
       }else if(answer === "mommyShark"){
         this.count = 0;
         this.time = 300;
@@ -299,6 +313,8 @@ export default {
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
         this.audio.src = "/audio/mommyShark.wav"
+        this.answerAudio = new Audio();
+        this.answerAudio.src = "/audio/beforeDaddyShark.wav"
       }else if(answer === "daddyShark"){
         this.count = 0;
         this.model = "/model/DaddySharkmodel.json";

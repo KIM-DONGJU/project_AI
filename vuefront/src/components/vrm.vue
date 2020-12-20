@@ -470,7 +470,7 @@ export default {
       }else if(this.stage === 11){
         EventBus.$emit("nextPose", "daddyShark");
       }else if(this.stage === 12){
-        EventBus.$emit("endGame","endGame");
+        this.$router.push('/award')
       }
     }
   },

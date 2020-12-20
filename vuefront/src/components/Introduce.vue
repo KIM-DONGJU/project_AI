@@ -23,7 +23,7 @@
 export default {
    methods:{
       letsPlay:function(){
-         this.$router.push('/award') // 로그인 유도한 후, 로그인 한 경우 게임하기 화면으로 넘어가도록 하면 됨
+         this.$router.push('/play') // 로그인 유도한 후, 로그인 한 경우 게임하기 화면으로 넘어가도록 하면 됨
       },
    }
 }
