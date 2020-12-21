@@ -20,7 +20,7 @@
                <router-link to="/play" id="menu_play_kor" class="nav"><i class="fa fa-gamepad">{{$t('appVue.game')}}</i></router-link><div id="first_divide_kor">|</div>
                <router-link to="/board" id="menu_community_kor" class="nav"><i class="fas fa-comment-dots">{{$t('appVue.community')}}</i></router-link><div id="second_divide_kor">|</div>
                <router-link to="/login" id="menu_login_kor" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt">{{$t('appVue.login')}}</i><div id="third_divide_kor">|</div></router-link>
-               <a id="menu_login_kor" v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-al">{{$t('appVue.logout')}}</i></a>
+               <a id="menu_login_kor" class = 'nav' v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-alt">{{$t('appVue.logout')}}</i></a>
                <router-link to="/member_join" id="menu_member_join_kor" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt">{{$t('appVue.signup')}}</i></router-link>
             </div>
          </div>
@@ -33,7 +33,7 @@
                <router-link to="/play" id="menu_play_eng" class="nav"><i class="fa fa-gamepad">{{$t('appVue.game')}}</i></router-link><div id="first_divide_eng">|</div>
                <router-link to="/board" id="menu_community_eng" class="nav"><i class="fas fa-comment-dots">{{$t('appVue.community')}}</i></router-link><div id="second_divide_eng">|</div>
                <router-link to="/login" id="menu_login_eng" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt">{{$t('appVue.login')}}</i><div id="third_divide_eng">|</div></router-link>
-               <a id="menu_login_eng" v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-al">{{$t('appVue.logout')}}</i></a>
+               <a id="menu_login_eng" class = 'nav' v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-alt">{{$t('appVue.logout')}}</i></a>
                <router-link to="/member_join" id="menu_member_join_eng" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt">{{$t('appVue.signup')}}</i></router-link>
             </div>
          </div>
@@ -46,7 +46,7 @@
                <router-link to="/play" id="menu_play_jap" class="nav"><i class="fa fa-gamepad">{{$t('appVue.game')}}</i></router-link><div id="first_divide_jap">|</div>
                <router-link to="/board" id="menu_community_jap" class="nav"><i class="fas fa-comment-dots">{{$t('appVue.community')}}</i></router-link><div id="second_divide_jap">|</div>
                <router-link to="/login" id="menu_login_jap" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt">{{$t('appVue.login')}}</i><div id="third_divide_jap">|</div></router-link>
-               <a id="menu_login_jap" v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-al">{{$t('appVue.logout')}}</i></a>
+               <a id="menu_login_jap" class = 'nav' v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-alt">{{$t('appVue.logout')}}</i></a>
                <router-link to="/member_join" id="menu_member_join_jap" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt">{{$t('appVue.signup')}}</i></router-link>
             </div>
          </div>
@@ -59,7 +59,7 @@
                <router-link to="/play" id="menu_play_kor" class="nav"><i class="fa fa-gamepad">{{$t('appVue.game')}}</i></router-link><div id="first_divide_kor">|</div>
                <router-link to="/board" id="menu_community_kor" class="nav"><i class="fas fa-comment-dots">{{$t('appVue.community')}}</i></router-link><div id="second_divide_kor">|</div>
                <router-link to="/login" id="menu_login_kor" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt">{{$t('appVue.login')}}</i><div id="third_divide_kor">|</div></router-link>
-               <a id="menu_login_kor" v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-al">{{$t('appVue.logout')}}</i></a>
+               <a id="menu_login_kor" class = 'nav' v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-alt">{{$t('appVue.logout')}}</i></a>
                <router-link to="/member_join" id="menu_member_join_kor" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt">{{$t('appVue.signup')}}</i></router-link>
             </div>
          </div>

@@ -8,8 +8,8 @@
         <img src="../assets/4.png" alt="" v-show="this.page===4">
         </div>
 
-        <div class = 'left' v-show = 'this.page != 1'><i class="material-icons" style="font-size:48px;color:#333131" @click = 'down'>keyboard_arrow_left</i></div>
-        <div class = 'right' v-show = 'this.page != 4'><i class="material-icons" style="font-size:48px;color:#333131" @click = 'up'>keyboard_arrow_right</i></div>
+        <div class = 'left' v-show = 'this.page != 1'><i class="material-icons" style="font-size:48px;color:#333131;cursor: pointer;" @click = 'down'>keyboard_arrow_left</i></div>
+        <div class = 'right' v-show = 'this.page != 4'><i class="material-icons" style="font-size:48px;color:#333131;cursor: pointer;" @click = 'up'>keyboard_arrow_right</i></div>
 
     </div>
 </template>
