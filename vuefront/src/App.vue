@@ -16,41 +16,42 @@
          <!-- 한국어 버전 -->
          <div v-if="select_kor" v-cloak>
             <router-link to="/" class="nav_logo"><img src="@/assets/nav_logo.png"/></router-link>
-            <router-link to="/play" id="menu_play_kor" class="nav">{{$t('appVue.game')}}</router-link><div id="first_divide_kor">|</div>
-            <router-link to="/board" id="menu_community_kor" class="nav">{{$t('appVue.community')}}</router-link><div id="second_divide_kor">|</div>
-            <router-link to="/login" id="menu_login_kor" class="nav" v-if="!$store.state.token">{{$t('appVue.login')}}<div id="third_divide_kor">|</div></router-link>
-            <a id="menu_login_kor" class="nav" v-if="$store.state.token" @click="signOut">{{$t('appVue.logout')}}</a>
-               <router-link to="/member_join" class="nav" id="menu_member_join_kor" v-if="!$store.state.token">{{$t('appVue.signup')}}</router-link>
+            <router-link to="/play" id="menu_play_kor" class="nav"><i class="fa fa-gamepad" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.game')}}</i></router-link><div id="first_divide_kor">|</div>
+            <router-link to="/board" id="menu_community_kor" class="nav"><i class="fas fa-comment-dots" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.community')}}</i></router-link><div id="second_divide_kor">|</div>
+            <router-link to="/login" id="menu_login_kor" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.login')}}</i><div id="third_divide_kor">|</div></router-link>
+            <a id="menu_login_kor" v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-al" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.logout')}}</i></a>
+               <router-link to="/member_join" id="menu_member_join_kor" v-if="!$store.state.token"><i class="fas fa-running" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.signup')}}</i></router-link>
          </div>
 
          <!-- 영어 버전 -->
          <div v-else-if="select_eng" v-cloak>
             <router-link to="/" class="nav_logo"><img src="@/assets/nav_logo.png"/></router-link>
-            <router-link to="/play" id="menu_play_eng" class="nav">{{$t('appVue.game')}}</router-link><div id="first_divide_eng">|</div>
-            <router-link to="/board" id="menu_community_eng" class="nav">{{$t('appVue.community')}}</router-link><div id="second_divide_eng">|</div>
-            <router-link to="/login" id="menu_login_eng" class="nav" v-if="!$store.state.token">{{$t('appVue.login')}}<div id="third_divide_eng">|</div></router-link>
-            <a id="menu_login_eng" v-if="$store.state.token" @click="signOut">{{$t('appVue.logout')}}</a>
-               <router-link to="/member_join" id="menu_member_join_eng" v-if="!$store.state.token">{{$t('appVue.signup')}}</router-link>
+            <router-link to="/play" id="menu_play_eng" class="nav"><i class="fa fa-gamepad" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.game')}}</i></router-link><div id="first_divide_eng">|</div>
+            <router-link to="/board" id="menu_community_eng" class="nav"><i class="fas fa-comment-dots" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.community')}}</i></router-link><div id="second_divide_eng">|</div>
+            <router-link to="/login" id="menu_login_eng" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.login')}}</i><div id="third_divide_eng">|</div></router-link>
+            <a id="menu_login_eng" v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-al" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.logout')}}</i></a>
+               <router-link to="/member_join" id="menu_member_join_eng" v-if="!$store.state.token"><i class="fas fa-running" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.signup')}}</i></router-link>
          </div>
 
          <!-- 일본어 버전 -->
          <div v-else-if="select_jap" v-cloak>
             <router-link to="/" class="nav_logo"><img src="@/assets/nav_logo.png"/></router-link>
-            <router-link to="/play" id="menu_play_jap" class="nav">{{$t('appVue.game')}}</router-link><div id="first_divide_jap">|</div>
-            <router-link to="/board" id="menu_community_jap" class="nav">{{$t('appVue.community')}}</router-link><div id="second_divide_jap">|</div>
-            <router-link to="/login" id="menu_login_jap" class="nav" v-if="!$store.state.token">{{$t('appVue.login')}}<div id="third_divide_jap">|</div></router-link>
-            <a id="menu_login_jap" v-if="$store.state.token" @click="signOut">{{$t('appVue.logout')}}</a>
-               <router-link to="/member_join" id="menu_member_join_jap" v-if="!$store.state.token">{{$t('appVue.signup')}}</router-link>
+            <router-link to="/play" id="menu_play_jap" class="nav"><i class="fa fa-gamepad" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.game')}}</i></router-link><div id="first_divide_jap">|</div>
+            <router-link to="/board" id="menu_community_jap" class="nav"><i class="fas fa-comment-dots" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.community')}}</i></router-link><div id="second_divide_jap">|</div>
+            <router-link to="/login" id="menu_login_jap" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.login')}}</i><div id="third_divide_jap">|</div></router-link>
+            <a id="menu_login_kor" v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-al" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.logout')}}</i></a>
+               <router-link to="/member_join" id="menu_member_join_jap" v-if="!$store.state.token"><i class="fas fa-running" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.signup')}}</i></router-link>
          </div>
 
          <!-- 기본 옵션-->
          <div v-else v-clock>
             <router-link to="/" class="nav_logo"><img src="@/assets/nav_logo.png"/></router-link>
-            <router-link to="/play" id="menu_play_kor" class="nav">{{$t('appVue.game')}}</router-link><div id="first_divide_kor">|</div>
-            <router-link to="/board" id="menu_community_kor" class="nav">{{$t('appVue.community')}}</router-link><div id="second_divide_kor">|</div>
-            <router-link to="/login" id="menu_login_kor" class="nav" v-if="!$store.state.token">{{$t('appVue.login')}}<div id="third_divide_kor">|</div></router-link>
-            <a id="menu_login_kor" v-if="$store.state.token" @click="signOut">{{$t('appVue.logout')}}</a>
-               <router-link to="/member_join" id="menu_member_join_kor" v-if="!$store.state.token">{{$t('appVue.signup')}}</router-link>
+            <router-link to="/test"><i class="fas fa-question-circle" style="font-size:20px;color:black;font-weight:bold;color : #333131">게임소개</i></router-link>
+            <router-link to="/play" id="menu_play_kor" class="nav"><i class="fa fa-gamepad" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.game')}}</i></router-link><div id="first_divide_kor">|</div>
+            <router-link to="/board" id="menu_community_kor" class="nav"><i class="fas fa-comment-dots" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.community')}}</i></router-link><div id="second_divide_kor">|</div>
+            <router-link to="/login" id="menu_login_kor" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.login')}}</i><div id="third_divide_kor">|</div></router-link>
+            <a id="menu_login_kor" v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-al" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.logout')}}</i></a>
+               <router-link to="/member_join" id="menu_member_join_kor" v-if="!$store.state.token"><i class="fas fa-running" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.signup')}}</i></router-link>
          </div>
        </div>
     <router-view/>

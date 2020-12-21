@@ -178,7 +178,7 @@ video {
    font-style: normal;
    font-weight: bold;
    font-size: 54px;
-   color: rgb(0, 0, 0);
+   color: #4e52d0;
    letter-spacing: 0.1px;
 }
 

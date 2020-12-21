@@ -115,6 +115,10 @@ export default {
 
 <style scoped>
 
+h1 {
+   margin-bottom : 3.5rem;
+}
+
 img{
    height: 100%;
    cursor: pointer;
@@ -178,7 +182,7 @@ img{
      position: absolute;
      top: 0;
      left: 0;
-   color: #293241;
+   color: #005eff;
      background-color: rgba(200, 200, 200, 0.5);
      width: 25%;
      height: 100%;
@@ -224,7 +228,7 @@ img{
      position: absolute;
      top: 0;
      left: 25%;
-     color: #293241;
+     color: #ff69b4;
      background-color: rgba(200, 200, 200, 0.5);
      width: 25%;
      height: 100%;
@@ -270,7 +274,7 @@ img{
      position: absolute;
      top: 0;
      left: 50%;
-     color: #293241;
+     color: #7d32e0;
      background-color: rgba(200, 200, 200, 0.5);
      width: 25%;
      height: 100%;
@@ -316,7 +320,7 @@ img{
      position: absolute;
      top: 0;
      left: 75%;
-     color: #293241;
+     color: #f9831e;
      background-color: rgba(200, 200, 200, 0.5);
      width: 25%;
      height: 100%;
@@ -367,7 +371,7 @@ img{
      position: absolute;
      top: 0;
      left: 0;
-     color: #293241;
+     color: #461c03;
      background-color: rgba(200, 200, 200, 0.5);
      width: 25%;
      height: 100%;
@@ -412,7 +416,7 @@ img{
      position: absolute;
      top: 0;
      left: 25%;
-     color: #293241;
+     color: #0717de;
      background-color: rgba(200, 200, 200, 0.5);
      width: 25%;
      height: 100%;
@@ -457,7 +461,7 @@ img{
      position: absolute;
      top: 0;
      left: 50%;
-     color: #293241;
+     color: #d43b00;
      background-color: rgba(200, 200, 200, 0.5);
      width: 25%;
      height: 100%;
@@ -502,7 +506,7 @@ img{
      position: absolute;
      top: 0;
      left: 75%;
-     color: #293241;
+     color: #e82e73;
      background-color: rgba(200, 200, 200, 0.5);
      width: 25%;
      height: 100%;

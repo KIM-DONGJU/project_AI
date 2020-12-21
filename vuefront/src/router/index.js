@@ -12,10 +12,18 @@ import Detail from '../components/BoardDetail'
 import Write from '../components/BoardWrite'
 import Delete from '../components/BoardDetail'
 import award from '../components/award'
+import test from '../components/GameIntro'
 
 Vue.use(VueRouter);
 
-const routes = [{
+const routes = [
+    {
+        path: '/test',
+        name: 'Test',
+        component : test
+    },
+    
+    {
         path: '/',
         name: 'Main',
         component: Main
