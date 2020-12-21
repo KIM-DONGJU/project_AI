@@ -1,5 +1,6 @@
 {
   "appVue" : {
+    "intro" : "ゲームの紹介",
     "game" : "始める", 
     "community" : "コミュニティー",
     "login" : "ログイン",

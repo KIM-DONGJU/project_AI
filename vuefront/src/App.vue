@@ -2,7 +2,6 @@
 <template>
    <div id="app">
       <div id="nav">
-
          <!-- 언어 선택 드롭다운 메뉴 -->
          <div class="dropdown">
             <img src="./assets/language.png" class="dropdown">
@@ -14,44 +13,55 @@
          </div>
 
          <!-- 한국어 버전 -->
-         <div v-if="select_kor" v-cloak>
+          <div v-if="select_kor" v-clock>
             <router-link to="/" class="nav_logo"><img src="@/assets/nav_logo.png"/></router-link>
-            <router-link to="/play" id="menu_play_kor" class="nav"><i class="fa fa-gamepad" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.game')}}</i></router-link><div id="first_divide_kor">|</div>
-            <router-link to="/board" id="menu_community_kor" class="nav"><i class="fas fa-comment-dots" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.community')}}</i></router-link><div id="second_divide_kor">|</div>
-            <router-link to="/login" id="menu_login_kor" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.login')}}</i><div id="third_divide_kor">|</div></router-link>
-            <a id="menu_login_kor" v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-al" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.logout')}}</i></a>
-               <router-link to="/member_join" id="menu_member_join_kor" v-if="!$store.state.token"><i class="fas fa-running" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.signup')}}</i></router-link>
+            <div class="kor_intro_div">
+               <router-link to="/test" id=menu_intro_kor class="nav"><i class="fas fa-question-circle">{{$t('appVue.intro')}}</i></router-link><div id="zero_divide_kor">|</div>
+               <router-link to="/play" id="menu_play_kor" class="nav"><i class="fa fa-gamepad">{{$t('appVue.game')}}</i></router-link><div id="first_divide_kor">|</div>
+               <router-link to="/board" id="menu_community_kor" class="nav"><i class="fas fa-comment-dots">{{$t('appVue.community')}}</i></router-link><div id="second_divide_kor">|</div>
+               <router-link to="/login" id="menu_login_kor" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt">{{$t('appVue.login')}}</i><div id="third_divide_kor">|</div></router-link>
+               <a id="menu_login_kor" v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-al">{{$t('appVue.logout')}}</i></a>
+               <router-link to="/member_join" id="menu_member_join_kor" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt">{{$t('appVue.signup')}}</i></router-link>
+            </div>
          </div>
 
          <!-- 영어 버전 -->
-         <div v-else-if="select_eng" v-cloak>
+          <div v-if="select_eng" v-clock>
             <router-link to="/" class="nav_logo"><img src="@/assets/nav_logo.png"/></router-link>
-            <router-link to="/play" id="menu_play_eng" class="nav"><i class="fa fa-gamepad" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.game')}}</i></router-link><div id="first_divide_eng">|</div>
-            <router-link to="/board" id="menu_community_eng" class="nav"><i class="fas fa-comment-dots" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.community')}}</i></router-link><div id="second_divide_eng">|</div>
-            <router-link to="/login" id="menu_login_eng" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.login')}}</i><div id="third_divide_eng">|</div></router-link>
-            <a id="menu_login_eng" v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-al" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.logout')}}</i></a>
-               <router-link to="/member_join" id="menu_member_join_eng" v-if="!$store.state.token"><i class="fas fa-running" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.signup')}}</i></router-link>
+            <div class="eng_intro_div">
+               <router-link to="/test" id=menu_intro_eng class="nav"><i class="fas fa-question-circle">{{$t('appVue.intro')}}</i></router-link><div id="zero_divide_eng">|</div>
+               <router-link to="/play" id="menu_play_eng" class="nav"><i class="fa fa-gamepad">{{$t('appVue.game')}}</i></router-link><div id="first_divide_eng">|</div>
+               <router-link to="/board" id="menu_community_eng" class="nav"><i class="fas fa-comment-dots">{{$t('appVue.community')}}</i></router-link><div id="second_divide_eng">|</div>
+               <router-link to="/login" id="menu_login_eng" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt">{{$t('appVue.login')}}</i><div id="third_divide_eng">|</div></router-link>
+               <a id="menu_login_eng" v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-al">{{$t('appVue.logout')}}</i></a>
+               <router-link to="/member_join" id="menu_member_join_eng" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt">{{$t('appVue.signup')}}</i></router-link>
+            </div>
          </div>
 
          <!-- 일본어 버전 -->
-         <div v-else-if="select_jap" v-cloak>
+          <div v-else-if="select_jap" v-clock>
             <router-link to="/" class="nav_logo"><img src="@/assets/nav_logo.png"/></router-link>
-            <router-link to="/play" id="menu_play_jap" class="nav"><i class="fa fa-gamepad" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.game')}}</i></router-link><div id="first_divide_jap">|</div>
-            <router-link to="/board" id="menu_community_jap" class="nav"><i class="fas fa-comment-dots" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.community')}}</i></router-link><div id="second_divide_jap">|</div>
-            <router-link to="/login" id="menu_login_jap" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.login')}}</i><div id="third_divide_jap">|</div></router-link>
-            <a id="menu_login_kor" v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-al" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.logout')}}</i></a>
-               <router-link to="/member_join" id="menu_member_join_jap" v-if="!$store.state.token"><i class="fas fa-running" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.signup')}}</i></router-link>
+            <div class="jap_intro_div">
+               <router-link to="/test" id=menu_intro_jap class="nav"><i class="fas fa-question-circle">{{$t('appVue.intro')}}</i></router-link><div id="zero_divide_jap">|</div>
+               <router-link to="/play" id="menu_play_jap" class="nav"><i class="fa fa-gamepad">{{$t('appVue.game')}}</i></router-link><div id="first_divide_jap">|</div>
+               <router-link to="/board" id="menu_community_jap" class="nav"><i class="fas fa-comment-dots">{{$t('appVue.community')}}</i></router-link><div id="second_divide_jap">|</div>
+               <router-link to="/login" id="menu_login_jap" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt">{{$t('appVue.login')}}</i><div id="third_divide_jap">|</div></router-link>
+               <a id="menu_login_jap" v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-al">{{$t('appVue.logout')}}</i></a>
+               <router-link to="/member_join" id="menu_member_join_jap" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt">{{$t('appVue.signup')}}</i></router-link>
+            </div>
          </div>
 
          <!-- 기본 옵션-->
          <div v-else v-clock>
             <router-link to="/" class="nav_logo"><img src="@/assets/nav_logo.png"/></router-link>
-            <router-link to="/test"><i class="fas fa-question-circle" style="font-size:20px;color:black;font-weight:bold;color : #333131">게임소개</i></router-link>
-            <router-link to="/play" id="menu_play_kor" class="nav"><i class="fa fa-gamepad" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.game')}}</i></router-link><div id="first_divide_kor">|</div>
-            <router-link to="/board" id="menu_community_kor" class="nav"><i class="fas fa-comment-dots" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.community')}}</i></router-link><div id="second_divide_kor">|</div>
-            <router-link to="/login" id="menu_login_kor" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.login')}}</i><div id="third_divide_kor">|</div></router-link>
-            <a id="menu_login_kor" v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-al" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.logout')}}</i></a>
-               <router-link to="/member_join" id="menu_member_join_kor" v-if="!$store.state.token"><i class="fas fa-running" style="font-size:20px;color:black;font-weight:bold;color : #333131">{{$t('appVue.signup')}}</i></router-link>
+            <div class="kor_intro_div">
+               <router-link to="/test" id=menu_intro_kor class="nav"><i class="fas fa-question-circle">{{$t('appVue.intro')}}</i></router-link><div id="zero_divide_kor">|</div>
+               <router-link to="/play" id="menu_play_kor" class="nav"><i class="fa fa-gamepad">{{$t('appVue.game')}}</i></router-link><div id="first_divide_kor">|</div>
+               <router-link to="/board" id="menu_community_kor" class="nav"><i class="fas fa-comment-dots">{{$t('appVue.community')}}</i></router-link><div id="second_divide_kor">|</div>
+               <router-link to="/login" id="menu_login_kor" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt">{{$t('appVue.login')}}</i><div id="third_divide_kor">|</div></router-link>
+               <a id="menu_login_kor" v-if="$store.state.token" @click="signOut"><i class="fas fa-sign-out-al">{{$t('appVue.logout')}}</i></a>
+               <router-link to="/member_join" id="menu_member_join_kor" class="nav" v-if="!$store.state.token"><i class="fas fa-sign-in-alt">{{$t('appVue.signup')}}</i></router-link>
+            </div>
          </div>
        </div>
     <router-view/>
@@ -124,7 +134,6 @@ export default {
 </script>
 
 <style>
-
 #kor{
    width:100px;
    border:0;
@@ -189,12 +198,17 @@ export default {
    text-align: center;
 }
 
-#menu_play_kor{
-   left: 58%;
-   top:3.5%;
+.kor_intro_div {
    position: absolute;
+   float: left;
+   left:600px;
+   top:43px;
+}
+
+#menu_intro_kor{
+   position: relative;
+   float: left;
    overflow: visible;
-   width: 87px;
    white-space: nowrap;
    text-align: left;
    font-family: NanumBarunGothic;
@@ -203,30 +217,59 @@ export default {
    font-size: 20px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-right: 80px;
+}
+
+#zero_divide_kor{
+   position: relative;
+   float: left;
+   overflow: visible;
+   white-space: nowrap;
+   font-family: NanumBarunGothic;
+   font-style: normal;
+   font-weight: lighter;
+   font-size: 18px;
+   color: rgba(0,0,0,1);
+   letter-spacing: 0.1px;
+   margin-right: 80px;
+   bottom:7px;
+}
+
+#menu_play_kor{
+   position: relative;
+   overflow: visible;
+   float: left;
+   white-space: nowrap;
+   text-align: left;
+   font-family: NanumBarunGothic;
+   font-style: normal;
+   font-weight: lighter;
+   font-size: 20px;
+   color: rgba(0,0,0,1);
+   letter-spacing: 0.1px;
+   margin-right: 80px;
 }
 
 #first_divide_kor{
-   left: 65%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
    white-space: nowrap;
+   float: left;
    text-align: left;
    font-family: NanumBarunGothic;
    font-style: normal;
    font-weight: lighter;
-   font-size: 20px;
+   font-size: 18px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-right: 80px;
+   bottom:7px;
 }
 
 #menu_community_kor{
-   left: 68%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
+   float: left;
    white-space: nowrap;
    text-align: left;
    font-family: NanumBarunGothic;
@@ -235,31 +278,30 @@ export default {
    font-size: 20px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-right: 80px;
 }
 
 #second_divide_kor{
-   left: 75%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
    white-space: nowrap;
+   float: left;
    text-align: left;
    font-family: NanumBarunGothic;
    font-style: normal;
    font-weight: lighter;
-   font-size: 20px;
+   font-size: 18px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-right: 80px;
+   bottom:7px;
 }
 
 #menu_login_kor{
-   left: 79%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
    white-space: nowrap;
+   float: left;
    text-align: left;
    font-family: NanumBarunGothic;
    font-style: normal;
@@ -267,30 +309,29 @@ export default {
    font-size: 20px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-right: 80px;
 }
 
 #third_divide_kor{
-   left: 130%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
    white-space: nowrap;
+   float: left;
    text-align: left;
    font-family: NanumBarunGothic;
    font-style: normal;
    font-weight: lighter;
-   font-size: 20px;
+   font-size: 18px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-left:80px;
+   bottom:7px;
 }
 
 #menu_member_join_kor{
-   left: 88.5%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
+   float: left;
    white-space: nowrap;
    text-align: left;
    font-family: NanumBarunGothic;
@@ -299,14 +340,50 @@ export default {
    font-size: 20px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-right: 80px;
+}
+
+.eng_intro_div {
+   position: absolute;
+   float: left;
+   left:500px;
+   top:43px;
+}
+
+#menu_intro_eng{
+   position: relative;
+   float: left;
+   overflow: visible;
+   white-space: nowrap;
+   text-align: left;
+   font-family: NanumBarunGothic;
+   font-style: normal;
+   font-weight: lighter;
+   font-size: 20px;
+   color: rgba(0,0,0,1);
+   letter-spacing: 0.1px;
+   margin-right: 80px;
+}
+
+#zero_divide_eng{
+   position: relative;
+   float: left;
+   overflow: visible;
+   white-space: nowrap;
+   font-family: NanumBarunGothic;
+   font-style: normal;
+   font-weight: lighter;
+   font-size: 18px;
+   color: rgba(0,0,0,1);
+   letter-spacing: 0.1px;
+   margin-right: 80px;
+   bottom:7px;
 }
 
 #menu_play_eng{
-   left: 55%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
+   float: left;
    white-space: nowrap;
    text-align: left;
    font-family: NanumBarunGothic;
@@ -315,30 +392,29 @@ export default {
    font-size: 20px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-right: 80px;
 }
 
 #first_divide_eng{
-   left: 65%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
    white-space: nowrap;
+   float: left;
    text-align: left;
    font-family: NanumBarunGothic;
    font-style: normal;
    font-weight: lighter;
-   font-size: 20px;
+   font-size: 18px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-right: 80px;
+   bottom:7px;
 }
 
 #menu_community_eng{
-   left: 68%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
+   float: left;
    white-space: nowrap;
    text-align: left;
    font-family: NanumBarunGothic;
@@ -347,31 +423,30 @@ export default {
    font-size: 20px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-right: 80px;
 }
 
 #second_divide_eng{
-   left: 76.5%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
    white-space: nowrap;
+   float: left;
    text-align: left;
    font-family: NanumBarunGothic;
    font-style: normal;
    font-weight: lighter;
-   font-size: 20px;
+   font-size: 18px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-right: 80px;
+   bottom:7px;
 }
 
 #menu_login_eng{
-   left: 80%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
    white-space: nowrap;
+   float: left;
    text-align: left;
    font-family: NanumBarunGothic;
    font-style: normal;
@@ -379,30 +454,29 @@ export default {
    font-size: 20px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-right: 80px;
 }
 
 #third_divide_eng{
-   left: 122%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
    white-space: nowrap;
+   float: left;
    text-align: left;
    font-family: NanumBarunGothic;
    font-style: normal;
    font-weight: lighter;
-   font-size: 20px;
+   font-size: 18px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-left:80px;
+   bottom:7px;
 }
 
 #menu_member_join_eng{
-   left: 88%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
+   float: left;
    white-space: nowrap;
    text-align: left;
    font-family: NanumBarunGothic;
@@ -411,14 +485,50 @@ export default {
    font-size: 20px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-right: 80px;
+}
+
+.jap_intro_div {
+   position: absolute;
+   float: left;
+   left:380px;
+   top:43px;
+}
+
+#menu_intro_jap{
+   position: relative;
+   float: left;
+   overflow: visible;
+   white-space: nowrap;
+   text-align: left;
+   font-family: NanumBarunGothic;
+   font-style: normal;
+   font-weight: lighter;
+   font-size: 20px;
+   color: rgba(0,0,0,1);
+   letter-spacing: 0.1px;
+   margin-right: 80px;
+}
+
+#zero_divide_jap{
+   position: relative;
+   float: left;
+   overflow: visible;
+   white-space: nowrap;
+   font-family: NanumBarunGothic;
+   font-style: normal;
+   font-weight: lighter;
+   font-size: 18px;
+   color: rgba(0,0,0,1);
+   letter-spacing: 0.1px;
+   margin-right: 80px;
+   bottom:7px;
 }
 
 #menu_play_jap{
-   left: 47%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
+   float: left;
    white-space: nowrap;
    text-align: left;
    font-family: NanumBarunGothic;
@@ -427,30 +537,29 @@ export default {
    font-size: 20px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-right: 80px;
 }
 
 #first_divide_jap{
-   left: 52.5%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
    white-space: nowrap;
+   float: left;
    text-align: left;
    font-family: NanumBarunGothic;
    font-style: normal;
    font-weight: lighter;
-   font-size: 20px;
+   font-size: 18px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-right: 80px;
+   bottom:7px;
 }
 
 #menu_community_jap{
-   left: 55.5%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
+   float: left;
    white-space: nowrap;
    text-align: left;
    font-family: NanumBarunGothic;
@@ -459,31 +568,30 @@ export default {
    font-size: 20px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-right: 80px;
 }
 
 #second_divide_jap{
-   left: 65.5%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
    white-space: nowrap;
+   float: left;
    text-align: left;
    font-family: NanumBarunGothic;
    font-style: normal;
    font-weight: lighter;
-   font-size: 20px;
+   font-size: 18px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-right: 80px;
+   bottom:7px;
 }
 
 #menu_login_jap{
-   left: 69%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
    white-space: nowrap;
+   float: left;
    text-align: left;
    font-family: NanumBarunGothic;
    font-style: normal;
@@ -491,30 +599,29 @@ export default {
    font-size: 20px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-right: 80px;
 }
 
 #third_divide_jap{
-   left: 150%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
    white-space: nowrap;
+   float: left;
    text-align: left;
    font-family: NanumBarunGothic;
    font-style: normal;
    font-weight: lighter;
-   font-size: 20px;
+   font-size: 18px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-left:80px;
+   bottom:7px;
 }
 
 #menu_member_join_jap{
-   left: 80%;
-   top:3.5%;
-   position: absolute;
+   position: relative;
    overflow: visible;
-   width: 87px;
+   float: left;
    white-space: nowrap;
    text-align: left;
    font-family: NanumBarunGothic;
@@ -523,6 +630,7 @@ export default {
    font-size: 20px;
    color: rgba(0,0,0,1);
    letter-spacing: 0.1px;
+   margin-right: 80px;
 }
 
 #app {

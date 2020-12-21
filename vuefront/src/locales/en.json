@@ -1,5 +1,6 @@
 {
   "appVue" : {
+    "intro" : "Itroduce",
     "game" : "Play the game",
     "community" : "Community",
     "login" : "Log in",
