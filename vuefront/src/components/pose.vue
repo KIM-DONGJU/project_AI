@@ -33,7 +33,7 @@ export default {
       weights: "/model/Hellomodel.weights.bin",
       answer: "안녕",
       count: 0,
-      time: 100,
+      time: 30,
       poseLabel: "준비",
       // modelInfo: {
       //   model: "/model/model.json",
@@ -169,7 +169,7 @@ export default {
         this.weights = "/model/Leftmodel.weights.bin";
         this.answer = "왼손";
         this.other = "왼손 올려주세요~"
-        this.time = 200;
+        this.time = 100;
         this.modelInfo = {
           model: this.model,
           metadata: this.metadata,
@@ -299,7 +299,7 @@ export default {
         this.answerAudio.src = "/audio/answer.wav"
       }else if(answer === "mommyShark"){
         this.count = 0;
-        this.time = 300;
+        this.time = 250;
         this.model = "/model/MommySharkmodel.json";
         this.metadata = "/model/MommySharkmodel_meta.json";
         this.weights = "/model/MommySharkmodel.weights.bin";
