@@ -2,12 +2,12 @@
    <div class="introduce">
       <div>
          <div class="jb-box">
+            <div class = 'bg_color'></div>
             <video muted autoplay loop>
                <source src="../assets/video2.mp4" type="video/mp4">
                <strong>Your browser does not support the video tag.</strong>
             </video>
          </div>
-         <div class = 'bg_color'></div>
          <div class = 'intro_text'>
             <p id="noti_introduce_text_eng">{{$t('introVue.intro1')}}</p>
             <p id="noti_sub_text_first_eng">{{$t('introVue.intro2')}}</p>
@@ -31,10 +31,21 @@ export default {
 
 <style scoped>
 
-
-      body { padding: 0px; margin: 0px; }
-      .jb-box { width: 1920px; height: 820px; padding-top : 40px ; overflow: hidden;margin: 0px auto; position: relative; }
-      video { width: 100%; }
+body { 
+   padding: 0px; 
+   margin: 0px; 
+}
+.jb-box { 
+   width: 1920px; 
+   height: 820px; 
+   padding-top : 40px ; 
+   overflow: hidden;
+   margin: 0px auto; 
+   position: relative; 
+}
+video { 
+   width: 100%; 
+}
 
 
 .introduce {
@@ -43,9 +54,8 @@ export default {
 
 .bg_color {
    position : absolute;
-   top : 100px;   
    width : 1920px;
-   height : 780px;
+   height : 820px;
    background-color: gray;
    z-index: 10;
    opacity: 0.4;
@@ -168,7 +178,7 @@ export default {
    font-style: normal;
    font-weight: bold;
    font-size: 54px;
-   color: rgb(0, 0, 0);
+   color: #4e52d0;
    letter-spacing: 0.1px;
 }
 

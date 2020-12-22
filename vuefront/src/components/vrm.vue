@@ -469,6 +469,8 @@ export default {
         EventBus.$emit("nextPose", "mommyShark");
       }else if(this.stage === 11){
         EventBus.$emit("nextPose", "daddyShark");
+      }else if(this.stage === 12){
+        this.$router.push('/award')
       }
     }
   },

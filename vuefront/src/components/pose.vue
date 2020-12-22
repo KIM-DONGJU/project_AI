@@ -23,15 +23,17 @@ export default {
       skeleton: undefined,
       brain: undefined,
       modelInfo: undefined,
+      answerAudio: undefined,
       audio: undefined,
       bgm: undefined,
+      bgmCount: 0,
       other: "손 흔들어 인사해요~",
       model: "/model/Hellomodel.json",
       metadata: "/model/Hellomodel_meta.json",
       weights: "/model/Hellomodel.weights.bin",
       answer: "안녕",
       count: 0,
-      time: 100,
+      time: 30,
       poseLabel: "준비",
       // modelInfo: {
       //   model: "/model/model.json",
@@ -66,6 +68,10 @@ export default {
         weights: this.weights
       }
       this.brain.load(this.modelInfo, this.brainLoaded);
+      
+      //answer audio
+      this.answerAudio = new Audio();
+      this.answerAudio.src = "/audio/beforeLeft.wav" 
 
       // audio 
       this.audio = new Audio();
@@ -98,7 +104,6 @@ export default {
       }
     },
     gotResult(error, results){
-      console.log(error);
       if (results[0].confidence > 0.75){
         this.poseLabel = results[0].label;
       }
@@ -106,7 +111,7 @@ export default {
         this.count++;
         if(this.count===this.time/2) this.audio.play();
         if(this.count>this.time){
-          this.audio.play();
+          this.answerAudio.play();
           this.count = 0;
           this.nextAction();
         }
@@ -164,7 +169,7 @@ export default {
         this.weights = "/model/Leftmodel.weights.bin";
         this.answer = "왼손";
         this.other = "왼손 올려주세요~"
-        this.time = 200;
+        this.time = 100;
         this.modelInfo = {
           model: this.model,
           metadata: this.metadata,
@@ -173,6 +178,8 @@ export default {
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
         this.audio.src = "/audio/left.wav"
+        this.answerAudio = new Audio();
+        this.answerAudio.src = "/audio/beforeRight.wav"
       }else if(answer === "right"){
         this.count = 0;
         this.model = "/model/Rightmodel.json";
@@ -188,6 +195,7 @@ export default {
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
         this.audio.src = "/audio/right.wav"
+        this.answerAudio = new Audio();
       }else if(answer === "circle"){
         this.count = 0;
         this.model = "/model/Circlemodel.json";
@@ -202,9 +210,20 @@ export default {
         }
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.bgm.pause()
-        this.bgm = new Audio();
-        this.bgm.src = "/audio/song2.wav"
-        this.bgm.play();
+        this.bgmCount++;
+        if(this.bgmCount === 1){
+          this.bgm = new Audio();
+          this.bgm.src = "/audio/song2.wav"
+          this.bgm.play();
+          this.answerAudio = new Audio();
+          this.answerAudio.src = "/audio/beforeHead.wav"
+        }else if (this.bgmCount === 2){
+          this.bgm = new Audio();
+          this.bgm.src = "/audio/song3.wav"
+          this.bgm.play();
+          this.answerAudio = new Audio();
+          this.answerAudio.src = "/audio/beforeMommyShark.wav"
+        }
         this.audio = new Audio();
         this.audio.src = "/audio/next.wav"
         this.audio.play();
@@ -225,6 +244,8 @@ export default {
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
         this.audio.src = "/audio/head.wav"
+        this.answerAudio = new Audio();
+        this.answerAudio.src = "/audio/beforeShoulder.wav"
       }else if(answer === "shoulder"){
         this.count = 0;
         this.model = "/model/Shouldermodel.json";
@@ -239,7 +260,9 @@ export default {
         }
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
-        this.audio.src = "/audio/Shoulder.wav"
+        this.audio.src = "/audio/shoulder.wav"
+        this.answerAudio = new Audio();
+        this.answerAudio.src = "/audio/beforeKnee.wav"
       }else if(answer === "knee"){
         this.count = 0;
         this.model = "/model/Kneemodel.json";
@@ -255,6 +278,8 @@ export default {
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
         this.audio.src = "/audio/knee.wav"
+        this.answerAudio = new Audio();
+        this.answerAudio.src = "/audio/beforeFoot.wav"
       }else if(answer === "foot"){
         this.count = 0;
         this.model = "/model/Footmodel.json";
@@ -270,9 +295,11 @@ export default {
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
         this.audio.src = "/audio/foot.wav"
+        this.answerAudio = new Audio();
+        this.answerAudio.src = "/audio/answer.wav"
       }else if(answer === "mommyShark"){
         this.count = 0;
-        this.time = 300;
+        this.time = 250;
         this.model = "/model/MommySharkmodel.json";
         this.metadata = "/model/MommySharkmodel_meta.json";
         this.weights = "/model/MommySharkmodel.weights.bin";
@@ -286,6 +313,8 @@ export default {
         this.brain.load(this.modelInfo, this.brainLoaded)
         this.audio = new Audio();
         this.audio.src = "/audio/mommyShark.wav"
+        this.answerAudio = new Audio();
+        this.answerAudio.src = "/audio/beforeDaddyShark.wav"
       }else if(answer === "daddyShark"){
         this.count = 0;
         this.model = "/model/DaddySharkmodel.json";
@@ -305,8 +334,9 @@ export default {
     })
   },
   destroyed() {
-    this.bgm.pause();
     this.audio.pause();
+    this.answerAudio.pause();
+    this.bgm.pause();
   },
 }
 </script>
