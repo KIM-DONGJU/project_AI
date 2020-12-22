@@ -1,16 +1,12 @@
 version: "3.0"
 services:
-  frontend:
-    build: "./frontend"
-    ports:
-      - "1234:1234"
-    networks:
-      - project
-
   backend:
     build: "./backend"
     ports:
       - "3000:3000"
+    links:
+      - mariadb
+      - mongodb
     networks:
       - project
   
@@ -19,7 +15,9 @@ services:
     stdin_open: true
     tty : true
     ports:
-      - "8082:8080"
+      - "80:8080"
+    links:
+      - backend
     networks:
       - project
 
@@ -30,5 +28,16 @@ services:
     networks:
       - project
   
+  mariadb:
+    image: "mariadb"
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=user
+    ports:
+      - "3306:3306"
+    networks:
+      - project
+
 networks:
   project:
+    driver: bridge
