@@ -33,27 +33,28 @@ COVID19로 인하여 실내에 머무는 시간이 증가함에 따라 감소하
 <br>
 
 ## :rocket: 설치 및 실행
-1. 기본 환경에서의 실행<br>
-```git clone 
-```
+### 1. 기본 환경에서의 실행<br>
+```git clone https://github.com/won-js/project_AI.git```
 
-Build a vue project 
+<strong>Build a vue project</strong>
 ```cd vuefront
 npm install 
 npm run serve
 ```
-Build an express project
+<strong>Build an express project</strong>
 ```cd backend
 npm install
 npm start
 ```
 
-Run the server<br>
+<strong>Run the server</strong><br>
 http://localhost/8081
 
-2. Docker 환경에서의 실행
-docker-compose build
-docker-compose build-d
+### 2. Docker 환경에서의 실행<br>
+```docker-compose build
+docker-compose start-d
+```
+
 
 ## :running: 팀원 소개
 ####  :smiley: 원준수(팀장) : 딥러닝 모델 구현, Docker 설정, 3D 애니메이션 구현
