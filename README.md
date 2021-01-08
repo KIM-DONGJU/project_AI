@@ -50,8 +50,9 @@ npm start
 <strong>Run the server</strong><br>
 http://localhost/8081
 
-### 2. Docker 환경에서의 실행<br>
-```docker-compose build
+### 2. Docker 환경에서의 실행
+```
+docker-compose build
 docker-compose start-d
 ```
 
