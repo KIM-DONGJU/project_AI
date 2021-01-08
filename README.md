@@ -1,5 +1,5 @@
 ## :penguin: 핑크펭귄(Pink-Penguin)
-자세 추정 모델을 활용한 유아 대상의 동작 인식 교육서비스.
+자세 추정 모델을 활용한 유아 대상의 동작 인식 교육서비스.  
 
 ## 📚 프로젝트 설명
 COVID19로 인하여 실내에 머무는 시간이 증가함에 따라 감소하는 신체 활동을 보완하기 위해 기획되었으며,<br>
@@ -55,7 +55,8 @@ http://localhost/8081
 docker-compose build
 docker-compose start-d
 ```
-
+<strong>Run the server</strong><br>
+http://localhost/80
 
 ## :running: 팀원 소개
 ####  :smiley: 원준수(팀장) : 딥러닝 모델 구현, Docker 설정, 3D 애니메이션 구현
