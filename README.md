@@ -1,8 +1,4 @@
-# project_AI
-
 ## :penguin: 핑크펭귄(Pink-Penguin)
-플레이데이터 Pose-Estimation 개발자 교육 과정 파이널 프로젝트 - '핑크펭귄(Pink-Penguin)'
-<br><br>
 자세 추정 모델을 활용한 유아 대상의 동작 인식 교육서비스
 
 ## 📚 프로젝트 설명
@@ -27,8 +23,8 @@ COVID19로 인하여 실내에 머무는 시간이 증가함에 따라 감소하
 <br><br>
 
 ## 💻 최종 실행 화면
-<center>&nbsp&nbsp![캐릭터선택](https://user-images.githubusercontent.com/46026674/103983533-bd874500-51c8-11eb-8dbb-082980b84112.gif)</center>
-<center>&nbsp&nbsp![게임하기](https://user-images.githubusercontent.com/46026674/103983555-ca0b9d80-51c8-11eb-96e1-b91a66e65315.gif)</center>
+&nbsp&nbsp![캐릭터선택](https://user-images.githubusercontent.com/46026674/103983533-bd874500-51c8-11eb-8dbb-082980b84112.gif)<br>
+&nbsp&nbsp![게임하기](https://user-images.githubusercontent.com/46026674/103983555-ca0b9d80-51c8-11eb-96e1-b91a66e65315.gif)
 ![display](https://user-images.githubusercontent.com/46026674/103982615-27065400-51c7-11eb-9645-c93b3c2a39ac.png)
 <br>
 
