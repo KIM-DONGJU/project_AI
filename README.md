@@ -29,8 +29,8 @@ COVID19로 인하여 실내에 머무는 시간이 증가함에 따라 감소하
 <br><br>
 
 ## 💻 최종 실행 화면
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![캐릭터선택](https://user-images.githubusercontent.com/46026674/103983533-bd874500-51c8-11eb-8dbb-082980b84112.gif)  
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![게임하기](https://user-images.githubusercontent.com/46026674/103983555-ca0b9d80-51c8-11eb-96e1-b91a66e65315.gif)
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![캐릭터선택](https://user-images.githubusercontent.com/46026674/103983533-bd874500-51c8-11eb-8dbb-082980b84112.gif)  
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![게임하기](https://user-images.githubusercontent.com/46026674/103983555-ca0b9d80-51c8-11eb-96e1-b91a66e65315.gif)
 ![display](https://user-images.githubusercontent.com/46026674/103982615-27065400-51c7-11eb-9645-c93b3c2a39ac.png)
 
 <br><br>
