@@ -33,17 +33,22 @@ COVID19로 인하여 실내에 머무는 시간이 증가함에 따라 감소하
 <br>
 
 ## :rocket: 설치 및 실행
-1. 기본 환경에서의 실행
-git clone 
+1. 기본 환경에서의 실행<br>
+```git clone 
+```
 
-cd vuefront
+Build a vue project 
+```cd vuefront
 npm install 
 npm run serve
-
-cd backend
+```
+Build an express project
+```cd backend
 npm install
 npm start
+```
 
+Run the server<br>
 http://localhost/8081
 
 2. Docker 환경에서의 실행
