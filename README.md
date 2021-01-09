@@ -25,6 +25,7 @@ COVID19로 인하여 실내에 머무는 시간이 증가함에 따라 감소하
 - 3D애니메이션 로딩(three.js, VRM)
 - 다국어 지원(i18n/ko,en,jp)
 - ORM(npm sequelize)
+- 서버 배포(docker, AWS)
 
 <br><br>
 
